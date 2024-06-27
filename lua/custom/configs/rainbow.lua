@@ -1,1 +1,6 @@
-require('rainbow-delimiters.setup').setup { }
+require('rainbow-delimiters.setup').setup { 
+query={
+    liquid="rainbow-delimiters"
+  }
+
+}

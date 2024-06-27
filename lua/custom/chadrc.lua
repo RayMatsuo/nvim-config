@@ -6,6 +6,7 @@ M.ui = { theme = "sesbian" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 require "custom.commands"
+require "custom.themes.init"
 
 vim.cmd "language en_US"
 vim.opt.foldenable = false
@@ -25,6 +26,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
   end,
 })
 
+local set_c = vim.api.nvim_set_hl
+set_c(0, "@neorg.headings.2.title.norg", {fg = "#ff2020" ,bg="white",bold=true})
+M.type = "dark"
 
 vim.cmd ":se cocu=n"
 

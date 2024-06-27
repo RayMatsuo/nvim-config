@@ -1,5 +1,10 @@
 require("neorg").setup {
   load = {
+["core.qol.toc"]={
+      config={
+        
+      }
+    },
     ["core.defaults"] = {}, -- Loads default behaviour
     ["core.concealer"] = {
       config = {

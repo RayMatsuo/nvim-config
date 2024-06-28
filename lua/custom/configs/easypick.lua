@@ -21,5 +21,12 @@ easypick.setup {
       action = easypick.actions.nvim_commandf "e ++enc=%s",
       previewer = easypick.previewers.default(),
     },
+    
+    {
+      name = "ft",
+      command = "cat C:\\Users\\matsu\\AppData\\Local\\nvim\\.filetypes",
+      action = easypick.actions.nvim_commandf "se ft=%s",
+      previewer = easypick.previewers.default(),
+    },
   },
 }

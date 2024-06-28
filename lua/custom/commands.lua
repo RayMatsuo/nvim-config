@@ -33,3 +33,5 @@ vim.api.nvim_create_user_command("Pope", function()
     end
   end
 end, {})
+
+vim.api.nvim_create_user_command("EP", function() vim.cmd "Easypick" end ,{})

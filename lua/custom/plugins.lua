@@ -247,6 +247,9 @@ local plugins = {
     "mechatroner/rainbow_csv",
     ft={"csv"}
     
+  },{
+    --[[ "RayMatsuo/ql.nvim",
+    event="VeryLazy" ]]
   }
 }
 return plugins

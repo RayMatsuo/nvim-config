@@ -1,14 +1,9 @@
 require("neorg").setup {
   load = {
-["core.qol.toc"]={
-      config={
-        
-      }
-    },
     ["core.defaults"] = {}, -- Loads default behaviour
     ["core.concealer"] = {
       config = {
-        icon_preset="varied"
+        icon_preset = "varied",
       },
     },                  -- Adds pretty icons to your documents
     ["core.dirman"] = { -- Manages Neorg workspaces
@@ -24,4 +19,5 @@ require("neorg").setup {
       },
     },
   },
+    ["core.qol.toc"] = { config = {}, },
 }

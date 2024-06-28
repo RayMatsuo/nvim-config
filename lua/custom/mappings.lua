@@ -1,11 +1,11 @@
 M = {}
 local wrap = false
 
-local home=os.getenv("HOME")
+local home = os.getenv "HOME"
 local cole = 2
 
 local function file_exists(path)
-  local f = io.open(home.."/AppData/Local/nvim/lua/" .. path:gsub("%.", "/") .. ".lua", "r")
+  local f = io.open(home .. "/AppData/Local/nvim/lua/" .. path:gsub("%.", "/") .. ".lua", "r")
   local inst = nil
   local result = f ~= nil
   if f ~= nil then
@@ -16,6 +16,7 @@ end
 
 M.map = {
   n = {
+    ["<Leader>ft"] = { "<cmd>Easypick ft<Cr>" },
     ["<Leader>co"] = {
       function()
         if cole == 0 then
@@ -51,7 +52,7 @@ M.map = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["FF"] = { "<cmd>Pounce<CR>", "Start pounce" },
-    ["<F4>"] = { "<cmd>e "..home.."\\portal\\docs\\doc.norg <CR> ", "open todo" },
+    ["<F4>"] = { "<cmd>e " .. home .. "\\portal\\docs\\doc.norg <CR> ", "open todo" },
     ["<F3>"] = {
       function()
         ---@type string
@@ -69,7 +70,7 @@ M.map = {
         local workspaces = require "workspaces"
         local name = workspaces.name()
         if name ~= nil then
-          vim.cmd("e "..home.."\\portal\\docs\\workspace\\" .. name .. ".norg")
+          vim.cmd("e " .. home .. "\\portal\\docs\\workspace\\" .. name .. ".norg")
         else
           vim.notify "not in workspace"
         end
@@ -78,7 +79,8 @@ M.map = {
     ["<F6>"] = {
       function()
         local path = vim.g.theme_config_path
-        local absolute_path = home.."/AppData/Local/nvim-data/lazy/base46/lua/base46/themes/"
+        local absolute_path = home
+            .. "/AppData/Local/nvim-data/lazy/base46/lua/base46/themes/"
             .. vim.g.theme_name
             .. ".lua"
         vim.cmd("e " .. absolute_path)
@@ -91,28 +93,26 @@ M.map = {
         local dir = vim.fn.expand "%"
 
         if string.find(dir, "Office memo") ~= nil then
-          vim.cmd ("cd "..home.."\\Desktop\\portal\\docs\\notes\\Office memo\\diary")
+          vim.cmd("cd " .. home .. "\\Desktop\\portal\\docs\\notes\\Office memo\\diary")
         end
-        vim.cmd("e "..home.."\\Desktop\\portal\\docs\\notes\\Office memo\\diary\\" .. date_txt .. ".md")
+        vim.cmd("e " .. home .. "\\Desktop\\portal\\docs\\notes\\Office memo\\diary\\" .. date_txt .. ".md")
         -- vim.cmd "se ft=norg"
       end,
     },
     ["<Leader>d"] = {
       function()
         local dir = vim.fn.expand "%"
-        if string.find(dir, "norg")  then
-          local line=vim.fn.getline(".")
-          if string.match(line,"(x)") then
-          vim.cmd "s/(\\zs.\\ze)/ /e"
-          elseif string.match(line,"( )") then 
-            
-          vim.cmd "s/(\\zs.\\ze)/x/e"
+        if string.find(dir, "norg") then
+          local line = vim.fn.getline "."
+          if string.match(line, "(x)") then
+            vim.cmd "s/(\\zs.\\ze)/ /e"
+          elseif string.match(line, "( )") then
+            vim.cmd "s/(\\zs.\\ze)/x/e"
           end
         end
         vim.cmd "noh"
       end,
     },
-
   },
 
   v = {

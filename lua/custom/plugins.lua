@@ -131,7 +131,7 @@ local plugins = {
   },
   {
     "nvim-neorg/neorg",
-    dependencies = { "luarocks.nvim" },
+    dependencies = { "luarocks.nvim" ,{ "nvim-neorg/neorg-telescope" }},
     ft = "norg",
     version = "*",
     config = function()
@@ -221,7 +221,7 @@ local plugins = {
       require "custom.configs.splits"
     end,
   },
-  {
+  --[[ {
     "ThePrimeagen/harpoon",
     dependencies = { "nvim-telescope/telescope.nvim" },
     branch = "harpoon2",
@@ -229,7 +229,7 @@ local plugins = {
       require "custom.configs.harpoon"
     end,
     event = "VeryLazy",
-  },
+  }, ]]
   {
     "numtostr/BufOnly.nvim",
     cmd = { "BufOnly" },
@@ -245,11 +245,8 @@ local plugins = {
   },
   {
     "mechatroner/rainbow_csv",
-    ft={"csv"}
-    
-  },{
-    --[[ "RayMatsuo/ql.nvim",
-    event="VeryLazy" ]]
-  }
+    ft = { "csv" },
+  },
+  -- { "RayMatsuo/buflist", event = "VeryLazy", },
 }
 return plugins

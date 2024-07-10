@@ -8,7 +8,6 @@ easypick.setup {
       action = easypick.actions.nvim_commandf "e %s",
       previewer = easypick.previewers.default(),
     },
-
     {
       name = "docs",
       command = 'ls -r "' .. home .. '/Desktop/portal/docs/workspace"/*',
@@ -21,7 +20,6 @@ easypick.setup {
       action = easypick.actions.nvim_commandf "e ++enc=%s",
       previewer = easypick.previewers.default(),
     },
-    
     {
       name = "ft",
       command = "cat C:\\Users\\matsu\\AppData\\Local\\nvim\\.filetypes",

@@ -18,6 +18,22 @@ require("neorg").setup {
         strategy = "by_path",
       },
     },
+    ["core.integrations.telescope"] = {
+      config = {
+        insert_file_link = {
+          -- Whether to show the title preview in telescope. Affects performance with a large
+          -- number of files.
+          show_title_preview = true,
+        },
+      },
+    },
+    ["core.ui.calendar"] = {},
+    ["core.qol.todo_items"] = {
+      config = {
+        create_todo_items = true,
+        create_todo_parents = true,
+      },
+    },
+    ["core.integrations.treesitter"]={}
   },
-    ["core.qol.toc"] = { config = {}, },
 }

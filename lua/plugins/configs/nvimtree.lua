@@ -73,11 +73,11 @@ local options = {
     },
   },
 
-  experimental={
+  --[[ experimental={
     open={
       relative_path =true
     }
-  },
+  }, ]]
 }
 
 return options

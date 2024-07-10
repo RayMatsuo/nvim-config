@@ -17,6 +17,7 @@ end
 M.map = {
   n = {
     ["<Leader>ft"] = { "<cmd>Easypick ft<Cr>" },
+    ["<Leader>en"] = { "<cmd>Easypick enc<Cr>" },
     ["<Leader>co"] = {
       function()
         if cole == 0 then

@@ -6,4 +6,8 @@ leap.setup({
 local flit=require('flit')
 flit.setup({
 })
+
 vim.keymap.del("v",'x')
+    -- vim.keymap.set({'n', 'x', 'o'}, '',  '<Plug>(leap-forward)')
+    --
+    -- vim.keymap.set({'n', 'x', 'o'}, '{',  '<Plug>(leap-backward)')

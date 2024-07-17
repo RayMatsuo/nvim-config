@@ -2,7 +2,7 @@
 --
 local M = {}
 
-M.ui = { theme = "void" }
+M.ui = { theme = "whale" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 require "custom.commands"
@@ -14,22 +14,28 @@ vim.opt.foldenable = false
 vim.cmd "se relativenumber"
 vim.cmd "se nowrap"
 
+vim.cmd "set shell=pwsh"
+vim.cmd "set shellcmdflag=-command"
+vim.cmd 'set shellquote="'
+vim.cmd "set shellxquote="
+
 vim.cmd "set guicursor=n-v-c:block-Cursor"
 vim.cmd "set guicursor=i:ver100-iCursor"
 
 vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
-    require "custom.themes.void"
-    local theme_name = "void"
+    require "custom.themes.whale"
+    local theme_name = "whale"
     Load_Theme(theme_name)
-    vim.g.theme_name = "void"
+    vim.g.theme_name = "whale"
   end,
 })
 
 local set_c = vim.api.nvim_set_hl
-set_c(0, "@neorg.headings.2.title.norg", {fg = "#ff2020" ,bg="white",bold=true})
+set_c(0, "@neorg.headings.2.title.norg", { fg = "#ff2020", bg = "white", bold = true })
 M.type = "dark"
 
 vim.cmd ":se cocu=n"
-
+vim.cmd "set timeoutlen=200"
+-- vim.cmd "let g:grammarous#languagetool_cmd = 'LanguageTool'"
 return M

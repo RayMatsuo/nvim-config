@@ -26,10 +26,10 @@ require("workspaces").setup {
     open = {
       -- "Telescope find_files",
       function()
-        vert = init_term("vertical", "serve.bat", "serve \r")
+        vert = init_term("vertical", "serve.bat", "./serve.bat \r")
       end,
       function()
-        hor = init_term("horizontal", "watch.bat", "watch \r")
+        hor = init_term("horizontal", "watch.bat", "./watch.bat \r")
       end,
     },
     --[[ open_pre = {

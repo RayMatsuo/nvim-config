@@ -131,7 +131,7 @@ local plugins = {
   },
   {
     "nvim-neorg/neorg",
-    dependencies = { "luarocks.nvim" ,{ "nvim-neorg/neorg-telescope" }},
+    dependencies = { "luarocks.nvim", { "nvim-neorg/neorg-telescope" } },
     ft = "norg",
     version = "*",
     config = function()
@@ -247,6 +247,16 @@ local plugins = {
     "mechatroner/rainbow_csv",
     ft = { "csv" },
   },
+  -- install without yarn or npm
+
+  --[[ {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require "custom.configs.lualine"
+    end,
+  } ]]
   -- { "RayMatsuo/buflist", event = "VeryLazy", },
 }
 return plugins

@@ -34,6 +34,7 @@ require("neorg").setup {
         create_todo_parents = true,
       },
     },
-    ["core.integrations.treesitter"]={}
+    ["core.integrations.treesitter"]={},
+    ["core.export"]={}
   },
 }

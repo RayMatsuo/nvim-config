@@ -247,7 +247,6 @@ local plugins = {
     "mechatroner/rainbow_csv",
     ft = { "csv" },
   },
-  -- install without yarn or npm
 
   --[[ {
     "nvim-lualine/lualine.nvim",

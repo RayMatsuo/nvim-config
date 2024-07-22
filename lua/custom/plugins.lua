@@ -247,6 +247,21 @@ local plugins = {
     "mechatroner/rainbow_csv",
     ft = { "csv" },
   },
+  {
+    "zef/vim-cycle",
+    config = function()
+      require "custom.configs.cycle"
+    end,
+    event="VeryLazy"
+  },
+  {
+"wansmer/sibling-swap.nvim",
+    config = function()
+      require "custom.configs.swap"
+    end,
+
+    event="VeryLazy"
+  }
 
   --[[ {
     "nvim-lualine/lualine.nvim",

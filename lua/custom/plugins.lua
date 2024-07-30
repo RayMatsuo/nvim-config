@@ -221,15 +221,6 @@ local plugins = {
       require "custom.configs.splits"
     end,
   },
-  --[[ {
-    "ThePrimeagen/harpoon",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-    branch = "harpoon2",
-    config = function()
-      require "custom.configs.harpoon"
-    end,
-    event = "VeryLazy",
-  }, ]]
   {
     "numtostr/BufOnly.nvim",
     cmd = { "BufOnly" },
@@ -252,14 +243,21 @@ local plugins = {
     config = function()
       require "custom.configs.cycle"
     end,
-    event="VeryLazy"
+    event = "VeryLazy",
   },
   {
-"wansmer/sibling-swap.nvim",
+    "wansmer/sibling-swap.nvim",
     config = function()
       require "custom.configs.swap"
     end,
-
+    event = "VeryLazy",
+  },
+  {
+    "theprimeagen/refactoring.nvim",
+    
+    config = function()
+      require "custom.configs.refactoring"
+    end,
     event="VeryLazy"
   }
 

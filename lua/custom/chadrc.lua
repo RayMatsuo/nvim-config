@@ -2,7 +2,7 @@
 --
 local M = {}
 
-M.ui = { theme = "manor" }
+M.ui = { theme = "whale" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 require "custom.commands"
@@ -21,9 +21,9 @@ vim.cmd "set guicursor=i:ver100-iCursor"
 
 vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
-    local theme_name = "manor"
+    local theme_name = "whale"
     Load_Theme(theme_name)
-    vim.g.theme_name = "manor"
+    vim.g.theme_name = "whale"
   end,
 })
 

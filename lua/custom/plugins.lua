@@ -254,12 +254,12 @@ local plugins = {
   },
   {
     "theprimeagen/refactoring.nvim",
-    
+
     config = function()
       require "custom.configs.refactoring"
     end,
-    event="VeryLazy"
-  }
+    event = "VeryLazy",
+  },
 
   --[[ {
     "nvim-lualine/lualine.nvim",

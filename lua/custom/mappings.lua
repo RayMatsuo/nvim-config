@@ -114,6 +114,10 @@ M.map = {
         vim.cmd "noh"
       end,
     },
+    ["<Leader>nn"]={function()
+
+    vim.cmd "NoNeckPain"
+    end}
   },
 
   v = {

@@ -270,5 +270,12 @@ local plugins = {
     end,
   } ]]
   -- { "RayMatsuo/buflist", event = "VeryLazy", },
+  {
+    "shortcuts/no-neck-pain.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.noneckpain"
+    end,
+  },
 }
 return plugins

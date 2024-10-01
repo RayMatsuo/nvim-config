@@ -10,6 +10,7 @@ local sources = {
   formatting.stylua,
   formatting.phpcbf,
   formatting.black,
+  formatting.gofumpt,
   -- lint.pyflakes
 }
 

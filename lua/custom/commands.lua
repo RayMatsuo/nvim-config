@@ -34,6 +34,49 @@ vim.api.nvim_create_user_command("Pope", function()
   end
 end, {})
 
-vim.api.nvim_create_user_command("EP", function() vim.cmd "Easypick" end ,{})
-vim.api.nvim_create_user_command("W", function() vim.cmd "w" end ,{})
-vim.api.nvim_create_user_command("Q", function() vim.cmd "q" end ,{})
+vim.api.nvim_create_user_command("EP", function()
+  vim.cmd "Easypick"
+end, {})
+vim.api.nvim_create_user_command("W", function()
+  vim.cmd "w"
+end, {})
+vim.api.nvim_create_user_command("Q", function()
+  vim.cmd "q"
+end, {})
+
+local petMessages = {
+  "meoooow mew mew",
+  "nya? mrrrrpppth",
+  "nyaaaaa *nuzzles against your fingers",
+}
+local scritchMessages = {
+  "mrrp... arp.. mppp...",
+  "mrrrrrp",
+  "purrrrrrr.....",
+}
+
+local cuddleMessages = {
+  "you feel your worries melt away",
+  "the warmth of the cat embraces you back,keeping you safe from the cold",
+  "the cat nuzzles its face against yours.",
+  "the cat purrs against your chest",
+  "you sink your fingers into the warm fluff",
+  "you think you are going to have a peaceful rest tonight",
+}
+local observeMessaegs = {
+  "🐈 <- THE CAT OBSERVED",
+  "🐈 <- IT STANDIN",
+  " <- WHERE DID IT GO?",
+}
+vim.api.nvim_create_user_command("Pet", function()
+  vim.notify(petMessages[math.random(1, #petMessages)])
+end, {})
+vim.api.nvim_create_user_command("Scritchies", function()
+  vim.notify(scritchMessages[math.random(1, #scritchMessages)])
+end, {})
+vim.api.nvim_create_user_command("Cuddle", function()
+  vim.notify(cuddleMessages[math.random(1, #cuddleMessages)])
+end, {})
+vim.api.nvim_create_user_command("Observe", function()
+  vim.notify(observeMessaegs[math.random(1, #observeMessaegs)])
+end, {})

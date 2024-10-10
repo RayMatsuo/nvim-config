@@ -16,6 +16,11 @@ end
 
 M.map = {
   n = {
+    ["<Leader>xx"] = {
+      function()
+        require("trevj").format_at_cursor()
+      end,
+    },
     ["<Leader>ft"] = { "<cmd>Easypick ft<Cr>" },
     ["<Leader>en"] = { "<cmd>Easypick enc<Cr>" },
     ["<Leader>co"] = {
@@ -114,10 +119,11 @@ M.map = {
         vim.cmd "noh"
       end,
     },
-    ["<Leader>nn"]={function()
-
-    vim.cmd "NoNeckPain"
-    end}
+    ["<Leader>nn"] = {
+      function()
+        vim.cmd "NoNeckPain"
+      end,
+    },
   },
 
   v = {

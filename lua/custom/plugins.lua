@@ -277,5 +277,34 @@ local plugins = {
       require "custom.configs.noneckpain"
     end,
   },
+
+  {
+    "b0o/incline.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.incline"
+    end,
+  },
+  {
+    "acksld/nvim-trevj.lua",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.trevj"
+    end,
+  },
+  {
+    event = "VeryLazy",
+    "goolord/alpha-nvim",
+    config = function()
+      require "custom.configs.alpha"
+    end,
+  },
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.notify"
+    end,
+  }
 }
 return plugins

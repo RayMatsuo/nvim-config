@@ -13,11 +13,10 @@ vim.opt.foldenable = false
 vim.cmd "se relativenumber"
 vim.cmd "se nowrap"
 
-
 vim.cmd "set guicursor=n-v-c:block-Cursor"
 vim.cmd "set guicursor=i:ver100-iCursor"
 
-    vim.g.theme_name = "derangement"
+vim.g.theme_name = "derangement"
 --[[ vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
     local theme_name = "derangement"
@@ -25,7 +24,6 @@ vim.cmd "set guicursor=i:ver100-iCursor"
     vim.g.theme_name = "derangement"
   end,
 }) ]]
-
 local set_c = vim.api.nvim_set_hl
 M.type = "dark"
 

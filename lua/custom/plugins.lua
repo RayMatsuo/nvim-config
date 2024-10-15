@@ -305,6 +305,27 @@ local plugins = {
     config = function()
       require "custom.configs.notify"
     end,
-  }
+  },
+  {
+    "metakirby5/codi.vim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.codi"
+    end,
+  },
+  {
+    "gelguy/wilder.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.wilder"
+    end,
+  },
+  {
+    "NFrid/due.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.due"
+    end,
+  },
 }
 return plugins

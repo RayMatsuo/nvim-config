@@ -69,14 +69,14 @@ local observeMessaegs = {
   " <- WHERE DID IT GO?",
 }
 vim.api.nvim_create_user_command("Pet", function()
-  vim.notify(petMessages[math.random(1, #petMessages)])
+  vim.notify(petMessages[math.random(1, #petMessages)], nil, { render = "compact" })
 end, {})
 vim.api.nvim_create_user_command("Scritchies", function()
-  vim.notify(scritchMessages[math.random(1, #scritchMessages)])
+  vim.notify(scritchMessages[math.random(1, #scritchMessages)], nil, { render = "compact" })
 end, {})
 vim.api.nvim_create_user_command("Cuddle", function()
-  vim.notify(cuddleMessages[math.random(1, #cuddleMessages)])
+  vim.notify(cuddleMessages[math.random(1, #cuddleMessages)], nil, { render = "compact" })
 end, {})
 vim.api.nvim_create_user_command("Observe", function()
-  vim.notify(observeMessaegs[math.random(1, #observeMessaegs)])
+  vim.notify(observeMessaegs[math.random(1, #observeMessaegs)], nil, { render = "compact" })
 end, {})

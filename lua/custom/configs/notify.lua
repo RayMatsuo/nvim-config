@@ -12,27 +12,19 @@ math.randomseed(os.time())
 vim.notify = notify
 
 vim.keymap.set("n", "<leader>ti", function()
-  vim.notify(
-    os.date("%H:%M:%S"),
-    vim.log.levels.INFO,
-    {
-        title = "time",
-        timeout = 200,
+  vim.notify(os.date "%H:%M:%S", vim.log.levels.INFO, {
+    title = "time",
+    timeout = 200,
+    render = "compact",
+    on_close = function()
+      vim.notify(messages[math.random(1, #messages)], vim.log.levels.INFO, {
+        timeout = 10,
         render = "compact",
-        on_close = function()
-          vim.notify(
-            messages[math.random(1, #messages)],
-            vim.log.levels.INFO,
-            {
-                    timeout = 10,
-                    render = "compact",
-                  }
-          )
-        end,
-      }
-  )
+      })
+    end,
+  })
 end)
-
+ 
 notify.setup {
   background_colour = "#000000",
 }

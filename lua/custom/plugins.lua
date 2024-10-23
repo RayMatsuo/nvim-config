@@ -319,6 +319,7 @@ local plugins = {
     config = function()
       require "custom.configs.wilder"
     end,
+    enabled=false
   },
   {
     "NFrid/due.nvim",

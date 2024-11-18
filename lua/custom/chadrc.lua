@@ -28,5 +28,7 @@ local set_c = vim.api.nvim_set_hl
 M.type = "dark"
 
 vim.cmd ":se cocu=n"
-vim.cmd "set timeoutlen=200"
+vim.cmd "set timeoutlen=225"
+
+-- vim.cmd "runtime macros/matchit.vim"
 return M

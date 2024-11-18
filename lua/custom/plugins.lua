@@ -260,7 +260,6 @@ local plugins = {
     end,
     event = "VeryLazy",
   },
-
   --[[ {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -319,7 +318,7 @@ local plugins = {
     config = function()
       require "custom.configs.wilder"
     end,
-    enabled=false
+    enabled = false,
   },
   {
     "NFrid/due.nvim",
@@ -328,5 +327,20 @@ local plugins = {
       require "custom.configs.due"
     end,
   },
+  -- {
+  --   dir = "D:/Active projects/tjump",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("tjump").setup()
+  --   end,
+  --   enabled=false
+  -- },
+  {
+    "andymass/vim-matchup",
+    config = function()
+      require "custom.configs.matchup"
+    end,
+    VeryLazy=true
+  }
 }
 return plugins

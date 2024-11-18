@@ -16,6 +16,7 @@ end
 
 M.map = {
   n = {
+    ["<Leader>mo"] = { "<cmd>mod<Cr>" },
     ["<Leader>xx"] = {
       function()
         require("trevj").format_at_cursor()

@@ -340,7 +340,7 @@ local plugins = {
     config = function()
       require "custom.configs.matchup"
     end,
-    VeryLazy=true
-  }
+    event = "VeryLazy",
+  },
 }
 return plugins

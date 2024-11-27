@@ -39,7 +39,7 @@ local alpha_c = function()
   local alpha = require "alpha"
   local dashboard = require "alpha.themes.dashboard"
 
-  math.randomseed(os.clock(), os.clock() / os.clock())
+  math.randomseed(os.clock(), os.clock() / (os.clock()/2))
 
   -- Load map templates
   require "custom.configs.maps"

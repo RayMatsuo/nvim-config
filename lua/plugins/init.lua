@@ -93,6 +93,7 @@ local default_plugins = {
       dofile(vim.g.base46_cache .. "git")
       require("gitsigns").setup(opts)
     end,
+    enabled = false,
   },
 
   -- lsp stuff

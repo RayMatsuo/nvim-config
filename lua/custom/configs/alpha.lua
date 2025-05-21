@@ -46,7 +46,7 @@ local alpha_c = function()
   -- Randomization table
   local flag_list = { TRANS, TRANS_SHORT, TRANSBIAN, TRANSBIAN_DIAGONAL, TRANSBIAN_DIAGONAL_SHORT, TRANSBIAN_SHORT }
   -- local pixel_list = { ".", "■", "●", "─", "█" }
-  local pixel_list = { ".", "■", "●", "─" }
+  local pixel_list = { ".", "■", "●", "─","█" }
 
   -- Random picking
   local color_map = flag_list[math.random(1, #flag_list)]

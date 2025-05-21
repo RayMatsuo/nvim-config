@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = { theme = "religion" }
+M.ui = { theme = "pastel" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 require "custom.commands"
@@ -16,12 +16,12 @@ vim.cmd "se nowrap"
 vim.cmd "set guicursor=n-v-c:block-Cursor"
 vim.cmd "set guicursor=i:ver100-iCursor"
 
-vim.g.theme_name = "religion"
+vim.g.theme_name = "pastel"
 --[[ vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
-    local theme_name = "religion"
+    local theme_name = "pastel"
     Load_Theme(theme_name)
-    vim.g.theme_name = "religion"
+    vim.g.theme_name = "pastel"
   end,
 }) ]]
 local set_c = vim.api.nvim_set_hl

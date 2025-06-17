@@ -29,12 +29,6 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
 
-    dependencies = {
-      "jose-elias-alvarez/null-ls.nvim",
-      config = function()
-        require "custom.configs.null-ls"
-      end,
-    },
 
     config = function()
       require "plugins.configs.lspconfig"
@@ -48,6 +42,7 @@ local plugins = {
     end,
     lazy = false,
     build = "npm ci",
+    enabled = false,
   },
   {
     "jwalton512/vim-blade",
@@ -62,17 +57,7 @@ local plugins = {
     end,
     lazy = false,
   },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-    config = function()
-      -- require "custom.configs.null-ls"
-    end,
-  },
+  
   {
     "natecraddock/workspaces.nvim",
     config = function()
@@ -104,11 +89,7 @@ local plugins = {
       require "custom.configs.pounce"
     end,
   },
-  {
-
-    "hrsh7th/nvim-cmp",
-    enabled = false,
-  },
+  
   {
     "machakann/vim-sandwich",
     event = "VeryLazy",
@@ -351,9 +332,58 @@ local plugins = {
     ---@type render.md.UserConfig
     event = "VeryLazy",
     opts = {},
-       config = function()
-        require('render-markdown').setup({})
+    config = function()
+      require("render-markdown").setup {}
     end,
   },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig",         -- optional
+    },
+    opts = {},                         -- your configuration
+  },
+ {
+  "Jezda1337/nvim-html-css",
+  dependencies = { "hrsh7th/nvim-cmp", "nvim-treesitter/nvim-treesitter" }, -- Use this if you're using nvim-cmp
+  opts = {
+    enable_on = { -- Example file types
+      "html",
+      "htmldjango",
+      "tsx",
+      "jsx",
+      "erb",
+      "svelte",
+      "vue",
+      "blade",
+      "php",
+      "templ",
+      "astro",
+    },
+    handlers = {
+      definition = {
+        bind = "gd"
+      },
+      hover = {
+        bind = "K",
+        wrap = true,
+        border = "none",
+        position = "cursor",
+      },
+    },
+    documentation = {
+      auto_show = true,
+    },
+      
+    style_sheets = {
+      "D:/Active projects/csstest/css/index.css",
+    }
+  },
+    ft={"html","php"},
+} 
 }
 return plugins

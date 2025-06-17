@@ -17,6 +17,10 @@ local formatting_style = {
   format = function(_, item)
     local icons = require "nvchad.icons.lspkind"
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
+    
+    if _.source.name == "html-css" then
+      item.menu = "[" .. (_.completion_item.provider or "html-css") .. "]"
+    end
 
     if cmp_style == "atom" or cmp_style == "atom_colored" then
       icon = " " .. icon .. " "
@@ -110,6 +114,8 @@ local options = {
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
+    { name = "nvim-html-css" },
+    { name = "html-css" },
   },
 }
 

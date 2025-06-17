@@ -129,7 +129,7 @@ local default_plugins = {
   -- load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = "User FilePost",
     dependencies = {
       {
         -- snippet plugin

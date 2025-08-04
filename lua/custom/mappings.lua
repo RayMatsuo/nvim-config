@@ -59,7 +59,7 @@ M.map = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["FF"] = { "<cmd>Pounce<CR>", "Start pounce" },
-    ["<F4>"] = { "<cmd>e " .. home .. "\\portal\\docs\\doc.norg <CR> ", "open todo" },
+    ["<F4>"] = { "<cmd>e " .. home .. "\\portal\\docs\\doc.norg <CR>", "open todo" },
     ["<F3>"] = {
       function()
         ---@type string

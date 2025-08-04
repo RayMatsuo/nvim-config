@@ -35,6 +35,11 @@ require("neorg").setup {
       },
     },
     ["core.integrations.treesitter"]={},
-    ["core.export"]={}
+    ["core.export"]={},
+    ["core.completion"]={
+      config={
+        engine="nvim-cmp"
+      }
+    }
   },
 }

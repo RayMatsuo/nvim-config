@@ -30,32 +30,32 @@ return {
   {
     "machakann/vim-sandwich",
     event = "VeryLazy",
-    -- config = function()
-    --   require "custom.configs.sandwich"
-    -- end,
+ config = function()
+   require "custom.configs.sandwich"
+ end,
   },
   {
     "gbprod/yanky.nvim",
     event = "BufEnter",
-    -- config = function()
-    --   require "custom.configs.yanky"
-    -- end,
+ config = function()
+   require "custom.configs.yanky"
+ end,
   },
 
   {
     "chentoast/marks.nvim",
     event = "VeryLazy",
-    -- config = function()
-    --   require "custom.configs.marks"
-    -- end,
+ config = function()
+   require "custom.configs.marks"
+ end,
   },
   {
     "max397574/better-escape.nvim",
 
     event = "VeryLazy",
-    -- config = function()
-    --   require "custom.configs.escape"
-    -- end,
+ config = function()
+   require "custom.configs.escape"
+ end,
   },
 
   {
@@ -104,15 +104,6 @@ return {
     end,
     event = "VeryLazy",
   },
-
-  {
-    "zef/vim-cycle",
-    config = function()
-      require "custom.configs.cycle"
-    end,
-    event = "VeryLazy",
-  },
-
   {
     "gelguy/wilder.nvim",
     event = "VeryLazy",
@@ -205,5 +196,39 @@ return {
     }
   },
     ft={"html","php"},
-}
+},
+
+  {
+    "ggandor/leap.nvim",
+    -- "ggandor/lightspeed.nvim",
+    lazy = false,
+    config = function()
+      require "custom.configs.leap"
+    end,
+    dependencies = { "tpope/vim-repeat", "ggandor/flit.nvim" },
+  },
+  {
+    "rlane/pounce.nvim",
+    lazy = false,
+    config = function()
+      require "custom.configs.pounce"
+    end,
+  },
+
+  {
+    "natecraddock/workspaces.nvim",
+    config = function()
+      require "custom.configs.workspaces"
+    end,
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-tree.lua" },
+  },
+
+  {
+    "wansmer/sibling-swap.nvim",
+    config = function()
+      require "custom.configs.swap"
+    end,
+    event = "VeryLazy",
+  },
 }

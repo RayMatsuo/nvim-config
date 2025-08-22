@@ -119,8 +119,8 @@ local alpha_c = function()
       "⚙  Configure the cat",
       "<Cmd>e C:/Users/matsu/AppData/Local/nvim/lua/custom/configs/alpha.lua<CR>"
     ),
-    dashboard.button("secret diary", "📚 Open your diary", "<F11>"),
-    dashboard.button("todo", "📓 Open your todo list", "<F4>"),
+    -- dashboard.button("secret diary", "📚 Open your diary", "<F11>"),
+    -- dashboard.button("todo", "📓 Open your todo list", "<F4>"),
   }
 
   for _, a in ipairs(dashboard.section.buttons.val) do

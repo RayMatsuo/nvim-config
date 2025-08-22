@@ -16,6 +16,7 @@ local servers = {
   "laravel_ls",
   "blade-formatter",
   "stylelint_lsp",
+  "tombi",
   "ltex",
   "ltex_plus"
 }
@@ -25,7 +26,7 @@ for _, lsp in ipairs(servers) do
 end
 
 
-local enabled_files= {"norg","bib", "context", "gitcommit",  "markdown", "org", "pandoc", "plaintex", "quarto", "mail", "mdx", "rmd", "rnoweb", "rst", "tex", "text", "typst" }
+local enabled_files= {"bib", "context", "gitcommit",  "markdown", "org", "pandoc", "plaintex", "quarto", "mail", "mdx", "rmd", "rnoweb", "rst", "tex", "text", "typst" }
 
 vim.lsp.config('ltex', {
   -- Server-specific settings. See `:help lsp-quickstart`

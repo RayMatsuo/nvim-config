@@ -11,6 +11,7 @@ local sources = {
   formatting.phpcbf,
   formatting.black,
   formatting.gofumpt,
+  formatting.blade-formatter,
   -- lint.pyflakes
 }
 

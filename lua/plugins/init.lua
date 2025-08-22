@@ -231,4 +231,9 @@ return {
     end,
     event = "VeryLazy",
   },
+
+  {
+    "numtostr/BufOnly.nvim",
+    cmd = { "BufOnly" },
+  },
 }

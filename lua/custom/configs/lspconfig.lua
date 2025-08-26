@@ -18,7 +18,9 @@ local servers = {
   "stylelint_lsp",
   "tombi",
   "ltex",
-  "ltex_plus"
+  "ltex_plus",
+  -- "eslint"
+
 }
 
 for _, lsp in ipairs(servers) do
@@ -26,23 +28,9 @@ for _, lsp in ipairs(servers) do
 end
 
 
-local enabled_files= {"bib", "context", "gitcommit",  "markdown", "org", "pandoc", "plaintex", "quarto", "mail", "mdx", "rmd", "rnoweb", "rst", "tex", "text", "typst" }
 
-vim.lsp.config('ltex', {
-  -- Server-specific settings. See `:help lsp-quickstart`
-  filetypes= enabled_files,
-  settings ={
-    ltex = {
-      enabled = enabled_files
-    }
-  },
+vim.lsp.config('html', {
+  filetypes= { "html", "templ","javascript" }
 })
-vim.lsp.config('ltex_plus', {
-  -- Server-specific settings. See `:help lsp-quickstart`
-  filetypes= enabled_files,
-  settings ={
-    ltex_plus = {
-      enabled = enabled_files
-    }
-  },
-})
+
+

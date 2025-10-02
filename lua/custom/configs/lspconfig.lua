@@ -19,7 +19,8 @@ local servers = {
   "tombi",
   "ltex",
   "ltex_plus",
-  -- "eslint"
+  "prismals",
+  "eslint"
 
 }
 

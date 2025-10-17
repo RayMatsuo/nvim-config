@@ -80,3 +80,9 @@ end, {})
 vim.api.nvim_create_user_command("Observe", function()
   vim.notify(observeMessaegs[math.random(1, #observeMessaegs)], nil, { render = "compact" })
 end, {})
+
+
+
+vim.api.nvim_create_user_command("TOC", function()
+  require('telescope.builtin').lsp_document_symbols({ symbols='function' })
+  end,{})

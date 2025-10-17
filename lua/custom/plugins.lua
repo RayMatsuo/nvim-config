@@ -347,44 +347,44 @@ local plugins = {
     },
     opts = {},                         -- your configuration
   },
- {
-  "Jezda1337/nvim-html-css",
-  dependencies = { "hrsh7th/nvim-cmp", "nvim-treesitter/nvim-treesitter" }, -- Use this if you're using nvim-cmp
-  opts = {
-    enable_on = { -- Example file types
-      "html",
-      "htmldjango",
-      "tsx",
-      "jsx",
-      "erb",
-      "svelte",
-      "vue",
-      "blade",
-      "php",
-      "templ",
-      "astro",
-    },
-    handlers = {
-      definition = {
-        bind = "gd"
-      },
-      hover = {
-        bind = "K",
-        wrap = true,
-        border = "none",
-        position = "cursor",
-      },
-    },
-    documentation = {
-      auto_show = true,
-    },
-      
-    style_sheets = {
-      "D:/Active projects/csstest/css/index.css",
-    }
-  },
-    ft={"html","php"},
-},
+--  {
+--   "Jezda1337/nvim-html-css",
+--   dependencies = { "hrsh7th/nvim-cmp", "nvim-treesitter/nvim-treesitter" }, -- Use this if you're using nvim-cmp
+--   opts = {
+--     enable_on = { -- Example file types
+--       "html",
+--       "htmldjango",
+--       "tsx",
+--       "jsx",
+--       "erb",
+--       "svelte",
+--       "vue",
+--       "blade",
+--       "php",
+--       "templ",
+--       "astro",
+--     },
+--     handlers = {
+--       definition = {
+--         bind = "gd"
+--       },
+--       hover = {
+--         bind = "K",
+--         wrap = true,
+--         border = "none",
+--         position = "cursor",
+--       },
+--     },
+--     documentation = {
+--       auto_show = true,
+--     },
+--       
+--     style_sheets = {
+--       "D:/Active projects/csstest/css/index.css",
+--     }
+--   },
+--     ft={"html","php"},
+-- },
 {
   "nicolas-martin/region-folding.nvim", 
   event = { "BufReadPost", "BufNewFile" },
@@ -429,6 +429,24 @@ local plugins = {
       desc = "Quickfix List (Trouble)",
     },
     }
+  },
+  {
+    'stevearc/aerial.nvim',
+    event = "VeryLazy",
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+       "nvim-treesitter/nvim-treesitter",
+       "nvim-tree/nvim-web-devicons"
+    },
+      config = function()
+        require "custom.configs.aerial"
+      end,
+  },
+  {
+    "dstein64/vim-startuptime",
+
+    cmd = { "StartupTime" },
   }
   
 }

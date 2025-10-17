@@ -60,18 +60,6 @@ M.map = {
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["FF"] = { "<cmd>Pounce<CR>", "Start pounce" },
     ["<F4>"] = { "<cmd>e " .. home .. "\\portal\\docs\\doc.norg <CR>", "open todo" },
-    ["<F3>"] = {
-      function()
-        ---@type string
-        local dir = vim.fn.expand "%"
-        if string.find(dir, "norg") == nil then
-          vim.cmd "CocOutline"
-        else
-          vim.cmd "Neorg toc"
-        end
-      end,
-      "Open table of contents",
-    },
     ["<F10>"] = {
       function()
         local workspaces = require "workspaces"
@@ -124,7 +112,7 @@ M.map = {
       function()
         vim.cmd "NoNeckPain"
       end,
-    },
+    }
   },
 
   v = {

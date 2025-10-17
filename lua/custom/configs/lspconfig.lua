@@ -20,7 +20,8 @@ local servers = {
   "ltex",
   "ltex_plus",
   "prismals",
-  "eslint"
+  "eslint",
+"lua_ls"
 
 }
 

@@ -12,7 +12,21 @@ g.transparency = config.ui.transparency
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
--- opt.clipboard = "unnamedplus"
+
+g.clipboard = {
+  name = 'win32yank',
+  copy = {
+     ["+"] = 'win32yank.exe -i --crlf',
+     ["*"] = 'win32yank.exe -i --crlf',
+   },
+  paste = {
+     ["+"] = 'win32yank.exe -o --lf',
+     ["*"] = 'win32yank.exe -o --lf',
+  },
+  cache_enabled = 0,
+}
+
+opt.clipboard = "unnamedplus"
 opt.cursorline = true
 
 -- Indenting

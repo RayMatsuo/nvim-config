@@ -8,6 +8,8 @@ require "custom.commands"
 require "custom.themes.init"
 require "custom.shellconfig"
 
+
+
 vim.cmd "language en_US"
 vim.opt.foldenable = false
 vim.cmd "se relativenumber"

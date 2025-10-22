@@ -10,19 +10,12 @@ local servers = {
   "intelephense",
   "tailwindcss",
   "jsonjs",
-  "ruby_lsp",
-  "shopify_theme_ls",
+  -- "shopify_theme_ls",
   "ts_ls",
-  "laravel_ls",
-  "blade-formatter",
+  -- "laravel_ls",
   "stylelint_lsp",
-  "tombi",
-  "ltex",
-  "ltex_plus",
-  "prismals",
   "eslint",
-"lua_ls"
-
+  "lua_ls"
 }
 
 for _, lsp in ipairs(servers) do
@@ -32,7 +25,5 @@ end
 
 
 vim.lsp.config('html', {
-  filetypes= { "html", "templ","javascript" }
+  filetypes = { "html", "templ", "javascript" }
 })
-
-

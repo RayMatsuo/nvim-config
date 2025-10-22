@@ -65,6 +65,7 @@ local plugins = {
     end,
     lazy = false,
     dependencies = { "nvim-tree/nvim-tree.lua" },
+    enabled=true
   },
   {
     "windwp/nvim-autopairs",
@@ -448,6 +449,5 @@ local plugins = {
 
     cmd = { "StartupTime" },
   }
-  
 }
 return plugins

@@ -1,3 +1,3 @@
 local nvimtree= require "nvimtree"
 
-M.config.experimental.open.relative_path
+nvimtree.config.experimental.open.relative_path=true

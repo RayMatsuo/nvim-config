@@ -92,6 +92,9 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
 
   {
     buns = { "<", ">" },
+    nesting = 1,
+    regex = 1,
+    match_syntax = 1,
     kind = {"add","replate",  "delete",  "textobj" },
     input = { "<" },
   },

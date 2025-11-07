@@ -83,18 +83,18 @@ local default_plugins = {
   },
 
   -- git stuff
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "User FilePost",
-    opts = function()
-      return require("plugins.configs.others").gitsigns
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "git")
-      require("gitsigns").setup(opts)
-    end,
-    enabled = false,
-  },
+  -- {
+  --   "lewis6991/gitsigns.nvim",
+  --   event = "User FilePost",
+  --   opts = function()
+  --     return require("plugins.configs.others").gitsigns
+  --   end,
+  --   config = function(_, opts)
+  --     dofile(vim.g.base46_cache .. "git")
+  --     require("gitsigns").setup(opts)
+  --   end,
+  --   enabled = false,
+  -- },
 
   -- lsp stuff
   {
@@ -230,19 +230,6 @@ local default_plugins = {
     end,
   },
 
-  -- Only load whichkey after all the gui
-  {
-    "folke/which-key.nvim",
-    keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
-    init = function()
-      require("core.utils").load_mappings "whichkey"
-    end,
-    cmd = "WhichKey",
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "whichkey")
-      require("which-key").setup(opts)
-    end,
-  },
 }
 
 local config = require("core.utils").load_config()

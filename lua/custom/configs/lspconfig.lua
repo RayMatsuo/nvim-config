@@ -10,9 +10,9 @@ local servers = {
   "intelephense",
   "tailwindcss",
   "jsonjs",
-  -- "shopify_theme_ls",
+  "shopify_theme_ls",
   "ts_ls",
-  -- "laravel_ls",
+  "laravel_ls",
   "stylelint_lsp",
   "eslint",
   "lua_ls"

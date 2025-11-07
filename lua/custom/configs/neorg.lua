@@ -38,7 +38,7 @@ require("neorg").setup {
     ["core.export"]={},
     ["core.completion"]={
       config={
-        engine="nvim-cmp"
+        engine=
       }
     }
   },

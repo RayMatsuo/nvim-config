@@ -110,6 +110,7 @@ local alpha_c = function()
     return string.format(base, msg, render)
   end ]]
   dashboard.section.buttons.val = {
+    dashboard.button("tip", "📚 Helpful tips!", "<Cmd>NeovimTips<CR>"),
     dashboard.button("petpet", "🐈 Pet the cat", "<Cmd>Pet<CR>"),
     dashboard.button("scritchies", "🐱 Scritch the cat", "<Cmd>Scritchies<CR>"),
     dashboard.button("observe", "🐈 Observe the cat", "<Cmd>Observe<CR>"),

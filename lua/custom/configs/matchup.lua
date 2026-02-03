@@ -1,7 +1,6 @@
-vim.g.matchup_matchparen_offscreen = { method = "popup" }
-
-require("nvim-treesitter.configs").setup {
-  matchup = {
-    enable = true,             -- mandatory, false will disable the whole extension
-  },
-}
+vim.g.matchup_treesitter_stopline = 500
+require('match-up').setup({
+  treesitter = {
+    stopline = 500
+  }
+})

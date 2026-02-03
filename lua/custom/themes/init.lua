@@ -1,5 +1,8 @@
+
+local config = vim.fn.stdpath("config")
+
 function File_exists(path)
-  local f = io.open("C:/Users/matsu/AppData/Local/nvim/lua/" .. path:gsub("%.", "/") .. ".lua", "r")
+  local f = io.open(config.."/lua/" .. path:gsub("%.", "/") .. ".lua", "r")
   local inst = nil
   local result = f ~= nil
   if f ~= nil then

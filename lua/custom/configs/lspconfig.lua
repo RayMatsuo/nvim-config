@@ -1,9 +1,3 @@
-local configs = require "plugins.configs.lspconfig"
-local on_attach = configs.on_attach
-local capabilities = configs.capabilities
-
-local lspconfig = require "lspconfig"
-
 local servers = {
   "html",
   "cssls",
@@ -14,8 +8,10 @@ local servers = {
   "ts_ls",
   "laravel_ls",
   "stylelint_lsp",
-  "eslint",
-  "lua_ls"
+  "lua_ls",
+  "jsonls",
+  "gopls",
+  "ltex_plus"
 }
 
 for _, lsp in ipairs(servers) do
@@ -24,6 +20,15 @@ end
 
 
 
-vim.lsp.config('html', {
-  filetypes = { "html", "templ", "javascript" }
-})
+
+--[[
+vim.lsp.config('ts_ls', {
+  compilerOptions = {
+    module = "commonjs",
+    target = "es6",
+    checkJs = false
+  },
+  exclude = {
+    "node_modules"
+  }
+}) ]]

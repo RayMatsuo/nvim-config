@@ -15,6 +15,7 @@ vim.opt.foldenable = false
 vim.cmd "se relativenumber"
 vim.cmd "se nowrap"
 
+
 vim.cmd "set guicursor=n-v-c:block-Cursor"
 vim.cmd "set guicursor=i:ver100-iCursor"
 

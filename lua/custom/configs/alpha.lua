@@ -115,11 +115,6 @@ local alpha_c = function()
     dashboard.button("scritchies", "🐱 Scritch the cat", "<Cmd>Scritchies<CR>"),
     dashboard.button("observe", "🐈 Observe the cat", "<Cmd>Observe<CR>"),
     dashboard.button("cuddle", "😻 Cuddle the cat", "<Cmd>Cuddle<CR>"),
-    dashboard.button(
-      "config",
-      "⚙  Configure the cat",
-      "<Cmd>e C:/Users/matsu/AppData/Local/nvim/lua/custom/configs/alpha.lua<CR>"
-    ),
     dashboard.button("secret diary", "📚 Open your diary", "<F11>"),
     dashboard.button("todo", "📓 Open your todo list", "<F4>"),
   }

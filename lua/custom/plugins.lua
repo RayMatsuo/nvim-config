@@ -79,6 +79,34 @@ local plugins = {
       require "custom.configs.aerial"
     end,
   },
+  {
+    "laytan/tailwind-sorter.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.tailwind-sorter"
+    end,
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
+    build = 'cd formatter && npm ci && npm run build',
+  },
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require "custom.configs.conform"
+    end,
+  },
+  {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "SumatraPDF"
+      vim.g.vimtex_compiler_method = 'tectonic'
+      vim.g.vimtex_compiler_tectonic = {
+        out_dir = "build"
+      }
+    end
+  },
   --#endregion
   --#region Package manager
   {
@@ -114,7 +142,7 @@ local plugins = {
     end,
   },
   {
-    "ggandor/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim",
     -- "ggandor/lightspeed.nvim",
     lazy = false,
     config = function()
@@ -211,12 +239,14 @@ local plugins = {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
     event = "VeryLazy",
     opts = {},
     config = function()
-      require("render-markdown").setup {}
+      require("render-markdown").setup {
+        anti_conceal = {
+          enabled = false
+        }
+      }
     end,
   },
   {
@@ -227,6 +257,7 @@ local plugins = {
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     ft = "markdown",
+    enabled = false,
     config = function()
       require "custom.configs.obsidian"
     end

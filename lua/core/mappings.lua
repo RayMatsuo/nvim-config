@@ -20,8 +20,8 @@ M.general = {
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
-    ["<C-j>"] = { "`", "Window down" },
-    ["<C-k>"] = { "m", "Window up" },
+    ["<C-j>"] = { "`", "Jump to mark" },
+    ["<C-k>"] = { "m", "Create mark" },
 
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
@@ -48,7 +48,7 @@ M.general = {
 
     ["<leader>fm"] = {
       function()
-        vim.lsp.buf.format { async = true }
+        require("conform").format()
       end,
       "LSP formatting",
     },

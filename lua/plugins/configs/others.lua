@@ -1,27 +1,6 @@
 local M = {}
 local utils = require "core.utils"
 
-M.blankline = {
-  indentLine_enabled = 1,
-  filetype_exclude = {
-    "help",
-    "terminal",
-    "lazy",
-    "lspinfo",
-    "TelescopePrompt",
-    "TelescopeResults",
-    "mason",
-    "nvdash",
-    "nvcheatsheet",
-    "",
-  },
-  buftype_exclude = { "terminal" },
-  show_trailing_blankline_indent = false,
-  show_first_indent_level = false,
-  show_current_context = true,
-  show_current_context_start = true,
-}
-
 M.luasnip = function(opts)
   require("luasnip").config.set_config(opts)
 
@@ -40,8 +19,8 @@ M.luasnip = function(opts)
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
       if
-        require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-        and not require("luasnip").session.jump_active
+          require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+          and not require("luasnip").session.jump_active
       then
         require("luasnip").unlink_current()
       end

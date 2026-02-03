@@ -1,1 +1,0 @@
--- require("calendar.vim").setup()

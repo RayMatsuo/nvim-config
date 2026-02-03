@@ -83,31 +83,30 @@ end, {})
 
 
 vim.api.nvim_create_user_command("MemInspect", function()
+  local nsn = vim.api.nvim_get_namespaces()
 
-local nsn = vim.api.nvim_get_namespaces()
+  local counts = {}
 
-local counts = {}
-
-for name, ns in pairs(nsn) do
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    local count = #vim.api.nvim_buf_get_extmarks(buf, ns, 0, -1, {})
-    if count > 0 then
-      counts[#counts + 1] = {
-        name = name,
-        buf = buf,
-        count = count,
-        ft = vim.bo[buf].ft,
-      }
+  for name, ns in pairs(nsn) do
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      local count = #vim.api.nvim_buf_get_extmarks(buf, ns, 0, -1, {})
+      if count > 0 then
+        counts[#counts + 1] = {
+          name = name,
+          buf = buf,
+          count = count,
+          ft = vim.bo[buf].ft,
+        }
+      end
     end
   end
-end
-table.sort(counts, function(a, b)
-  return a.count > b.count
-end)
-vim.print(counts)
+  table.sort(counts, function(a, b)
+    return a.count > b.count
+  end)
+  vim.print(counts)
 end, {})
 
 
 vim.api.nvim_create_user_command("TOC", function()
-  require('telescope.builtin').lsp_document_symbols({ symbols='function' })
-  end,{})
+  require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })
+end, {})

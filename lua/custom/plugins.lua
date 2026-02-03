@@ -143,7 +143,6 @@ local plugins = {
   },
   {
     "https://codeberg.org/andyg/leap.nvim",
-    -- "ggandor/lightspeed.nvim",
     lazy = false,
     config = function()
       require "custom.configs.leap"

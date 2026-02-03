@@ -18,17 +18,11 @@ for _, lsp in ipairs(servers) do
   vim.lsp.enable(lsp)
 end
 
-
-
-
---[[
-vim.lsp.config('ts_ls', {
-  compilerOptions = {
-    module = "commonjs",
-    target = "es6",
-    checkJs = false
-  },
-  exclude = {
-    "node_modules"
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" } }
+    }
   }
-}) ]]
+})

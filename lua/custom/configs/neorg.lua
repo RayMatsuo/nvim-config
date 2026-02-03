@@ -43,3 +43,4 @@ require("neorg").setup {
     }
   },
 }
+vim.treesitter.start()

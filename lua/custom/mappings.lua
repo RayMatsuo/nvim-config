@@ -4,6 +4,7 @@ local wrap = false
 local home = os.getenv "HOME"
 local cole = 2
 
+local data = vim.fn.stdpath("data")
 local function file_exists(path)
   local f = io.open(home .. "/AppData/Local/nvim/lua/" .. path:gsub("%.", "/") .. ".lua", "r")
   local inst = nil
@@ -59,13 +60,13 @@ M.map = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["FF"] = { "<cmd>Pounce<CR>", "Start pounce" },
-    ["<F4>"] = { "<cmd>e " .. home .. "\\portal\\docs\\doc.norg <CR>", "open todo" },
+    ["<F4>"] = { "<cmd>e " .. data .. "/docs/doc.norg <CR>", "open todo" },
     ["<F10>"] = {
       function()
         local workspaces = require "workspaces"
         local name = workspaces.name()
         if name ~= nil then
-          vim.cmd("e " .. home .. "\\portal\\docs\\workspace\\" .. name .. ".norg")
+          vim.cmd("e " .. data .. "/docs/workspace/" .. name .. ".norg")
         else
           vim.notify "not in workspace"
         end
@@ -79,19 +80,6 @@ M.map = {
             .. vim.g.theme_name
             .. ".lua"
         vim.cmd("e " .. absolute_path)
-      end,
-    },
-    ["<F11>"] = {
-      function()
-        local date_txt = os.date "%Y-%m-%d"
-
-        local dir = vim.fn.expand "%"
-
-        if string.find(dir, "Office memo") ~= nil then
-          vim.cmd("cd " .. home .. "\\Desktop\\portal\\docs\\notes\\Office memo\\diary")
-        end
-        vim.cmd("e " .. home .. "\\Desktop\\portal\\docs\\notes\\Office memo\\diary\\" .. date_txt .. ".md")
-        -- vim.cmd "se ft=norg"
       end,
     },
     ["<Leader>d"] = {

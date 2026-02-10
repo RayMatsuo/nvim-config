@@ -100,7 +100,6 @@ local plugins = {
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
-      vim.g.vimtex_view_method = "SumatraPDF"
       vim.g.vimtex_compiler_method = 'tectonic'
       vim.g.vimtex_compiler_tectonic = {
         out_dir = "build"
@@ -257,9 +256,15 @@ local plugins = {
     version = "*", -- recommended, use latest release instead of latest commit
     ft = "markdown",
     enabled = false,
-    config = function()
-      require "custom.configs.obsidian"
-    end
+    opts = {
+      legacy_commands = false, -- this will be removed in the next major release
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/obsidian",
+        }
+      },
+    },
   },
   --#endregion Comments/Documentation
   --#region UI

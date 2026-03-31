@@ -129,16 +129,6 @@ local plugins = {
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
     },
-    opts = function()
-      local conf = require "plugins.configs.telescope"
-      conf.defaults.mappings.i = {
-        ["<C-j>"] = require("telescope.actions").move_selection_next,
-        ["<C-k>"] = require("telescope.actions").move_selection_previous,
-        ["<Esc>"] = require("telescope.actions").close,
-      }
-
-      return conf
-    end,
   },
   {
     "https://codeberg.org/andyg/leap.nvim",
@@ -305,10 +295,9 @@ local plugins = {
   },
   {
     "andymass/vim-matchup",
-    config = function()
+    init = function()
       require "custom.configs.matchup"
-    end,
-    event = "VeryLazy",
+    end
   },
   --#endregion UI
   --#region Shortcuts

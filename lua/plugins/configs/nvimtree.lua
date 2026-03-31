@@ -24,6 +24,9 @@ local options = {
   },
   filesystem_watchers = {
     enable = true,
+    ignore_dirs={
+      "/vendor"
+    }
   },
   actions = {
     open_file = {

@@ -1,6 +1,6 @@
 local M = {}
 
-M.ui = { theme = "radium" }
+M.ui = { theme = "void" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 require "custom.commands"
@@ -15,7 +15,7 @@ vim.cmd "se nofen"
 vim.cmd "set guicursor=n-v-c:block-Cursor"
 vim.cmd "set guicursor=i:ver100-iCursor"
 
-vim.g.theme_name = "radium"
+vim.g.theme_name = "void"
 
 M.type = "dark"
 

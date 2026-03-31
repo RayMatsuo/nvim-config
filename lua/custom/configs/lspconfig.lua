@@ -1,3 +1,14 @@
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" } }
+    }
+  }
+})
+
+
 local servers = {
   "html",
   "cssls",
@@ -10,19 +21,10 @@ local servers = {
   "stylelint_lsp",
   "lua_ls",
   "jsonls",
-  "gopls",
-  "ltex_plus"
+  "gopls"
 }
 
 for _, lsp in ipairs(servers) do
   vim.lsp.enable(lsp)
 end
 
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" } }
-    }
-  }
-})

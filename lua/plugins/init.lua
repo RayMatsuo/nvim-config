@@ -234,4 +234,3 @@ end
 
 
 require("lazy").setup(default_plugins, config.lazy_nvim)
-vim.cmd "TSEnable highlight"

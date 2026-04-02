@@ -17,6 +17,7 @@ local plugins = {
     opts = {
       ensure_installed = { "html", "css", "bash" },
     },
+     branch = 'master'
   },
   {
     "luckasRanarison/tailwind-tools.nvim",
@@ -108,11 +109,6 @@ local plugins = {
   },
   --#endregion
   --#region Package manager
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1000, -- We'd like this plugin to load first out of the rest
-    config = true,
-  },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
@@ -209,6 +205,7 @@ local plugins = {
       }
     end,
     lazy = false,
+    enabled=false
   },
   {
     "folke/todo-comments.nvim",

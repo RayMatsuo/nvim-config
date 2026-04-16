@@ -60,7 +60,7 @@ M.map = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["FF"] = { "<cmd>Pounce<CR>", "Start pounce" },
-    ["<F4>"] = { "<cmd>e ~/docs/doc.norg <CR>", "open todo" },
+    ["<F4>"] = { "<cmd>e ~/docs/doc.md <CR>", "open todo" },
     ["<F10>"] = {
       function()
         local workspaces = require "workspaces"

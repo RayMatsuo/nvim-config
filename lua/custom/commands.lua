@@ -110,3 +110,9 @@ end, {})
 vim.api.nvim_create_user_command("TOC", function()
   require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })
 end, {})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})

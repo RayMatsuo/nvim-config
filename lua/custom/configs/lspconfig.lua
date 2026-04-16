@@ -1,4 +1,3 @@
-
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -27,4 +26,3 @@ local servers = {
 for _, lsp in ipairs(servers) do
   vim.lsp.enable(lsp)
 end
-

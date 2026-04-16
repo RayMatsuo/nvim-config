@@ -15,6 +15,7 @@ require('transparent').clear_prefix('Telescope')
 require('transparent').clear_prefix('nvimtree')
 require('transparent').clear_prefix('ui')
 require('transparent').clear_prefix('Lazy')
-require('transparent').clear_prefix('nvterm')
+require('transparent').clear_prefix('nvim-cmp')
+require('transparent').clear_prefix('cmp')
 vim.cmd "TransparentEnable"
 -- vim.cmd "TransparentToggle"

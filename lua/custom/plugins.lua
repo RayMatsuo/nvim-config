@@ -9,6 +9,7 @@ local files = {
   "custom.plugin.ui",
   "custom.plugin.utility",
   "custom.plugin.other",
+  "custom.plugin.colors",
 }
 function tableConcat(t1, t2)
   -- loop over t2 items

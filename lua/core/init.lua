@@ -4,11 +4,11 @@ local config = require("core.utils").load_config()
 
 -------------------------------------- globals -----------------------------------------
 g.nvchad_theme = config.ui.theme
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+-- vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 -- g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 -- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
+-- dofile(vim.g.base46_cache .. "defaults")
+-- dofile(vim.g.base46_cache .. "statusline")
 g.toggle_theme_icon = ""
 g.transparency = config.ui.transparency
 
@@ -101,7 +101,7 @@ autocmd("BufWritePost", {
     local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
     local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
 
-    require("plenary.reload").reload_module "base46"
+    -- require("plenary.reload").reload_module "base46"
     require("plenary.reload").reload_module(module)
     require("plenary.reload").reload_module "custom.chadrc"
 
@@ -111,8 +111,8 @@ autocmd("BufWritePost", {
     vim.g.transparency = config.ui.transparency
 
     -- statusline
-    require("plenary.reload").reload_module("nvchad.statusline." .. config.ui.statusline.theme)
-    vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.ui.statusline.theme .. "').run()"
+    -- require("plenary.reload").reload_module("nvchad.statusline." .. config.ui.statusline.theme)
+    -- vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.ui.statusline.theme .. "').run()"
 
     -- tabufline
     if config.ui.tabufline.enabled then
@@ -120,7 +120,7 @@ autocmd("BufWritePost", {
       vim.opt.tabline = "%!v:lua.require('nvchad.tabufline.modules').run()"
     end
 
-    require("base46").load_all_highlights()
+    -- require("base46").load_all_highlights()
     -- vim.cmd("redraw!")
   end,
 })

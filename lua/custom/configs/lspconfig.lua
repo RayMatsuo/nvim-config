@@ -11,7 +11,8 @@ vim.lsp.config("lua_ls", {
 local servers = {
   "html",
   "cssls",
-  "intelephense",
+  -- "intelephense",
+  "phpantom_lsp",
   "tailwindcss",
   "jsonjs",
   "shopify_theme_ls",

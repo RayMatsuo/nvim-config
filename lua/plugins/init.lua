@@ -8,15 +8,17 @@ local default_plugins = {
     "NvChad/base46",
     branch = "v2.0",
     build = function()
-      require("base46").load_all_highlights()
+      -- require("base46").load_all_highlights()
     end,
-    event = "VeryLazy"
+    event = "VeryLazy",
+    enabled = false
   },
 
   {
     "NvChad/ui",
     branch = "v2.0",
     lazy = false,
+    enabled = false
   },
 
   {
@@ -25,7 +27,7 @@ local default_plugins = {
       require("core.utils").load_mappings "nvterm"
     end,
     config = function(_, opts)
-      require "base46.term"
+      -- require "base46.term"
       require("nvterm").setup(opts)
     end,
   },
@@ -45,11 +47,11 @@ local default_plugins = {
 
   {
     "nvim-tree/nvim-web-devicons",
-    opts = function()
-      return { override = require "nvchad.icons.devicons" }
-    end,
+    -- opts = function()
+    --   return { override = require "nvchad.icons.devicons" }
+    -- end,
     config = function(_, opts)
-      dofile(vim.g.base46_cache .. "devicons")
+      -- dofile(vim.g.base46_cache .. "devicons")
       require("nvim-web-devicons").setup(opts)
     end,
   },
@@ -68,7 +70,7 @@ local default_plugins = {
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate | TSInstallAll",
     opts = function()
-      dofile(vim.g.base46_cache .. "syntax")
+      -- dofile(vim.g.base46_cache .. "syntax")
       return require "plugins.configs.treesitter"
     end,
     lazy = false,
@@ -96,7 +98,7 @@ local default_plugins = {
       return require "plugins.configs.mason"
     end,
     config = function(_, opts)
-      dofile(vim.g.base46_cache .. "mason")
+      -- dofile(vim.g.base46_cache .. "mason")
       require("mason").setup(opts)
 
       -- custom nvchad cmd to install all mason binaries listed
@@ -149,7 +151,7 @@ local default_plugins = {
       return require "plugins.configs.nvimtree"
     end,
     config = function(_, opts)
-      dofile(vim.g.base46_cache .. "nvimtree")
+      -- dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
     end,
   },
@@ -165,7 +167,7 @@ local default_plugins = {
       return require "plugins.configs.telescope"
     end,
     config = function(_, opts)
-      dofile(vim.g.base46_cache .. "telescope")
+      -- dofile(vim.g.base46_cache .. "telescope")
       local telescope = require "telescope"
       telescope.setup(opts)
 

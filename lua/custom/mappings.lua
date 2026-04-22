@@ -35,7 +35,7 @@ M.map = {
         vim.cmd(":se cole=" .. cole)
       end,
     },
-    ["<A-x>"] = { "<cmd>BufOnly<Cr>" },
+    ["<A-x>"] = { "<cmd>BufferCloseAllButCurrent<Cr>" },
     ["<C-b>"] = { "<cmd>BufferNavigatorToggle<Cr>" },
     ["<A-c>"] = { "<cmd>BufferNavigatorToggle<Cr>" },
     ["<Leader>w"] = {
@@ -72,16 +72,6 @@ M.map = {
         end
       end,
     },
-    ["<F6>"] = {
-      function()
-        local path = vim.g.theme_config_path
-        local absolute_path = home
-            .. "/AppData/Local/nvim-data/lazy/base46/lua/base46/themes/"
-            .. vim.g.theme_name
-            .. ".lua"
-        vim.cmd("e " .. absolute_path)
-      end,
-    },
     ["<Leader>d"] = {
       function()
         local dir = vim.fn.expand "%"
@@ -100,7 +90,12 @@ M.map = {
       function()
         vim.cmd "NoNeckPain"
       end,
-    }
+    },
+
+    -- cycle through buffers
+    ["<tab>"] = { "<Cmd>BufferNext<CR>" },
+
+    ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>" },
   },
 
   v = {
@@ -119,12 +114,6 @@ M.tabufline = {
   plugin = true,
 
   n = {
-    ["<C-x>"] = {
-      function()
-        require("nvchad.tabufline").close_buffer()
-      end,
-      "Close buffer",
-    },
     ["<C-right>"] = { "<cmd>NvimTreeResize 50 <CR>", "Expand the tree window" },
     ["<C-left>"] = { "<cmd>NvimTreeResize 30 <CR>", "Shrink the tree window" },
   },

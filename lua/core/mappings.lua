@@ -35,6 +35,7 @@ M.general = {
       end,
       "LSP formatting",
     },
+    ["<C-x>"] = { "<Cmd>BufferClose<CR>" }
   },
 
   t = {
@@ -57,20 +58,6 @@ M.tabufline = {
   plugin = true,
 
   n = {
-    -- cycle through buffers
-    ["<tab>"] = {
-      function()
-        require("nvchad.tabufline").tabuflineNext()
-      end,
-      "Goto next buffer",
-    },
-
-    ["<S-tab>"] = {
-      function()
-        require("nvchad.tabufline").tabuflinePrev()
-      end,
-      "Goto prev buffer",
-    },
   },
 }
 

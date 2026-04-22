@@ -14,13 +14,6 @@ return {
     dependencies = { "tpope/vim-repeat", "ggandor/flit.nvim" },
   },
   {
-    "rlane/pounce.nvim",
-    lazy = false,
-    config = function()
-      require "custom.configs.pounce"
-    end,
-  },
-  {
     "phsix/faster.nvim",
     config = function()
       require "custom.configs.faster"

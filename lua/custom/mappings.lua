@@ -59,7 +59,6 @@ M.map = {
     ["<Leader>i"] = { "a<space><Esc>", "Insert space after cursor" },
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
-    ["FF"] = { "<cmd>Pounce<CR>", "Start pounce" },
     ["<F4>"] = { "<cmd>e ~/docs/doc.md <CR>", "open todo" },
     ["<F10>"] = {
       function()
@@ -100,7 +99,6 @@ M.map = {
 
   v = {
     ["x"] = { '"_d', "Delete selected block without yanking" },
-    ["FF"] = { "<cmd>Pounce<CR>", "Start pounce" },
 
     ["H"] = { "" },
     ["L"] = { "" },

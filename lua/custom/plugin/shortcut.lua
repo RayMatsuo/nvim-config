@@ -1,5 +1,5 @@
 return {
-  
+
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -42,6 +42,9 @@ return {
     config = function()
       require "custom.configs.refactoring"
     end,
+    dependencies = {
+      "lewis6991/async.nvim",
+    },
     event = "VeryLazy",
   },
   {
@@ -59,5 +62,4 @@ return {
       fold_indicator = "▼"
     }
   },
-  }
-  
+}

@@ -1,4 +1,4 @@
-return{
+return {
 
   {
     "gbprod/yanky.nvim",
@@ -70,6 +70,22 @@ return{
       map("n", "<leader>ntp", ":NeovimTipsPdf<CR>", { desc = "Open Neovim tips PDF", noremap = true, silent = true })
     end,
     event = "VeryLazy"
+  },
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+    dependencies = {
+      -- include a picker of your choice, see picker section for more details
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      plugins = {
+        non_standalone = true,
+      },
+      lang = "javascript"
+    },
+    cmd = { "Leet" },
   }
 
 }

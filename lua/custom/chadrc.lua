@@ -1,5 +1,8 @@
 local M = {}
 
+M.base46 = {
+	theme = "void",
+}
 M.ui = { theme = "void" }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"

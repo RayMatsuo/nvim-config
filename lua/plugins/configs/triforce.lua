@@ -1,0 +1,2 @@
+require('triforce').setup({
+})

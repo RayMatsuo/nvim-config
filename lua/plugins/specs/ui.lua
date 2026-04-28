@@ -1,7 +1,7 @@
 return {
   {
     "xiyaowong/transparent.nvim",
-    event = "VeryLazy",
+    lazy = false,
     config = function()
       require "plugins.configs.transparent"
     end,
@@ -66,5 +66,20 @@ return {
     opts = function()
       return require "plugins.configs.barbar"
     end
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    event = "User FilePost",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-web-devicons",
+    config = function(_, opts)
+      -- dofile(vim.g.base46_cache .. "devicons")
+      require("nvim-web-devicons").setup(opts)
+    end,
   },
 }

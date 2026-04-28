@@ -13,17 +13,35 @@ Terms = {
   Horizontal = nil,
   Float = nil,
 }
+function ClearTerms()
+  if Terms.Vertical ~= nil then
+    Terms.Vertical:shutdown()
+    Terms.Vertical = nil
+  end
+  if Terms.Horizontal ~= nil then
+    Terms.Horizontal:shutdown()
+    Terms.Horizontal = nil
+  end
+
+  if Terms.Float ~= nil then
+    Terms.Float:shutdown()
+    Terms.Float = nil
+  end
+end
+
 function GetVerticalTerm(initialCmd)
   local Terminal = require('toggleterm.terminal').Terminal
   if Terms.Vertical == nil then
-    if initialCmd ~= nil and #initialCmd>0 then
+    if initialCmd ~= nil and #initialCmd > 0 then
       Terms.Vertical = Terminal:new {
         cmd = initialCmd,
         direction = "vertical",
+
       }
     else
       Terms.Vertical = Terminal:new {
         direction = "vertical",
+
       }
     end
   end
@@ -33,14 +51,17 @@ end
 function GetHorizontalTerm(initialCmd)
   local Terminal = require('toggleterm.terminal').Terminal
   if Terms.Horizontal == nil then
-    if initialCmd ~= nil and #initialCmd>0 then
+    if initialCmd ~= nil and #initialCmd > 0 then
       Terms.Horizontal = Terminal:new {
         cmd = initialCmd,
-        direction = "horizontal"
+        direction = "horizontal",
+
       }
     else
       Terms.Horizontal = Terminal:new {
-        direction = "horizontal"
+        direction = "horizontal",
+
+
       }
     end
   end
@@ -50,14 +71,16 @@ end
 function GetFloatTerm(initialCmd)
   local Terminal = require('toggleterm.terminal').Terminal
   if Terms.Float == nil then
-    if initialCmd ~= nil and #initialCmd>0 then
+    if initialCmd ~= nil and #initialCmd > 0 then
       Terms.Float = Terminal:new {
         cmd = initialCmd,
-        direction = "float"
+        direction = "float",
+
       }
     else
       Terms.Float = Terminal:new {
-        direction = "float"
+        direction = "float",
+
       }
     end
   end

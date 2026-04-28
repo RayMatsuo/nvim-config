@@ -17,6 +17,11 @@ require("workspaces").setup {
         end
       end,
     },
+    open_pre = {
+      function()
+        ClearTerms()
+      end
+    }, -- run before changing directory
   },
   cd_type = "tab",
   auto_open = true,

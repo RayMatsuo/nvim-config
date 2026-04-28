@@ -1,4 +1,14 @@
 return {
+  "nvim-lua/plenary.nvim",
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = true,
+    
+    init = function()
+      require("config.utils").load_mappings "nvterm"
+    end,
+  },
   {
     "gbprod/yanky.nvim",
     event = "BufEnter",
@@ -82,6 +92,17 @@ return {
       lang = "javascript"
     },
     cmd = { "Leet" },
-  }
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "User FilePost",
+    config = function()
+      require("plugins.configs.blankline")
+    end,
+    init = function()
+      require("config.utils").load_mappings "blankline"
+    end
+  },
 
 }

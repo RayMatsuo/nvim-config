@@ -31,6 +31,11 @@ return {
       on_highlights = function(hl, _)
         hl.BufferCurrentSign = { fg = "#3e68d7" }
         hl.BufferCurrentSignRight = { fg = "#3e68d7" }
+        hl.LineNr = { fg = "#82aaff" }
+        hl.LineNrAbove = { fg = "#3e68d7" }
+        hl.LineNrBelow = { fg = "#3e68d7" }
+        hl.Comment = { fg = "#82aaff" }
+        hl.DiagnosticUnnecessary = { fg = "#3e68d7" }
       end,
     }
   },
@@ -64,7 +69,7 @@ return {
     config = function()
       -- vim.cmd "colorscheme yowish"
     end,
-    enabled = true
+    enabled = false
   },
   {
     'maxmx03/fluoromachine.nvim',

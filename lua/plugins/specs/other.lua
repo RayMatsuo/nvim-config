@@ -22,4 +22,10 @@ return {
       display_ui_on_break = true, -- Disable it if you only want to see the lualine
     },
   },
+  {
+  "aikhe/wrapped.nvim",
+  dependencies = { "nvzone/volt" },
+  cmd = { "WrappedNvim" },
+  opts = {},
+}
 }

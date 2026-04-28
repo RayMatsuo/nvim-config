@@ -2,19 +2,10 @@
 
 local wrap = false
 
-local home = os.getenv "HOME"
 local cole = 2
 
 local data = vim.fn.stdpath("data")
-local function file_exists(path)
-  local f = io.open(home .. "/AppData/Local/nvim/lua/" .. path:gsub("%.", "/") .. ".lua", "r")
-  local inst = nil
-  local result = f ~= nil
-  if f ~= nil then
-    io.close(f)
-  end
-  return result
-end
+
 local M = {}
 
 M.general = {

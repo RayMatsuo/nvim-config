@@ -1,6 +1,6 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local on_init = function(client, _)
-  if client.supports_method "textDocument/semanticTokens" then
+  if client:supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
 end
@@ -39,5 +39,6 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
+  vim.lsp.config(lsp,{})
   vim.lsp.enable(lsp)
 end

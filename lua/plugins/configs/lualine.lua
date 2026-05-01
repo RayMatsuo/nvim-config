@@ -358,6 +358,23 @@ ins_left(create_mode_based_component('filename', nil, colors.BG))
 
 ins_left(create_separator('left'))
 
+ins_left({
+  function()
+    local ws = require "workspaces"
+    local name = ws.name()
+    if name ~= nil then
+      return " " .. name
+    end
+    return ""
+  end,
+
+  color = function()
+    return {
+      fg = get_middle_color(1),
+    }
+  end,
+})
+
 ins_left {
   function()
     return ''

@@ -2,7 +2,7 @@ require("conform").setup({
   formatters_by_ft = {
     blade = { "blade-formatter" },
     LaTeX = { "latexindent" },
-    php = { "php_cs_fixer", "prettier" },
+    php = { "php_cs_fixer"},
     html = { "prettier" },
     javascript = { "prettier" },
     json = { "prettier" },
@@ -17,7 +17,6 @@ require("conform").formatters.prettier = {
   options = {
     ft_parsers = {
       html = "html",
-      php = "html",
     },
     -- Use a specific prettier parser for a file extension
     ext_parsers = {

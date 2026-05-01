@@ -118,10 +118,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- vim.api.nvim_create_autocmd({ "BufEnter", "UIEnter" }, {
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
 --   callback = function(event)
---     vim.cmd "highlight BufferCurrentSign guifg=#3e68d7"
---     vim.notify("123")
+--     local ws = require "workspaces"
+--     local name = ws.name()
+--     local str = ""
+--     if name ~= nil then
+--       str = str .. name .. ":"
+--     end
+--     vim.cmd("se title")
+--     vim.cmd("se titlestring=" .. str )
 --   end,
 -- })
-

@@ -42,6 +42,13 @@ opt.mouse = "a"
 opt.number = true
 opt.numberwidth = 2
 opt.ruler = false
+opt.relativenumber=true
+
+opt.wrap=false
+opt.foldenable=false
+
+opt.concealcursor="n"
+opt.timeoutlen=255
 
 -- disable nvim intro
 opt.shortmess:append "sI"
@@ -50,7 +57,6 @@ opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
 opt.termguicolors = true
-opt.timeoutlen = 400
 opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
@@ -62,6 +68,7 @@ opt.whichwrap:append "<>[]hl"
 
 g.mapleader = " "
 
+g.barbar_auto_setup = false
 -- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
   vim.g["loaded_" .. provider .. "_provider"] = 0

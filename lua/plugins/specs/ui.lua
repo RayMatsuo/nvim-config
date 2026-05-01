@@ -60,12 +60,29 @@ return {
       -- 'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
-    init = function()
-      vim.g.barbar_auto_setup = false
-    end,
     opts = function()
       return require "plugins.configs.barbar"
-    end
+    end,
+    init = function()
+      require("config.utils").load_mappings "barbar"
+    end,
+    enabled = true
+  },
+  {
+    'akinsho/bufferline.nvim',
+    lazy = false,
+    priority = 10,
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    opts = function()
+      return {
+
+        options = {
+        }
+      }
+    end,
+    config = true,
+    enabled = false
   },
   {
     "norcalli/nvim-colorizer.lua",

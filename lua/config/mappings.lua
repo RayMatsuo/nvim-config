@@ -43,7 +43,7 @@ M.general = {
       "LSP formatting",
     },
     ["<C-x>"] = { "<Cmd>BufferClose<CR>" },
-    
+
     ["<Leader>mo"] = { "<cmd>mod<Cr>" },
     ["<Leader>xx"] = {
       function()
@@ -122,6 +122,9 @@ M.general = {
     ["<tab>"] = { "<Cmd>BufferNext<CR>" },
 
     ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>" },
+    ["gD"]={ "<cmd>lua vim.lsp.buf.declaration()<CR>"},
+    ["gd"]={ "<cmd>lua vim.lsp.buf.definition()<CR>"},
+    
   },
 
   t = {
@@ -497,6 +500,12 @@ M.gitsigns = {
       "Toggle deleted",
     },
   },
+}
+
+M.barbar = {
+  n = {
+    ["<Leader>bs"] = { "<cmd>BufferOrderByName<Cr>" }
+  }
 }
 
 return M

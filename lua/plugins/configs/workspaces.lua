@@ -24,7 +24,8 @@ require("workspaces").setup {
     }, -- run before changing directory
   },
   cd_type = "tab",
-  auto_open = true,
+  auto_open =  "autochdir",
+  auto_dir = true,
 }
 
 function exists(file)

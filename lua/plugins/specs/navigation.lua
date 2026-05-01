@@ -18,7 +18,7 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-treesitter/nvim-treesitter","nvim-telescope/telescope-fzf-native.nvim" },
     cmd = "Telescope",
     init = function()
       require("config.utils").load_mappings "telescope"
@@ -38,12 +38,6 @@ return {
     end,
   },
   {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-    },
-  },
-  {
     "https://codeberg.org/andyg/leap.nvim",
     event = "VeryLazy",
     config = function()
@@ -57,6 +51,7 @@ return {
       require "plugins.configs.faster"
     end,
     event = "VeryLazy",
+    enabled=false
   },
   {
     "chentoast/marks.nvim",

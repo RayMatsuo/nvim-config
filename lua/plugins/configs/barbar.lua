@@ -12,8 +12,9 @@ return
   },
   sidebar_filetypes = {
     NvimTree = { text = "NvimTree" },
-    undotree = { text = 'undotree' },
+    undotree = { text = 'UndoTree' },
     ["no-neck-pain"] = { text = 'No neck pain' },
+    Aerial = { text = 'Aerial' },
   },
 
 }

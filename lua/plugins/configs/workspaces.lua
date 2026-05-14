@@ -1,4 +1,7 @@
 require("workspaces").setup {
+  cd_type = "tab",
+  auto_open = true,
+  auto_dir = "autochdir",
   hooks = {
     open = {
       -- "Telescope find_files",
@@ -23,9 +26,6 @@ require("workspaces").setup {
       end
     }, -- run before changing directory
   },
-  cd_type = "tab",
-  auto_open =  "autochdir",
-  auto_dir = true,
 }
 
 function exists(file)

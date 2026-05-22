@@ -1,7 +1,7 @@
 require("workspaces").setup {
   cd_type = "tab",
   auto_open = true,
-  auto_dir = "autochdir",
+  -- auto_dir = "autochdir",
   hooks = {
     open = {
       -- "Telescope find_files",

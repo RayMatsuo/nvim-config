@@ -2,55 +2,54 @@ return {
   {
     "xiyaowong/transparent.nvim",
     lazy = false,
-    config = function()
+    config = function ()
       require "plugins.configs.transparent"
     end,
-
-    priority = 10,
+    priority = 10
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
-    config = function()
+    config = function ()
       require "plugins.configs.rainbow"
     end,
-    event = "VeryLazy",
+    event = "VeryLazy"
   },
   {
     "b0o/incline.nvim",
     event = "VeryLazy",
-    config = function()
+    config = function ()
       require "plugins.configs.incline"
-    end,
+    end
   },
   {
     "goolord/alpha-nvim",
     lazy = false,
     priority = 1000,
-    config = function()
+    config = function ()
       require "plugins.configs.alpha"
-    end,
+    end
   },
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
-    config = function()
+    config = function ()
       require "plugins.configs.notify"
-    end,
+    end
   },
   {
     "andymass/vim-matchup",
-    init = function()
+    init = function ()
       require "plugins.configs.matchup"
     end
   },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
+    config = function ()
       require "plugins.configs.lualine"
     end,
     event = "VeryLazy",
-    priority = 20,
+    priority = 20
   },
   {
     'romgrk/barbar.nvim',
@@ -58,12 +57,12 @@ return {
     priority = 10,
     dependencies = {
       -- 'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+      'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
     },
-    opts = function()
+    opts = function ()
       return require "plugins.configs.barbar"
     end,
-    init = function()
+    init = function ()
       require("config.utils").load_mappings "barbar"
     end,
     enabled = true
@@ -74,12 +73,8 @@ return {
     priority = 10,
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
-    opts = function()
-      return {
-
-        options = {
-        }
-      }
+    opts = function ()
+      return { options = {} }
     end,
     config = true,
     enabled = false
@@ -87,16 +82,22 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     event = "User FilePost",
-    config = function()
+    config = function ()
       require("colorizer").setup()
-    end,
+    end
   },
-
   {
     "nvim-tree/nvim-web-devicons",
-    config = function(_, opts)
+    config = function (_, opts)
       -- dofile(vim.g.base46_cache .. "devicons")
       require("nvim-web-devicons").setup(opts)
-    end,
+    end
   },
+  {
+    "tiagovla/scope.nvim",
+    config = function ()
+      require("scope").setup({})
+    end,
+    lazy = false
+  }
 }

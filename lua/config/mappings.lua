@@ -87,6 +87,7 @@ M.general = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["<F4>"] = { "<cmd>e ~/docs/doc.md <CR>", "open todo" },
+    ["<F5>"] = { "<cmd>e ~/docs/personal.md <CR>", "open todo" },
     ["<F10>"] = {
       function()
         local workspaces = require "workspaces"

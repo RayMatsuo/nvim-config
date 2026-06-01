@@ -1,2 +1,1 @@
-require('triforce').setup({
-})
+require('triforce').setup({})

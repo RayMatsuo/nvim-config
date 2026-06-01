@@ -7,82 +7,104 @@ else
   vim.cmd "set shellxquote="
 end
 
+local has_value = require("config.helper").Has_value
+AllTerms = {}
 
-Terms = {
-  Vertical = nil,
-  Horizontal = nil,
-  Float = nil,
-}
+vim.api.nvim_create_autocmd("TabClosed", {
+  pattern = "*",
+  callback = function ()
+    local pages = vim.api.nvim_list_tabpages()
+    for k, _ in pairs(AllTerms) do
+      if not has_value(pages, k) then
+        ClearTerm(k)
+        table.remove(AllTerms, k)
+      end
+    end
+  end
+})
+
+function createTerm(id)
+  table.insert(AllTerms, id, { Vertical = nil, Horizontal = nil, Float = nil })
+end
+
+function getCurrentTerms()
+  local tabId = vim.api.nvim_get_current_tabpage()
+  local term = AllTerms[tabId]
+  if term ~= nil then
+    return term
+  end
+  createTerm(tabId)
+  return getCurrentTerms()
+end
+
+function ClearTerm(id)
+  local term = AllTerms[id]
+  if term ~= nil then
+    if term.Vertical ~= nil then
+      term.Vertical:shutdown()
+      term.Vertical = nil
+    end
+    if term.Horizontal ~= nil then
+      term.Horizontal:shutdown()
+      term.Horizontal = nil
+    end
+
+    if term.Float ~= nil then
+      term.Float:shutdown()
+      term.Float = nil
+    end
+  end
+end
+
 function ClearTerms()
-  if Terms.Vertical ~= nil then
-    Terms.Vertical:shutdown()
-    Terms.Vertical = nil
-  end
-  if Terms.Horizontal ~= nil then
-    Terms.Horizontal:shutdown()
-    Terms.Horizontal = nil
-  end
-
-  if Terms.Float ~= nil then
-    Terms.Float:shutdown()
-    Terms.Float = nil
-  end
+  local tabId = vim.api.nvim_get_current_tabpage()
+  ClearTerm(tabId)
 end
 
 function GetVerticalTerm(initialCmd)
+  local term = getCurrentTerms()
+  if term == nil then
+    return
+  end
   local Terminal = require('toggleterm.terminal').Terminal
-  if Terms.Vertical == nil then
+  if term.Vertical == nil then
     if initialCmd ~= nil and #initialCmd > 0 then
-      Terms.Vertical = Terminal:new {
-        cmd = initialCmd,
-        direction = "vertical",
-
-      }
+      term.Vertical = Terminal:new { cmd = initialCmd, direction = "vertical" }
     else
-      Terms.Vertical = Terminal:new {
-        direction = "vertical",
-
-      }
+      term.Vertical = Terminal:new { direction = "vertical" }
     end
   end
-  return Terms.Vertical
+  return term.Vertical
 end
 
 function GetHorizontalTerm(initialCmd)
+  local term = getCurrentTerms()
+  if term == nil then
+    return
+  end
   local Terminal = require('toggleterm.terminal').Terminal
-  if Terms.Horizontal == nil then
+  if term.Horizontal == nil then
     if initialCmd ~= nil and #initialCmd > 0 then
-      Terms.Horizontal = Terminal:new {
-        cmd = initialCmd,
-        direction = "horizontal",
-
-      }
+      term.Horizontal = Terminal:new { cmd = initialCmd, direction = "horizontal" }
     else
-      Terms.Horizontal = Terminal:new {
-        direction = "horizontal",
-
-
-      }
+      term.Horizontal = Terminal:new { direction = "horizontal" }
     end
   end
-  return Terms.Horizontal
+  return term.Horizontal
 end
 
 function GetFloatTerm(initialCmd)
+  local term = getCurrentTerms()
+  if term == nil then
+    return
+  end
   local Terminal = require('toggleterm.terminal').Terminal
-  if Terms.Float == nil then
+  if term.Float == nil then
     if initialCmd ~= nil and #initialCmd > 0 then
-      Terms.Float = Terminal:new {
-        cmd = initialCmd,
-        direction = "float",
-
-      }
+      term.Float = Terminal:new { cmd = initialCmd, direction = "float" }
     else
-      Terms.Float = Terminal:new {
-        direction = "float",
-
-      }
+      term.Float = Terminal:new { direction = "float" }
     end
   end
-  return Terms.Float
+  return term.Float
 end

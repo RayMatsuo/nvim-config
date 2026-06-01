@@ -9,18 +9,17 @@ g.transparency = config.ui.transparency
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
-
 g.clipboard = {
   name = 'win32yank',
   copy = {
     ["+"] = 'win32yank.exe -i --crlf',
-    ["*"] = 'win32yank.exe -i --crlf',
+    ["*"] = 'win32yank.exe -i --crlf'
   },
   paste = {
     ["+"] = 'win32yank.exe -o --lf',
-    ["*"] = 'win32yank.exe -o --lf',
+    ["*"] = 'win32yank.exe -o --lf'
   },
-  cache_enabled = 0,
+  cache_enabled = 0
 }
 
 opt.clipboard = "unnamedplus"
@@ -42,13 +41,13 @@ opt.mouse = "a"
 opt.number = true
 opt.numberwidth = 2
 opt.ruler = false
-opt.relativenumber=true
+opt.relativenumber = true
 
-opt.wrap=false
-opt.foldenable=false
+opt.wrap = false
+opt.foldenable = false
 
-opt.concealcursor="n"
-opt.timeoutlen=255
+opt.concealcursor = "n"
+opt.timeoutlen = 255
 
 -- disable nvim intro
 opt.shortmess:append "sI"
@@ -84,15 +83,15 @@ local autocmd = vim.api.nvim_create_autocmd
 -- dont list quickfix buffers
 autocmd("FileType", {
   pattern = "qf",
-  callback = function()
+  callback = function ()
     vim.opt_local.buflisted = false
-  end,
+  end
 })
 
 -- user event that loads after UIEnter + only if file buf is there
 vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
-  callback = function(args)
+  callback = function (args)
     local file = vim.api.nvim_buf_get_name(args.buf)
     local buftype = vim.api.nvim_buf_get_option(args.buf, "buftype")
 
@@ -104,7 +103,7 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
       vim.api.nvim_exec_autocmds("User", { pattern = "FilePost", modeline = false })
       vim.api.nvim_del_augroup_by_name "NvFilePost"
 
-      vim.schedule(function()
+      vim.schedule(function ()
         vim.api.nvim_exec_autocmds("FileType", {})
 
         if vim.g.editorconfig then
@@ -112,6 +111,5 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
         end
       end, 0)
     end
-  end,
+  end
 })
-

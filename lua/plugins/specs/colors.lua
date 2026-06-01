@@ -4,18 +4,18 @@ return {
     lazy = false,  -- Required: Load on startup to set the colorscheme
     config = true, -- Required: call setup() function
     dependencies = {
-      "nvim-telescope/telescope.nvim",
+      "nvim-telescope/telescope.nvim"
     },
     keys = {
       {
         "<leader>sc", -- Or your preferred keymap
-        function()
+        function ()
           require("colorscheme-persist").picker()
         end,
         mode = "n",
-        desc = "Choose colorscheme",
-      },
-    },
+        desc = "Choose colorscheme"
+      }
+    }
   },
   {
     'thedenisnikulin/vim-cyberpunk',
@@ -28,7 +28,7 @@ return {
     lazy = false,
     priority = 2000,
     opts = {
-      on_highlights = function(hl, _)
+      on_highlights = function (hl, _)
         hl.BufferCurrentSign = { fg = "#3e68d7" }
         hl.BufferCurrentSignRight = { fg = "#3e68d7" }
         hl.LineNr = { fg = "#82aaff" }
@@ -36,7 +36,7 @@ return {
         hl.LineNrBelow = { fg = "#3e68d7" }
         hl.Comment = { fg = "#82aaff" }
         hl.DiagnosticUnnecessary = { fg = "#3e68d7" }
-      end,
+      end
     }
   },
   {
@@ -47,7 +47,7 @@ return {
       variant = "soft"
       -- variant = "vibrant", -- "neon" | "vibrant" | "soft" | "glow" | "dawn"
     },
-    config = function(_, opts)
+    config = function (_, opts)
       require("silkcircuit").setup(opts)
       vim.cmd "colorscheme silkcircuit"
     end,
@@ -66,8 +66,9 @@ return {
     lazy = false,
     -- event = "VeryLazy",
     priority = 2000,
-    config = function()
+    config = function ()
       -- vim.cmd "colorscheme yowish"
+
     end,
     enabled = false
   },
@@ -75,14 +76,10 @@ return {
     'maxmx03/fluoromachine.nvim',
     lazy = false,
     priority = 1000,
-    config = function()
+    config = function ()
       local fm = require 'fluoromachine'
 
-      fm.setup {
-        glow = true,
-        theme = 'fluoromachine',
-        transparent = true,
-      }
+      fm.setup { glow = true, theme = 'fluoromachine', transparent = true }
 
       vim.cmd.colorscheme 'fluoromachine'
     end,

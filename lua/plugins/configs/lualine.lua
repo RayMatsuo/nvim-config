@@ -16,7 +16,7 @@ local colors = {
   VIOLET = '#7a3ba8',   -- Strong violet
   MAGENTA = '#d360aa',  -- Deep magenta
   BLUE = '#4f9cff',     -- Light-medium blue
-  RED = '#ff3344',      -- Strong red
+  RED = '#ff3344'       -- Strong red
 }
 
 -- Function to get the color associated with the current mode in Vim
@@ -42,7 +42,7 @@ local function get_mode_color()
     rm = colors.CYAN,
     ['r?'] = colors.CYAN,
     ['!'] = colors.RED,
-    t = colors.RED,
+    t = colors.RED
   }
   -- Return the opposite color, or fallback to foreground color
   return mode_color[vim.fn.mode()]
@@ -60,7 +60,7 @@ local function get_opposite_color(mode_color)
     [colors.CYAN] = colors.YELLOW,
     [colors.VIOLET] = colors.GREEN,
     [colors.YELLOW] = colors.RED,
-    [colors.DARKBLUE] = colors.VIOLET,
+    [colors.DARKBLUE] = colors.VIOLET
   }
   -- Return the opposite color, or fallback to foreground color
   return opposite_colors[mode_color] or colors.FG
@@ -69,7 +69,7 @@ end
 -- Function to interpolate between two colors for a smooth transition
 local function interpolate_color(color1, color2, step)
   -- Blend two colors based on the given step factor (0.0 -> color1, 1.0 -> color2)
-  local blend = function(c1, c2, stp)
+  local blend = function (c1, c2, stp)
     return math.floor(c1 + (c2 - c1) * stp)
   end
   -- Extract the RGB values of both colors (in hex)
@@ -88,7 +88,7 @@ end
 -- Function to get a middle color by interpolating between mode color and its opposite
 local function get_middle_color(color_step)
   -- Set default value for color_step if not provided
-  color_step = color_step or 0.5            -- If color_step is nil, default to 0.5
+  color_step = color_step or 0.5 -- If color_step is nil, default to 0.5
 
   local color1 = get_mode_color()           -- Get the current mode color
   local color2 = get_opposite_color(color1) -- Get the opposite color
@@ -101,7 +101,7 @@ end
 -- This checks whether the current file's name is non-empty.
 -- If the file is open (i.e., has a name), it returns true, meaning the buffer is not empty.
 -- local function buffer_not_empty()
--- 	return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 -- 'expand('%:t')' gets the file name
+-- return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 -- 'expand('%:t')' gets the file name
 -- end
 
 -- Condition: Hide in width (only show the statusline when the window width is greater than 80)
@@ -114,9 +114,9 @@ end
 -- This function checks if the current file is inside a Git repository by looking for a `.git` directory
 -- in the current file's path. Returns true if the file is in a Git workspace.
 -- local function check_git_workspace()
--- 	local filepath = vim.fn.expand('%:p:h')               -- Get the current file's directory
--- 	local gitdir = vim.fn.finddir('.git', filepath .. ';') -- Search for a `.git` directory in the file path
--- 	return gitdir and #gitdir > 0 and #gitdir < #filepath -- Returns true if a `.git` directory is found
+-- local filepath = vim.fn.expand('%:p:h')               -- Get the current file's directory
+-- local gitdir = vim.fn.finddir('.git', filepath .. ';') -- Search for a `.git` directory in the file path
+-- return gitdir and #gitdir > 0 and #gitdir < #filepath -- Returns true if a `.git` directory is found
 -- end
 
 -- -- Set random seed based on current time for randomness
@@ -124,8 +124,8 @@ math.randomseed(os.time())
 -- Icon sets for random selection
 local icon_sets = {
   stars = { '★', '☆', '✧', '✦', '✶', '✷', '✸', '✹' }, -- Set of star-like icons
-  hearts = { '❤', '♥', '♡', '❦', '❧' }, -- Set of heart-shaped icons
-  waves = { '≈', '∿', '≋', '≀', '⌀', '≣', '⌇' }, -- Set of wave-like symbols
+  hearts = { '❤', '♥', '♡', '❦', '❧' },                     -- Set of heart-shaped icons
+  waves = { '≈', '∿', '≋', '≀', '⌀', '≣', '⌇' }         -- Set of wave-like symbols
 }
 
 -- Function to select a random icon from a given set
@@ -148,7 +148,7 @@ local icon_sets_list = {}
 for _, icons in pairs(icon_sets) do
   table.insert(icon_sets_list, icons) -- Add each icon set to the list
 end
-shuffle_table(icon_sets_list)         -- Shuffle the icon sets list
+shuffle_table(icon_sets_list) -- Shuffle the icon sets list
 
 -- Function to reverse the order of elements in a table
 local function reverse_table(tbl)
@@ -165,19 +165,17 @@ local reversed_icon_sets = reverse_table(icon_sets_list)
 -- Function to create a separator component based on side (left/right) and optional mode color
 local function create_separator(side, use_mode_color)
   return {
-    function()
+    function ()
       return side == 'left' and '' or '' -- Choose separator symbol based on side
     end,
-    color = function()
+    color = function ()
       -- Set color based on mode or opposite color
       local color = use_mode_color and get_mode_color() or get_opposite_color(get_mode_color())
-      return {
-        fg = color,
-      }
+      return { fg = color }
     end,
     padding = {
-      left = 0,
-    },
+      left = 0
+    }
   }
 end
 
@@ -187,15 +185,11 @@ local function create_mode_based_component(content, icon, color_fg, color_bg)
   return {
     content,
     icon = icon,
-    color = function()
+    color = function ()
       local mode_color = get_mode_color()
       local opposite_color = get_opposite_color(mode_color)
-      return {
-        fg = color_fg or colors.FG,
-        bg = color_bg or opposite_color,
-        gui = 'bold',
-      }
-    end,
+      return { fg = color_fg or colors.FG, bg = color_bg or opposite_color, gui = 'bold' }
+    end
   }
 end
 
@@ -221,7 +215,7 @@ local function mode()
     rm = 'M',     -- More mode
     ['r?'] = '?', -- Confirm mode
     ['!'] = '!',  -- Shell mode
-    t = 'T',      -- Terminal mode
+    t = 'T'       -- Terminal mode
   }
   -- Return the mode shorthand or [UNKNOWN] if no match
   return mode_map[vim.fn.mode()] or '[UNKNOWN]'
@@ -236,22 +230,22 @@ local config = {
       normal = {
         c = {
           fg = colors.FG,
-          bg = colors.BG,
-        },
+          bg = colors.BG
+        }
       },
       inactive = {
         c = {
           fg = colors.FG,
-          bg = colors.BG,
-        },
-      }, -- Simplified inactive theme
+          bg = colors.BG
+        }
+      } -- Simplified inactive theme
     },
     disabled_filetypes = {
       'neo-tree',
       'undotree',
       'sagaoutline',
-      'diff',
-    },
+      'diff'
+    }
   },
   sections = {
     lualine_a = {},
@@ -259,51 +253,43 @@ local config = {
     lualine_c = {},
     lualine_x = {
       {
-        function()
+        function ()
           return require("pomodoro").get_pomodoro_status("🍅❌", "🐹", "🍲")
-        end,
+        end
       },
       {
         'triforce',
         level = {
           enabled = true,
           bar = { length = 10 }
-        },
-      },
+        }
+      }
     },
-    lualine_y = {
-    },
-    lualine_z = {},
+    lualine_y = {},
+    lualine_z = {}
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {
       {
-
         'location',
-        color = function()
-          return {
-            fg = colors.FG,
-            gui = 'bold',
-          }
-        end,
-      },
+        color = function ()
+          return { fg = colors.FG, gui = 'bold' }
+        end
+      }
     },
     lualine_x = {
       {
         'filename',
-        color = function()
-          return {
-            fg = colors.FG,
-            gui = 'bold,italic',
-          }
-        end,
-      },
+        color = function ()
+          return { fg = colors.FG, gui = 'bold,italic' }
+        end
+      }
     },
     lualine_y = {},
-    lualine_z = {},
-  },
+    lualine_z = {}
+  }
 }
 
 -- Helper functions
@@ -318,38 +304,28 @@ end
 -- LEFT
 ins_left {
   mode,
-  color = function()
+  color = function ()
     local mode_color = get_mode_color()
-    return {
-      fg = colors.BG,
-      bg = mode_color,
-      gui = 'bold',
-    }
+    return { fg = colors.BG, bg = mode_color, gui = 'bold' }
   end,
-  padding = { left = 1, right = 1 },
+  padding = { left = 1, right = 1 }
 }
 
 ins_left(create_separator('left', true))
 
 ins_left {
-  function()
+  function ()
     return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
   end,
   icon = ' ',
-  color = function()
+  color = function ()
     local virtual_env = vim.env.VIRTUAL_ENV
     if virtual_env then
-      return {
-        fg = get_mode_color(),
-        gui = 'bold,strikethrough',
-      }
+      return { fg = get_mode_color(), gui = 'bold,strikethrough' }
     else
-      return {
-        fg = get_mode_color(),
-        gui = 'bold',
-      }
+      return { fg = get_mode_color(), gui = 'bold' }
     end
-  end,
+  end
 }
 
 ins_left(create_separator('right'))
@@ -359,7 +335,7 @@ ins_left(create_mode_based_component('filename', nil, colors.BG))
 ins_left(create_separator('left'))
 
 ins_left({
-  function()
+  function ()
     local ws = require "workspaces"
     local name = ws.name()
     if name ~= nil then
@@ -367,28 +343,23 @@ ins_left({
     end
     return ""
   end,
-
-  color = function()
-    return {
-      fg = get_middle_color(1),
-    }
-  end,
+  color = function ()
+    return { fg = get_middle_color(1) }
+  end
 })
 
 ins_left {
-  function()
+  function ()
     return ''
   end,
-  color = function()
-    return {
-      fg = get_middle_color(),
-    }
+  color = function ()
+    return { fg = get_middle_color() }
   end,
-  cond = hide_in_width,
+  cond = hide_in_width
 }
 
 ins_left {
-  function()
+  function ()
     local git_status = vim.b.gitsigns_status_dict
     if git_status then
       return string.format('+%d ~%d -%d', git_status.added or 0, git_status.changed or 0, git_status.removed or 0)
@@ -398,9 +369,9 @@ ins_left {
   -- icon = '󰊢 ',
   color = {
     fg = colors.YELLOW,
-    gui = 'bold',
+    gui = 'bold'
   },
-  cond = hide_in_width,
+  cond = hide_in_width
 }
 
 ins_left {
@@ -410,70 +381,70 @@ ins_left {
   diagnostics_color = {
     error = { fg = colors.RED },
     warn = { fg = colors.YELLOW },
-    info = { fg = colors.CYAN },
-  },
+    info = { fg = colors.CYAN }
+  }
 }
 -- for _, icons in pairs(icon_sets_list) do
---   ins_left {
---     function()
---       return get_random_icon(icons)
---     end,
---     color = function()
---       return {
---         fg = get_animated_color(),
---       }
---     end,
---     cond = hide_in_width,
---   }
+-- ins_left {
+-- function()
+-- return get_random_icon(icons)
+-- end,
+-- color = function()
+-- return {
+-- fg = get_animated_color(),
+-- }
+-- end,
+-- cond = hide_in_width,
+-- }
 -- end
 
 ins_left {
   'searchcount',
   color = {
     fg = colors.GREEN,
-    gui = 'bold',
-  },
+    gui = 'bold'
+  }
 }
 
 -- RIGHT
 ins_right {
-  function()
+  function ()
     local reg = vim.fn.reg_recording()
     return reg ~= '' and '[' .. reg .. ']' or ''
   end,
   color = {
     fg = '#ff3344',
-    gui = 'bold',
+    gui = 'bold'
   },
-  cond = function()
+  cond = function ()
     return vim.fn.reg_recording() ~= ''
-  end,
+  end
 }
 
 ins_right {
   'selectioncount',
   color = {
     fg = colors.GREEN,
-    gui = 'bold',
-  },
+    gui = 'bold'
+  }
 }
 
 -- for _, icons in ipairs(reversed_icon_sets) do
---   ins_right {
---     function()
---       return get_random_icon(icons)
---     end,
---     color = function()
---       return {
---         fg = get_animated_color(),
---       }
---     end,
---     cond = hide_in_width,
---   }
+-- ins_right {
+-- function()
+-- return get_random_icon(icons)
+-- end,
+-- color = function()
+-- return {
+-- fg = get_animated_color(),
+-- }
+-- end,
+-- cond = hide_in_width,
+-- }
 -- end
 
 ins_right {
-  function()
+  function ()
     local msg = 'No Active Lsp'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_clients()
@@ -493,7 +464,7 @@ ins_right {
       tailwindcss = 'tw',
       dockerls = 'docker',
       sqlls = 'sql',
-      yamlls = 'yml',
+      yamlls = 'yml'
     }
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
@@ -506,18 +477,18 @@ ins_right {
   icon = ' ',
   color = {
     fg = colors.YELLOW,
-    gui = 'bold',
-  },
+    gui = 'bold'
+  }
 }
 
 ins_right {
-  function()
+  function ()
     return ''
   end,
-  color = function()
+  color = function ()
     return { fg = get_middle_color() }
   end,
-  cond = hide_in_width,
+  cond = hide_in_width
 }
 
 ins_right(create_separator('right'))
@@ -541,7 +512,7 @@ ins_right {
 		feature/add-ui						Fa›add-ui
 		main											main
 	]]
-  fmt = function(branch)
+  fmt = function (branch)
     if branch == '' or branch == nil then
       return 'No Repo'
     end
@@ -571,7 +542,7 @@ ins_right {
     end
 
     -- Capitalize the first segment and lowercase the rest (except the last one)
-    segments[1] = segments[1]:upper()   -- First segment uppercase
+    segments[1] = segments[1]:upper() -- First segment uppercase
     for i = 2, #segments - 1 do
       segments[i] = segments[i]:lower() -- Other segments lowercase
     end
@@ -587,13 +558,10 @@ ins_right {
 
     return truncated_branch
   end,
-  color = function()
+  color = function ()
     local mode_color = get_mode_color()
-    return {
-      fg = mode_color,
-      gui = 'bold',
-    }
-  end,
+    return { fg = mode_color, gui = 'bold' }
+  end
 }
 
 ins_right(create_separator('right'))

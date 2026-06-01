@@ -2,7 +2,7 @@ local M = {}
 local map = vim.keymap.set
 
 -- export on_attach & capabilities
-M.on_attach = function(_, bufnr)
+M.on_attach = function (_, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
@@ -12,15 +12,16 @@ M.on_attach = function(_, bufnr)
   map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
   map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "Remove workspace folder")
 
-  map("n", "<leader>wl", function()
+  map("n", "<leader>wl", function ()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, opts "List workspace folders")
+  end, opts "List workspace folders"
+  )
 
   map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition")
 end
 
 -- disable semanticTokens
-M.on_init = function(client, _)
+M.on_init = function (client, _)
   if client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
@@ -41,17 +42,16 @@ M.capabilities.textDocument.completion.completionItem = {
     properties = {
       "documentation",
       "detail",
-      "additionalTextEdits",
-    },
-  },
+      "additionalTextEdits"
+    }
+  }
 }
 
-M.defaults = function()
-
+M.defaults = function ()
   vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
+    callback = function (args)
       M.on_attach(_, args.buf)
-    end,
+    end
   })
 
   local lua_lsp_settings = {
@@ -60,12 +60,11 @@ M.defaults = function()
         library = {
           vim.fn.expand "$VIMRUNTIME/lua",
           vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
-          "${3rd}/luv/library",
-        },
-      },
-    },
+          "${3rd}/luv/library"
+        }
+      }
+    }
   }
-
 
   vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
   vim.lsp.config("lua_ls", { settings = lua_lsp_settings })

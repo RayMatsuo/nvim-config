@@ -6,8 +6,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
-      { "\nPress any key to exit..." },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." }
     }, true, {})
     vim.fn.getchar()
     os.exit(1)
@@ -26,14 +26,11 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     -- import your plugins
-    { import = "plugins.specs" },
+    { import = "plugins.specs" }
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "silkcircuit" } },
+  install = { colorscheme = { "silkcircuit" } }
   -- automatically check for plugin updates
   -- checker = { enabled = true },
 })
-
-
-

@@ -1,25 +1,35 @@
 require("transparent").setup({ -- Optional, you don't have to run setup.
-  groups = {                   -- table: default groups
-    'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-    'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-    'SignColumn', 'CursorLine', 'CursorLineNr',
-    'EndOfBuffer',
+  groups = { -- table: default groups
+    'Normal',
+    'NormalNC',
+    'Comment',
+    'Constant',
+    'Special',
+    'Identifier',
+    'Statement',
+    'PreProc',
+    'Type',
+    'Underlined',
+    'Todo',
+    'String',
+    'Function',
+    'Conditional',
+    'Repeat',
+    'Operator',
+    'Structure',
+    'LineNr',
+    'NonText',
+    'SignColumn',
+    'CursorLine',
+    'CursorLineNr',
+    'EndOfBuffer'
   },
-  extra_groups = {
-  }, -- table: additional groups that should be cleared
+  extra_groups = {},          -- table: additional groups that should be cleared
   exclude_groups = {
     "Notify"
-
-  }, -- table: groups you don't want to clear
+  } -- table: groups you don't want to clear
 })
 
-
--- require('transparent').clear_prefix('Telescope')
 require('transparent').clear_prefix('nvimtree')
--- require('transparent').clear_prefix('ui')
--- require('transparent').clear_prefix('Lazy')
--- require('transparent').clear_prefix('nvim-cmp')
--- require('transparent').clear_prefix('cmp')
 vim.cmd "TransparentEnable"
 -- vim.cmd "TransparentToggle"

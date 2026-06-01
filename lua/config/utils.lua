@@ -1,7 +1,7 @@
 local M = {}
 local merge_tb = vim.tbl_deep_extend
 
-M.load_config = function()
+M.load_config = function ()
   local config = require "config.default_config"
   local vimrc_path = vim.api.nvim_get_runtime_file("lua/core/vimrc.lua", false)[1]
 
@@ -16,7 +16,7 @@ M.load_config = function()
   return config
 end
 
-M.remove_disabled_keys = function(vimrc_mappings, default_mappings)
+M.remove_disabled_keys = function (vimrc_mappings, default_mappings)
   if not vimrc_mappings then
     return default_mappings
   end
@@ -51,8 +51,8 @@ M.remove_disabled_keys = function(vimrc_mappings, default_mappings)
   return default_mappings
 end
 
-M.load_mappings = function(section, mapping_opt)
-  vim.schedule(function()
+M.load_mappings = function (section, mapping_opt)
+  vim.schedule(function ()
     local function set_section_map(section_values)
       if section_values.plugin then
         return
@@ -87,10 +87,10 @@ M.load_mappings = function(section, mapping_opt)
   end)
 end
 
-M.lazy_load = function(plugin)
+M.lazy_load = function (plugin)
   vim.api.nvim_create_autocmd({ "BufRead", "BufWinEnter", "BufNewFile" }, {
     group = vim.api.nvim_create_augroup("BeLazyOnFileOpen" .. plugin, {}),
-    callback = function()
+    callback = function ()
       local file = vim.fn.expand "%"
       local condition = file ~= "NvimTree_1" and file ~= "[lazy]" and file ~= ""
 
@@ -100,7 +100,7 @@ M.lazy_load = function(plugin)
         -- dont defer for treesitter as it will show slow highlighting
         -- This deferring only happens only when we do "nvim filename"
         if plugin ~= "nvim-treesitter" then
-          vim.schedule(function()
+          vim.schedule(function ()
             require("lazy").load { plugins = plugin }
 
             if plugin == "nvim-lspconfig" then
@@ -111,7 +111,7 @@ M.lazy_load = function(plugin)
           require("lazy").load { plugins = plugin }
         end
       end
-    end,
+    end
   })
 end
 

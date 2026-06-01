@@ -1,7 +1,7 @@
 local options = {
   filters = {
     dotfiles = false,
-    exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
+    exclude = { vim.fn.stdpath "config" .. "/lua/custom" }
   },
   disable_netrw = true,
   hijack_netrw = true,
@@ -10,17 +10,17 @@ local options = {
   sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,
-    update_root = false,
+    update_root = false
   },
   view = {
     adaptive_size = false,
     side = "left",
     width = 30,
-    preserve_window_proportions = true,
+    preserve_window_proportions = true
   },
   git = {
     enable = false,
-    ignore = true,
+    ignore = true
   },
   filesystem_watchers = {
     enable = true,
@@ -30,35 +30,32 @@ local options = {
   },
   actions = {
     open_file = {
-      resize_window = true,
-    },
+      resize_window = true
+    }
   },
   renderer = {
     root_folder_label = false,
     highlight_git = false,
     highlight_opened_files = "none",
-
     indent_markers = {
-      enable = true,
+      enable = true
     },
-
     icons = {
       show = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = false,
+        git = false
       },
-
       web_devicons = {
         file = {
           enable = true,
-          color = true,
+          color = true
         },
         folder = {
           enable = true,
-          color = true,
-        },
+          color = true
+        }
       },
       glyphs = {
         default = "󰈚",
@@ -71,7 +68,7 @@ local options = {
           symlink = "",
           symlink_open = "",
           arrow_open = "",
-          arrow_closed = "",
+          arrow_closed = ""
         },
         git = {
           unstaged = "✗",
@@ -80,12 +77,11 @@ local options = {
           renamed = "➜",
           untracked = "★",
           deleted = "",
-          ignored = "◌",
-        },
-      },
-    },
-  },
-
+          ignored = "◌"
+        }
+      }
+    }
+  }
   --[[ experimental={
     open={
       relative_path =true

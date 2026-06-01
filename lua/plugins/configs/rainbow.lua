@@ -1,5 +1,1 @@
-require('rainbow-delimiters.setup').setup { 
-query={
-  }
-
-}
+require('rainbow-delimiters.setup').setup()

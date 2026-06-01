@@ -9,7 +9,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     kind = { "add", "replace" },
     action = { "add" },
     input = { "%" },
-    filetype = { "liquid" },
+    filetype = { "liquid" }
   },
   {
     buns = { "@media screen and (max-width: 750px) {", "}" },
@@ -18,7 +18,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     kind = { "add", "replace" },
     action = { "add" },
     input = { "@" },
-    filetype = { "scss", "css" },
+    filetype = { "scss", "css" }
   },
   {
     buns = { "dd(", ");" },
@@ -27,7 +27,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     kind = { "add", "replace" },
     action = { "add" },
     input = { "dd" },
-    filetype = { "php" },
+    filetype = { "php" }
   },
   {
     buns = { "{{--", "--}}" },
@@ -36,7 +36,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     kind = { "add", "replace" },
     action = { "add" },
     input = { "{{" },
-    filetype = { "blade" },
+    filetype = { "blade" }
   },
   {
     buns = { "{", "}" },
@@ -44,7 +44,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     match_syntax = 1,
     kind = { "add", "replace" },
     action = { "add" },
-    input = { "{" },
+    input = { "{" }
   },
   {
     buns = { "[", "]" },
@@ -52,7 +52,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     match_syntax = 1,
     kind = { "add", "replace" },
     action = { "add" },
-    input = { "[" },
+    input = { "[" }
   },
   {
     buns = { "(", ")" },
@@ -60,7 +60,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     match_syntax = 1,
     kind = { "add", "replace" },
     action = { "add" },
-    input = { "(" },
+    input = { "(" }
   },
   {
     buns = { "{\\s*", "\\s*}" },
@@ -69,7 +69,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     match_syntax = 1,
     kind = { "delete", "replace", "textobj" },
     action = { "delete" },
-    input = { "{" },
+    input = { "{" }
   },
   {
     buns = { "\\[\\s*", "\\s*\\]" },
@@ -78,7 +78,7 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     match_syntax = 1,
     kind = { "delete", "replace", "textobj" },
     action = { "delete" },
-    input = { "[" },
+    input = { "[" }
   },
   {
     buns = { "(\\s*", "\\s*)" },
@@ -87,18 +87,18 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     match_syntax = 1,
     kind = { "delete", "replace", "textobj" },
     action = { "delete" },
-    input = { "(" },
+    input = { "(" }
   },
   {
     buns = { "<", ">" },
     nesting = 1,
     match_syntax = 1,
-    input = { "<" },
+    input = { "<" }
   },
   {
-   buns={"//#region","//#endregion"} ,
-   kind = {"add","replate",  "delete",  "textobj" },
-   input = { "r" },
-    filetype={"javascript","typescript","typescriptreact"}
+    buns = { "//#region", "//#endregion" },
+    kind = { "add", "replate", "delete", "textobj" },
+    input = { "r" },
+    filetype = { "javascript", "typescript", "typescriptreact" }
   }
 })

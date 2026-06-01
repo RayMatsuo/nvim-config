@@ -3,7 +3,7 @@ local actions = require 'telescope.actions'
 -- https://github.com/MagicDuck/grug-far.nvim/pull/305
 local is_windows = vim.fn.has('win64') == 1 or vim.fn.has('win32') == 1
 local vimfnameescape = vim.fn.fnameescape
-local winfnameescape = function(path)
+local winfnameescape = function (path)
   local escaped_path = vimfnameescape(path)
   if is_windows then
     local need_extra_esc = path:find('[%[%]`%$~]')
@@ -16,13 +16,12 @@ local winfnameescape = function(path)
   return escaped_path
 end
 
-local select_default = function(prompt_bufnr)
+local select_default = function (prompt_bufnr)
   vim.fn.fnameescape = winfnameescape
   local result = actions.select_default(prompt_bufnr, "default")
   vim.fn.fnameescape = vimfnameescape
   return result
 end
-
 
 local options = {
   defaults = {
@@ -34,7 +33,7 @@ local options = {
       "--with-filename",
       "--line-number",
       "--column",
-      "--smart-case",
+      "--smart-case"
     },
     prompt_prefix = "   ",
     selection_caret = "  ",
@@ -46,14 +45,14 @@ local options = {
     layout_config = {
       horizontal = {
         prompt_position = "top",
-        preview_width = 0.55,
+        preview_width = 0.55
       },
       vertical = {
-        mirror = false,
+        mirror = false
       },
       width = 0.87,
       height = 0.80,
-      preview_cutoff = 120,
+      preview_cutoff = 120
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = { "node_modules" },
@@ -72,18 +71,17 @@ local options = {
     mappings = {
       n = {
         ["q"] = require("telescope.actions").close,
-        ['<cr>'] = select_default,
+        ['<cr>'] = select_default
       },
       i = {
         ["<C-j>"] = require("telescope.actions").move_selection_next,
         ["<C-k>"] = require("telescope.actions").move_selection_previous,
         ["<Esc>"] = require("telescope.actions").close,
-        ['<cr>'] = select_default,
+        ['<cr>'] = select_default
       }
-    },
+    }
   },
-
-  extensions_list = {},
+  extensions_list = {}
 }
 
 return options

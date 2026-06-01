@@ -1,16 +1,14 @@
 return {
   defaults = { lazy = true },
   -- install = { colorscheme = { "silkcircuit" } },
-
   ui = {
     icons = {
       ft = "",
       lazy = "󰂠 ",
       loaded = "",
-      not_loaded = "",
-    },
+      not_loaded = ""
+    }
   },
-
   performance = {
     rtp = {
       disabled_plugins = {
@@ -40,8 +38,8 @@ return {
         "optwin",
         "compiler",
         "bugreport",
-        "ftplugin",
-      },
-    },
-  },
+        "ftplugin"
+      }
+    }
+  }
 }

@@ -37,7 +37,7 @@ local function colorize(header, header_color_map, colors)
   return colorized
 end
 
-local alpha_c = function()
+local alpha_c = function ()
   local alpha = require "alpha"
   local dashboard = require "alpha.themes.dashboard"
 
@@ -69,7 +69,7 @@ local alpha_c = function()
     ["4"] = { fg = "#FFFFFF" },
     ["5"] = { fg = "#D162A4" },
     ["6"] = { fg = "#B55690" },
-    ["7"] = { fg = "#A30262" },
+    ["7"] = { fg = "#A30262" }
   }
 
   local header = {}
@@ -86,8 +86,7 @@ local alpha_c = function()
     table.insert(header, header_line)
   end
 
-  local header_add =
-  [[                                                                🐈CATGIRL SANCTUARY🐈                                                          ]]
+  local header_add = [[                                                                🐈CATGIRL SANCTUARY🐈                                                          ]]
 
   table.insert(header, [[]])
   table.insert(header, header_add)
@@ -102,10 +101,7 @@ local alpha_c = function()
 
   table.insert(colorized, hl_add)
 
-  dashboard.section.header.opts = {
-    hl = colorized,
-    position = "center",
-  }
+  dashboard.section.header.opts = { hl = colorized, position = "center" }
 
   --[[ local function toNotify(msg, render)
     local base = "<Cmd>lua vim.notify('%s',nil,{render='%s'}) <CR>"
@@ -117,7 +113,7 @@ local alpha_c = function()
     dashboard.button("observe", "🐈 Observe the cat", "<Cmd>Observe<CR>"),
     dashboard.button("cuddle", "😻 Cuddle the cat", "<Cmd>Cuddle<CR>"),
     dashboard.button("secret diary", "📚 Open your diary", "<F11>"),
-    dashboard.button("todo", "📓 Open your todo list", "<F4>"),
+    dashboard.button("todo", "📓 Open your todo list", "<F4>")
   }
 
   for _, a in ipairs(dashboard.section.buttons.val) do

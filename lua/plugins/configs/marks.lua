@@ -30,14 +30,14 @@ require("marks").setup {
     virt_text = "hello world",
     -- explicitly prompt for a virtual line annotation when setting a bookmark from this group.
     -- defaults to false.
-    annotate = false,
+    annotate = false
   },
-  mappings = {},
+  mappings = {}
 }
 require("telescope").setup {
   pickers = {
     marks = {
-      mark_type = "local",
-    },
-  },
+      mark_type = "local"
+    }
+  }
 }

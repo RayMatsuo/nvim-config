@@ -2,81 +2,81 @@ return {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n",          desc = "Comment toggle current line" },
-      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n",          desc = "Comment toggle current block" },
-      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n", desc = "Comment toggle current line" },
+      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n", desc = "Comment toggle current block" },
+      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" }
     },
-    init = function()
+    init = function ()
       require("config.utils").load_mappings "comment"
     end,
-    config = function(_, opts)
+    config = function (_, opts)
       require("Comment").setup(opts)
-    end,
+    end
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    config = function()
+    config = function ()
       require("Comment").setup {
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
       }
     end,
-    event = "VeryLazy",
+    event = "VeryLazy"
   },
   {
     "folke/todo-comments.nvim",
-    config = function()
+    config = function ()
       require "plugins.configs.todo-comments"
     end,
-    event = "VeryLazy",
+    event = "VeryLazy"
   },
   {
     "NFrid/due.nvim",
     event = "VeryLazy",
-    config = function()
+    config = function ()
       require "plugins.configs.due"
-    end,
+    end
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     event = "VeryLazy",
     opts = {},
-    config = function()
+    config = function ()
       require("render-markdown").setup {
         anti_conceal = {
           enabled = true
         },
         bullet = {
-          left_pad = 2,
+          left_pad = 2
         },
         checkbox = {
-          bullet = true,
+          bullet = true
         },
         heading = {
           width = 'block',
           right_pad = 1,
-          min_width = 30,
+          min_width = 30
         },
         indent = {
-            enabled = true,
+          enabled = true
         }
       }
-    end,
+    end
   },
   {
     "kkoomen/vim-doge",
-    event = "VeryLazy",
+    event = "VeryLazy"
   },
   {
     "tadmccorkle/markdown.nvim",
     ft = "markdown", -- or 'event = "VeryLazy"'
-    config = function()
+    config = function ()
       require("markdown").setup({
         -- configuration here or empty for defaults
       })
-    end,
+    end
   }
 }

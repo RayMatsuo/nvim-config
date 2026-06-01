@@ -1,7 +1,6 @@
 local M = {}
-local utils = require "config.utils"
 
-M.luasnip = function(opts)
+M.luasnip = function (opts)
   require("luasnip").config.set_config(opts)
 
   -- vscode format
@@ -17,29 +16,13 @@ M.luasnip = function(opts)
   require("luasnip.loaders.from_lua").lazy_load { paths = vim.g.lua_snippets_path or "" }
 
   vim.api.nvim_create_autocmd("InsertLeave", {
-    callback = function()
-      if
-          require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-          and not require("luasnip").session.jump_active
-      then
+    callback = function ()
+      if require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+        and not require("luasnip").session.jump_active then
         require("luasnip").unlink_current()
       end
-    end,
+    end
   })
 end
-
-M.gitsigns = {
-  signs = {
-    add = { text = "│" },
-    change = { text = "│" },
-    delete = { text = "󰍵" },
-    topdelete = { text = "‾" },
-    changedelete = { text = "~" },
-    untracked = { text = "│" },
-  },
-  on_attach = function(bufnr)
-    utils.load_mappings("gitsigns", { buffer = bufnr })
-  end,
-}
 
 return M

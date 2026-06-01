@@ -26,10 +26,11 @@ return {
     "practice",
     dir = "D:/Active projects/nvim-plugin/practice",
     lazy = false,
-    config = true,
-    dependencies = {
-      "MunifTanjim/nui.nvim"
-    },
-    enabled = false
+    cmd = { "Prac" },
+    config = function ()
+      require("practice").setup()
+    end,
+    enabled = true,
+    opts = {}
   }
 }

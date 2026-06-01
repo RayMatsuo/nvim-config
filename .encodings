@@ -3,7 +3,6 @@ iso-8859-n
 koi8-r
 koi8-u
 macroman
-8bit-{name}
 cp437
 cp737
 cp775
@@ -27,7 +26,6 @@ cp1255
 cp1256
 cp1257
 cp1258
-cp{number}
 cp932
 euc-jp
 sjis
@@ -38,8 +36,6 @@ euc-cn
 cp950
 big5
 euc-tw
-2byte-{name}
-cp{number}
 utf-8
 ucs-2
 ucs-2le

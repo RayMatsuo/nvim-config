@@ -8,7 +8,8 @@
 --
 -- Requires workspace to be set up
 --
-vim.api.nvim_create_user_command("Pope", function()
+local isdir = require("config.helper").Isdir
+vim.api.nvim_create_user_command("Pope", function ()
   local ws = require "workspaces"
   local root = ws.path()
 
@@ -33,57 +34,49 @@ vim.api.nvim_create_user_command("Pope", function()
       vim.cmd("e " .. filepath)
     end
   end
-end, {})
+end, {}
+)
 
-vim.api.nvim_create_user_command("EP", function()
+vim.api.nvim_create_user_command("EP", function ()
   vim.cmd "Easypick"
-end, {})
-vim.api.nvim_create_user_command("W", function()
+end, {}
+)
+vim.api.nvim_create_user_command("W", function ()
   vim.cmd "w"
-end, {})
-vim.api.nvim_create_user_command("Q", function()
+end, {}
+)
+vim.api.nvim_create_user_command("Q", function ()
   vim.cmd "q"
-end, {})
+end, {}
+)
 
-local petMessages = {
-  "meoooow mew mew",
-  "nya? mrrrrpppth",
-  "nyaaaaa *nuzzles against your fingers",
-}
-local scritchMessages = {
-  "mrrp... arp.. mppp...",
-  "mrrrrrp",
-  "purrrrrrr.....",
-}
+local petMessages = { "meoooow mew mew", "nya? mrrrrpppth", "nyaaaaa *nuzzles against your fingers" }
+local scritchMessages = { "mrrp... arp.. mppp...", "mrrrrrp", "purrrrrrr....." }
 
 local cuddleMessages = {
-  "you feel your worries melt away",
-  "the warmth of the cat embraces you back,keeping you safe from the cold",
-  "the cat nuzzles its face against yours.",
-  "the cat purrs against your chest",
-  "you sink your fingers into the warm fluff",
-  "you think you are going to have a peaceful rest tonight",
+  "you feel your worries melt away", "the warmth of the cat embraces you back,keeping you safe from the cold",
+  "the cat nuzzles its face against yours.", "the cat purrs against your chest",
+  "you sink your fingers into the warm fluff", "you think you are going to have a peaceful rest tonight"
 }
-local observeMessaegs = {
-  "🐈 <- THE CAT OBSERVED",
-  "🐈 <- IT STANDIN",
-  " <- WHERE DID IT GO?",
-}
-vim.api.nvim_create_user_command("Pet", function()
+local observeMessaegs = { "🐈 <- THE CAT OBSERVED", "🐈 <- IT STANDIN", " <- WHERE DID IT GO?" }
+vim.api.nvim_create_user_command("Pet", function ()
   vim.notify(petMessages[math.random(1, #petMessages)], nil, { render = "compact" })
-end, {})
-vim.api.nvim_create_user_command("Scritchies", function()
+end, {}
+)
+vim.api.nvim_create_user_command("Scritchies", function ()
   vim.notify(scritchMessages[math.random(1, #scritchMessages)], nil, { render = "compact" })
-end, {})
-vim.api.nvim_create_user_command("Cuddle", function()
+end, {}
+)
+vim.api.nvim_create_user_command("Cuddle", function ()
   vim.notify(cuddleMessages[math.random(1, #cuddleMessages)], nil, { render = "compact" })
-end, {})
-vim.api.nvim_create_user_command("Observe", function()
+end, {}
+)
+vim.api.nvim_create_user_command("Observe", function ()
   vim.notify(observeMessaegs[math.random(1, #observeMessaegs)], nil, { render = "compact" })
-end, {})
+end, {}
+)
 
-
-vim.api.nvim_create_user_command("MemInspect", function()
+vim.api.nvim_create_user_command("MemInspect", function ()
   local nsn = vim.api.nvim_get_namespaces()
 
   local counts = {}
@@ -92,41 +85,22 @@ vim.api.nvim_create_user_command("MemInspect", function()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       local count = #vim.api.nvim_buf_get_extmarks(buf, ns, 0, -1, {})
       if count > 0 then
-        counts[#counts + 1] = {
-          name = name,
-          buf = buf,
-          count = count,
-          ft = vim.bo[buf].ft,
-        }
+        counts[#counts + 1] = { name = name, buf = buf, count = count, ft = vim.bo[buf].ft }
       end
     end
   end
-  table.sort(counts, function(a, b)
+  table.sort(counts, function (a, b)
     return a.count > b.count
   end)
   vim.print(counts)
-end, {})
+end, {}
+)
 
-
-vim.api.nvim_create_user_command("TOC", function()
-  require('telescope.builtin').lsp_document_symbols({ symbols = 'function' })
-end, {})
+-- Start correct treesitter parser on filetype
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
-  callback = function()
+  callback = function ()
     pcall(vim.treesitter.start)
-  end,
+  end
 })
 
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---   callback = function(event)
---     local ws = require "workspaces"
---     local name = ws.name()
---     local str = ""
---     if name ~= nil then
---       str = str .. name .. ":"
---     end
---     vim.cmd("se title")
---     vim.cmd("se titlestring=" .. str )
---   end,
--- })

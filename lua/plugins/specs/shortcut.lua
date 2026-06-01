@@ -1,32 +1,30 @@
 return {
-
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    config = function()
+    config = function ()
       require "plugins.configs.autopairs"
-    end,
+    end
   },
   {
     "machakann/vim-sandwich",
     event = "VeryLazy",
-    config = function()
+    config = function ()
       require "plugins.configs.sandwich"
-    end,
+    end
   },
   {
     "max397574/better-escape.nvim",
-
     event = "VeryLazy",
-    config = function()
+    config = function ()
       require "plugins.configs.escape"
-    end,
+    end
   },
   {
     "acksld/nvim-trevj.lua",
     event = "VeryLazy",
-    config = function()
+    config = function ()
       require "plugins.configs.trevj"
-    end,
-  },
+    end
+  }
 }

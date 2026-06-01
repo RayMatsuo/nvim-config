@@ -17,7 +17,7 @@ require("sibling-swap").setup {
     ["<"] = ">",
     ["<="] = ">=",
     [">"] = "<",
-    [">="] = "<=",
+    [">="] = "<="
   },
   use_default_keymaps = false,
   -- Highlight recently swapped node. Can be boolean or table
@@ -30,7 +30,7 @@ require("sibling-swap").setup {
     ["<C-e>"] = "swap_with_right",
     ["<C-q>"] = "swap_with_left",
     ["<space>e"] = "swap_with_right_with_opp",
-    ["<space>q"] = "swap_with_left_with_opp",
+    ["<space>q"] = "swap_with_left_with_opp"
   },
   ignore_injected_langs = false,
   -- allow swaps across lines
@@ -38,7 +38,19 @@ require("sibling-swap").setup {
   -- swaps interline siblings without separators (no recommended, helpful for swaps html-like attributes)
   interline_swaps_without_separator = false,
   -- Fallbacs for tiny settings for langs and nodes. See #fallback
-  fallback = {},
+  fallback = {}
 }
-vim.api.nvim_set_keymap("n", "<C-e>", "<cmd>lua require('sibling-swap').swap_with_right()<CR>",{noremap=false, silent=true})
-vim.api.nvim_set_keymap("n", "<C-q>", "<cmd>lua require('sibling-swap').swap_with_left()<CR>",{noremap=false, silent=true})
+vim.api.nvim_set_keymap(
+  "n", "<C-e>", "<cmd>lua require('sibling-swap').swap_with_right()<CR>",
+  {
+    noremap = false,
+    silent = true
+  }
+)
+vim.api.nvim_set_keymap(
+  "n", "<C-q>", "<cmd>lua require('sibling-swap').swap_with_left()<CR>",
+  {
+    noremap = false,
+    silent = true
+  }
+)

@@ -32,5 +32,12 @@ return {
     end,
     enabled = true,
     opts = {}
+  },
+  {
+    "yanskun/gotests.nvim",
+    ft = "go",
+    config = function ()
+      require("gotests").setup()
+    end
   }
 }

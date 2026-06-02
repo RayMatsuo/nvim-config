@@ -79,17 +79,17 @@ M.general = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["<F4>"] = { "<cmd>e ~/docs/doc.md <CR>", "open todo" },
-    ["<F5>"] = { "<cmd>e ~/docs/personal.md <CR>", "open todo" },
-    ["<F10>"] = {
+    ["<F5>"] = {
       function ()
         local workspaces = require "workspaces"
         local name = workspaces.name()
         if name ~= nil then
-          vim.cmd("e " .. data .. "/docs/workspace/" .. name .. ".norg")
+          vim.cmd("e ~/docs/workspace/" .. name .. ".md")
         else
           vim.notify "not in workspace"
         end
-      end
+      end,
+      "open todo"
     },
     ["<Leader>d"] = {
       function ()
@@ -361,7 +361,6 @@ M.toggleterm = {
     }
   }
 }
-
 
 M.barbar = {
   n = {

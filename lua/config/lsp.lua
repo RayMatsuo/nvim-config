@@ -21,7 +21,9 @@ vim.lsp.config("emmylua_ls", {
           --   vim.api.nvim_get_runtime_file('lua/lspconfig', false)[1],
           -- },
           -- Or pull in all of 'runtimepath'. May be slower! https://github.com/neovim/nvim-lspconfig/issues/3189
-        library = vim.api.nvim_get_runtime_file('', true)
+        library = vim.tbl_filter(function (d)
+          return not d:match(vim.fn.stdpath('config') .. '/?a?f?t?e?r?')
+        end, vim.api.nvim_get_runtime_file('', true))
       }
     }
   }

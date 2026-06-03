@@ -341,7 +341,7 @@ ins_left({
     if name ~= nil then
       return " " .. name
     end
-    return ""
+    return "  -"
   end,
   color = function ()
     return { fg = get_middle_color(1) }

@@ -32,8 +32,8 @@ return {
         hl.BufferCurrentSign = { fg = "#3e68d7" }
         hl.BufferCurrentSignRight = { fg = "#3e68d7" }
         hl.LineNr = { fg = "#82aaff" }
-        hl.LineNrAbove = { fg = "#3e68d7" }
-        hl.LineNrBelow = { fg = "#3e68d7" }
+        hl.LineNrAbove = { fg = "#82aaff" }
+        hl.LineNrBelow = { fg = "#82aaff" }
         hl.Comment = { fg = "#82aaff" }
         hl.DiagnosticUnnecessary = { fg = "#3e68d7" }
       end

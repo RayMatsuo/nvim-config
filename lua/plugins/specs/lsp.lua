@@ -4,10 +4,6 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate | TSInstallAll",
-    opts = function ()
-      -- dofile(vim.g.base46_cache .. "syntax")
-      return require "plugins.configs.treesitter"
-    end,
     lazy = false
   },
   -- lsp stuff

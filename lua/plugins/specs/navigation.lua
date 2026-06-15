@@ -38,7 +38,7 @@ return {
   },
   {
     "https://codeberg.org/andyg/leap.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     config = function ()
       require "plugins.configs.leap"
     end,
@@ -49,12 +49,12 @@ return {
     config = function ()
       require "plugins.configs.faster"
     end,
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     enabled = false
   },
   {
     "chentoast/marks.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     config = function ()
       require "plugins.configs.marks"
     end
@@ -63,24 +63,25 @@ return {
     "natecraddock/workspaces.nvim",
     config = function ()
       require "plugins.configs.workspaces"
+      require("config.utils").load_mappings "workspaces"
     end,
-    lazy = false,
+    -- lazy = false,
     dependencies = { "nvim-tree/nvim-tree.lua" },
-    enabled = true
+    cmd = "Telescope workspaces"
   },
   {
     "axkirillov/easypick.nvim",
     config = function ()
       require "plugins.configs.easypick"
     end,
-    event = "VeryLazy"
+    cmd = "Easypick"
   },
   {
     "mfussenegger/nvim-treehopper",
     config = function ()
       require "plugins.configs.treehopper"
     end,
-    event = "VeryLazy"
+    event = { "BufReadPost", "BufNewFile" },
   },
   {
     'stevearc/quicker.nvim',

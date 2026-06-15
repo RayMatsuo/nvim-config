@@ -79,18 +79,6 @@ M.general = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["<F4>"] = { "<cmd>e ~/docs/doc.md <CR>", "open todo" },
-    ["<F5>"] = {
-      function ()
-        local workspaces = require "workspaces"
-        local name = workspaces.name()
-        if name ~= nil then
-          vim.cmd("e ~/docs/workspace/" .. name .. ".md")
-        else
-          vim.notify "not in workspace"
-        end
-      end,
-      "open todo"
-    },
     ["<Leader>d"] = {
       function ()
         local dir = vim.fn.expand "%"
@@ -291,11 +279,27 @@ M.telescope = {
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
     ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
     ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
-    ["<F2>"] = { "<cmd> Telescope workspaces <CR>", "Find workspaces" },
     ["<c-p>"] = { "<cmd> Telescope yank_history <CR>", "Open yank history" }
   }
 }
 
+M.workspaces = {
+  n = {
+    ["<F2>"] = { "<cmd> Telescope workspaces <CR>", "Find workspaces" },
+    ["<F5>"] = {
+      function ()
+        local workspaces = require "workspaces"
+        local name = workspaces.name()
+        if name ~= nil then
+          vim.cmd("e ~/docs/workspace/" .. name .. ".md")
+        else
+          vim.notify "not in workspace"
+        end
+      end,
+      "open todo"
+    },
+  }
+}
 M.toggleterm = {
   plugin = true,
   t = {

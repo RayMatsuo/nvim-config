@@ -31,7 +31,7 @@ return {
   },
   {
     "shortcuts/no-neck-pain.nvim",
-    event = "VeryLazy",
+    cmd = "NoNeckPain",
     config = function ()
       require "plugins.configs.noneckpain"
     end

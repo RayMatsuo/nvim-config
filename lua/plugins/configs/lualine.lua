@@ -110,58 +110,6 @@ local function hide_in_width()
   return vim.fn.winwidth(0) > 80 -- 'winwidth(0)' returns the current window width
 end
 
--- Condition: Check if the current workspace is inside a Git repository
--- This function checks if the current file is inside a Git repository by looking for a `.git` directory
--- in the current file's path. Returns true if the file is in a Git workspace.
--- local function check_git_workspace()
--- local filepath = vim.fn.expand('%:p:h')               -- Get the current file's directory
--- local gitdir = vim.fn.finddir('.git', filepath .. ';') -- Search for a `.git` directory in the file path
--- return gitdir and #gitdir > 0 and #gitdir < #filepath -- Returns true if a `.git` directory is found
--- end
-
--- -- Set random seed based on current time for randomness
-math.randomseed(os.time())
--- Icon sets for random selection
-local icon_sets = {
-  stars = { '★', '☆', '✧', '✦', '✶', '✷', '✸', '✹' }, -- Set of star-like icons
-  hearts = { '❤', '♥', '♡', '❦', '❧' },                     -- Set of heart-shaped icons
-  waves = { '≈', '∿', '≋', '≀', '⌀', '≣', '⌇' }         -- Set of wave-like symbols
-}
-
--- Function to select a random icon from a given set
-local function get_random_icon(icons)
-  return icons[math.random(#icons)] -- Returns a random icon from the set
-end
-
--- Function to shuffle the elements in a table
-local function shuffle_table(tbl)
-  local n = #tbl
-  while n > 1 do
-    local k = math.random(n)
-    tbl[n], tbl[k] = tbl[k], tbl[n] -- Swap elements
-    n = n - 1                       -- Decrease the size of the unsorted portion
-  end
-end
-
--- Create a list of all icon sets to allow for random selection from any set
-local icon_sets_list = {}
-for _, icons in pairs(icon_sets) do
-  table.insert(icon_sets_list, icons) -- Add each icon set to the list
-end
-shuffle_table(icon_sets_list) -- Shuffle the icon sets list
-
--- Function to reverse the order of elements in a table
-local function reverse_table(tbl)
-  local reversed = {}
-  for i = #tbl, 1, -1 do
-    table.insert(reversed, tbl[i]) -- Insert elements in reverse order
-  end
-  return reversed
-end
-
--- Create a reversed list of icon sets
-local reversed_icon_sets = reverse_table(icon_sets_list)
-
 -- Function to create a separator component based on side (left/right) and optional mode color
 local function create_separator(side, use_mode_color)
   return {
@@ -384,19 +332,6 @@ ins_left {
     info = { fg = colors.CYAN }
   }
 }
--- for _, icons in pairs(icon_sets_list) do
--- ins_left {
--- function()
--- return get_random_icon(icons)
--- end,
--- color = function()
--- return {
--- fg = get_animated_color(),
--- }
--- end,
--- cond = hide_in_width,
--- }
--- end
 
 ins_left {
   'searchcount',
@@ -429,47 +364,34 @@ ins_right {
   }
 }
 
--- for _, icons in ipairs(reversed_icon_sets) do
--- ins_right {
--- function()
--- return get_random_icon(icons)
--- end,
--- color = function()
--- return {
--- fg = get_animated_color(),
--- }
--- end,
--- cond = hide_in_width,
--- }
--- end
-
 ins_right {
   function ()
     local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local buf_ft = vim.bo.filetype
     local clients = vim.lsp.get_clients()
     if next(clients) == nil then
       return msg
     end
-    local lsp_short_names = {
-      pyright = 'py',
-      tsserver = 'ts',
-      rust_analyzer = 'rs',
-      lua_ls = 'lua',
-      clangd = 'c++',
-      bashls = 'sh',
-      jsonls = 'json',
-      html = 'html',
-      cssls = 'css',
-      tailwindcss = 'tw',
-      dockerls = 'docker',
-      sqlls = 'sql',
-      yamlls = 'yml'
-    }
+    -- local lsp_short_names = {
+    -- pyright = 'py',
+    -- tsserver = 'ts',
+    -- rust_analyzer = 'rs',
+    -- lua_ls = 'lua',
+    -- clangd = 'c++',
+    -- bashls = 'sh',
+    -- jsonls = 'json',
+    -- html = 'html',
+    -- cssls = 'css',
+    -- tailwindcss = 'tw',
+    -- dockerls = 'docker',
+    -- sqlls = 'sql',
+    -- yamlls = 'yml'
+    -- }
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return lsp_short_names[client.name] or client.name:sub(1, 2)
+        -- return lsp_short_names[client.name] or client.name
+        return client.name
       end
     end
     return msg

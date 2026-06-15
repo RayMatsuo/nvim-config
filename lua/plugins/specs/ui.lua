@@ -12,7 +12,7 @@ return {
     config = function ()
       require "plugins.configs.rainbow"
     end,
-    event = "VeryLazy"
+    event = { "BufReadPost", "BufNewFile" },
   },
   {
     "b0o/incline.nvim",

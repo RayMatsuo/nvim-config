@@ -23,26 +23,26 @@ return {
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
       }
     end,
-    event = "VeryLazy"
+    event = { "BufReadPost", "BufNewFile" }
   },
   {
     "folke/todo-comments.nvim",
     config = function ()
       require "plugins.configs.todo-comments"
     end,
-    event = "VeryLazy"
+    event = { "BufReadPost", "BufNewFile" }
   },
   {
     "NFrid/due.nvim",
-    event = "VeryLazy",
     config = function ()
       require "plugins.configs.due"
-    end
+    end,
+    ft = "markdown"
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    event = "VeryLazy",
+    ft = "markdown",
     opts = {},
     config = function ()
       require("render-markdown").setup {
@@ -62,13 +62,14 @@ return {
         },
         indent = {
           enabled = true
-        }
+        },
+        latex = { enabled = false }
       }
     end
   },
   {
     "kkoomen/vim-doge",
-    event = "VeryLazy"
+    cmd = { "DogeGenerate" }
   },
   {
     "tadmccorkle/markdown.nvim",

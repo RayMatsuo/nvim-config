@@ -137,7 +137,9 @@ local function create_mode_based_component(content, icon, color_fg, color_bg)
       local mode_color = get_mode_color()
       local opposite_color = get_opposite_color(mode_color)
       return { fg = color_fg or colors.FG, bg = color_bg or opposite_color, gui = 'bold' }
-    end
+    end,
+
+    cond = hide_in_width
   }
 end
 
@@ -200,6 +202,7 @@ local config = {
     lualine_b = {},
     lualine_c = {},
     lualine_x = {
+
       {
         function ()
           return require("pomodoro").get_pomodoro_status("🍅❌", "🐹", "🍲")
@@ -287,13 +290,14 @@ ins_left({
     local ws = require "workspaces"
     local name = ws.name()
     if name ~= nil then
-      return " " .. name
+      return name
     end
-    return "  -"
+    return "-"
   end,
   color = function ()
     return { fg = get_middle_color(1) }
-  end
+  end,
+  icon = " "
 })
 
 ins_left {
@@ -338,7 +342,8 @@ ins_left {
   color = {
     fg = colors.GREEN,
     gui = 'bold'
-  }
+  },
+  icon = ""
 }
 
 -- RIGHT
@@ -353,7 +358,8 @@ ins_right {
   },
   cond = function ()
     return vim.fn.reg_recording() ~= ''
-  end
+  end,
+  icon="󰑋"
 }
 
 ins_right {
@@ -363,38 +369,29 @@ ins_right {
     gui = 'bold'
   }
 }
-
 ins_right {
   function ()
-    local msg = 'No Active Lsp'
+    local msg = ''
     local buf_ft = vim.bo.filetype
     local clients = vim.lsp.get_clients()
     if next(clients) == nil then
-      return msg
+      return "-"
     end
-    -- local lsp_short_names = {
-    -- pyright = 'py',
-    -- tsserver = 'ts',
-    -- rust_analyzer = 'rs',
-    -- lua_ls = 'lua',
-    -- clangd = 'c++',
-    -- bashls = 'sh',
-    -- jsonls = 'json',
-    -- html = 'html',
-    -- cssls = 'css',
-    -- tailwindcss = 'tw',
-    -- dockerls = 'docker',
-    -- sqlls = 'sql',
-    -- yamlls = 'yml'
-    -- }
+    local count = 0
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        -- return lsp_short_names[client.name] or client.name
-        return client.name
+        if string.len(msg) > 0 then
+          msg = msg .. "|"
+        end
+        msg = msg .. string.sub(client.name, 0, 4)
+        count = count + 1
       end
     end
-    return msg
+    if string.len(msg) == 0 then
+      return "-"
+    end
+    return string.format("%s [%d]", msg, count)
   end,
   icon = ' ',
   color = {
@@ -481,7 +478,7 @@ ins_right {
     return truncated_branch
   end,
   color = function ()
-    local mode_color = get_mode_color()
+    local mode_color = colors.MAGENTA
     return { fg = mode_color, gui = 'bold' }
   end
 }

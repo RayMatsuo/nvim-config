@@ -297,7 +297,7 @@ M.workspaces = {
         end
       end,
       "open todo"
-    },
+    }
   }
 }
 M.toggleterm = {

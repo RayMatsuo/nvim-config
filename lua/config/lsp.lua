@@ -5,7 +5,7 @@ local on_init = function (client, _)
   end
 end
 
-vim.lsp.config("*", { capabilities = capabilities, on_init = on_init })
+-- vim.lsp.config("*", { capabilities = capabilities, on_init = on_init })
 
 vim.lsp.config("emmylua_ls", {
   settings = {
@@ -32,8 +32,8 @@ vim.lsp.config("emmylua_ls", {
 local servers = {
   "html",
   "cssls",
-  "intelephense",
-  -- "phpantom_lsp",
+  -- "intelephense",
+  "phpantom_lsp",
   "tailwindcss",
   "jsonjs",
   "shopify_theme_ls",
@@ -47,6 +47,6 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-  vim.lsp.config(lsp, {})
+  -- vim.lsp.config(lsp, {})
   vim.lsp.enable(lsp)
 end

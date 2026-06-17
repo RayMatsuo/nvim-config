@@ -99,5 +99,6 @@ return {
       require("scope").setup({})
     end,
     lazy = false
-  }
+  },
+
 }

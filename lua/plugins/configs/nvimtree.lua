@@ -20,7 +20,7 @@ local options = {
   },
   git = {
     enable = false,
-    ignore = true
+    ignore = false
   },
   filesystem_watchers = {
     enable = true,
@@ -81,12 +81,15 @@ local options = {
         }
       }
     }
-  }
+  },
   --[[ experimental={
     open={
       relative_path =true
     }
   }, ]]
+  bookmarks = {
+    persist = true
+  }
 }
 
 return options

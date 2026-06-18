@@ -3,6 +3,12 @@ require("workspaces").setup {
   auto_open = true,
   hooks = {
     open = {
+      function ()
+        -- Harpoon directory change fix
+        -- Source : https://github.com/ThePrimeagen/harpoon/issues/648
+        local harpoon = require("harpoon")
+        harpoon.data = require("harpoon.data").Data:new(harpoon.config)
+      end,
       -- "Telescope find_files",
       function ()
         local f = io.open("serve.bat", "r")

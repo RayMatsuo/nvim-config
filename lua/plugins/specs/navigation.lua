@@ -66,7 +66,7 @@ return {
       require("config.utils").load_mappings "workspaces"
     end,
     -- lazy = false,
-    dependencies = { "nvim-tree/nvim-tree.lua" },
+    dependencies = { "nvim-tree/nvim-tree.lua", "ThePrimeagen/harpoon" },
     cmd = "Telescope workspaces"
   },
   {
@@ -81,7 +81,7 @@ return {
     config = function ()
       require "plugins.configs.treehopper"
     end,
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" }
   },
   {
     'stevearc/quicker.nvim',
@@ -89,5 +89,14 @@ return {
     ---@module "quicker"
     ---@type quicker.SetupOptions
     opts = {}
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "BufReadPost", "BufNewFile" },
+    config = function ()
+      require "plugins.configs.harpoon"
+    end
   }
 }

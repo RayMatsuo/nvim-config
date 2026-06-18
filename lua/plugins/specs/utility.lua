@@ -5,7 +5,7 @@ return {
     version = "*",
     config = true,
     init = function ()
-      require("config.utils").load_mappings "toggleterm"
+        require("config.utils").load_mappings "toggleterm"
     end
   },
   {

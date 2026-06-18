@@ -37,4 +37,24 @@ end
 function M.Isdir(path)
   return M.Exists(path .. "/")
 end
+
+-- source : https://github.com/folke/lazy.nvim/blob/main/lua/lazy/core/util.lua
+function M.ls(path, fn)
+  local handle = vim.uv.fs_scandir(path)
+  while handle do
+    local name, t = vim.uv.fs_scandir_next(handle)
+    if not name then
+      break
+    end
+
+    local fname = path .. "/" .. name
+
+    -- HACK: type is not always returned due to a bug in luv,
+    -- so fecth it with fs_stat instead when needed.
+    -- see https://github.com/folke/lazy.nvim/issues/306
+    if fn(fname, name, t or vim.uv.fs_stat(fname).type) == false then
+      break
+    end
+  end
+end
 return M

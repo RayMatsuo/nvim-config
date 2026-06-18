@@ -77,6 +77,7 @@ return {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
     init = function ()
+      require("plugins.configs.lspconfig").defaults()
       require("config.utils").load_mappings "lspconfig"
       require "config.lsp"
     end
@@ -84,18 +85,6 @@ return {
   {
     "jwalton512/vim-blade",
     ft = { "blade", "php" }
-  },
-  {
-    "luckasRanarison/tailwind-tools.nvim",
-    name = "tailwind-tools",
-    build = ":UpdateRemotePlugins",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig"          -- optional
-    },
-    opts = {}, -- your configuration
-    enabled = false
   },
   {
     "folke/trouble.nvim",
@@ -146,15 +135,6 @@ return {
     config = function ()
       require "plugins.configs.aerial"
     end
-  },
-  {
-    "laytan/tailwind-sorter.nvim",
-    event = "VeryLazy",
-    config = function ()
-      require "plugins.configs.tailwind-sorter"
-    end,
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
-    build = 'cd formatter && npm ci && npm run build'
   },
   {
     'stevearc/conform.nvim',

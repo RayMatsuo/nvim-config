@@ -19,7 +19,6 @@ else
 	   let $__SuppressAnsiEscapeSequences = 1
   ]]
   )
- vim.notify("abc") 
 end
 
 local has_value = require("config.helper").Has_value

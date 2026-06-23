@@ -377,4 +377,5 @@ M.undotree = {
     ["<A-r>"] = { "<cmd>UndotreeToggle<CR>" }
   }
 }
+
 return M

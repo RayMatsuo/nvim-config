@@ -105,14 +105,33 @@ local options = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
-    { name = "nvim_lua" },
     { name = "path" },
-    { name = "nvim-html-css" },
-    { name = "html-css" }
+    { name = 'nvim_lsp_signature_help' }
   }
 }
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+    { name = 'buffer' }
+  },
+    {
+      {
+        name = 'cmdline',
+        option = {
+          ignore_cmds = { 'Man', '!' }
+        }
+      }
+    })
+})
 
-if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
-  options.window.completion.border = border "CmpBorder"
-end
+-- if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
+--   options.window.completion.border = border "CmpBorder"
+-- end
 return options

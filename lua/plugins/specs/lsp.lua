@@ -63,7 +63,8 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "onsails/lspkind.nvim"
+        "onsails/lspkind.nvim",
+        "hrsh7th/cmp-nvim-lsp-signature-help"
       }
     },
     opts = function ()
@@ -71,7 +72,10 @@ return {
     end,
     config = function (_, opts)
       require("cmp").setup(opts)
-    end
+    end,
+    init = function ()
+    end,
+    enabled = false
   },
   {
     "neovim/nvim-lspconfig",
@@ -145,5 +149,34 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "User FilePost"
-  }
+  },
+  {
+    'saghen/blink.cmp',
+    dependencies = {
+      'saghen/blink.lib',
+      'rafamadriz/friendly-snippets',
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind.nvim",
+'L3MON4D3/LuaSnip'
+    },
+    build = function ()
+      require('blink.cmp').build():pwait()
+    end,
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = function ()
+      return require "plugins.configs.blink"
+    end
+  },
+  {
+    'saghen/blink.compat',
+    -- use v2.* for blink.cmp v1.*
+    version = '2.*',
+    -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+    lazy = true,
+    -- make sure to set opts so that lazy.nvim calls blink.compat's setup
+    opts = {}
+  },
 }

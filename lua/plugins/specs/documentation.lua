@@ -79,5 +79,32 @@ return {
         -- configuration here or empty for defaults
       })
     end
+  },
+  {
+    "obsidian-nvim/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    event = {
+      -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+    -- refer to `:h file-pattern` for more examples
+      "BufReadPre C:/Users/matsu/docs/notes/*.md",
+      "BufNewFile C:/Users/matsu/docs/notes/*.md"
+    },
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim"
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "sanctuary",
+          path = "C:/Users/matsu/docs/notes"
+        }
+      },
+      disable_frontmatter = true
+
+      -- see below for full list of options 👇
+    }
   }
 }

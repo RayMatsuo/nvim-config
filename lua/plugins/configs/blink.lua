@@ -7,7 +7,8 @@ return {
     ["<C-j>"] = { "select_next", "fallback" },
     ["<Up>"] = { "select_prev", "fallback" },
     ["<Down>"] = { "select_next", "fallback" },
-    ["<CR>"] = { 'accept', 'snippet_forward', 'fallback' }
+    ["<CR>"] = { 'accept', 'snippet_forward', 'fallback' },
+    ["<C-Space>"] = { 'show'},
   },
 
   completion = {
@@ -61,6 +62,10 @@ return {
       selection = {
         auto_insert = false
       }
+    },
+    trigger = {
+      show_on_keyword = true,
+      show_on_insert = true
     }
   },
   sources = {
@@ -90,6 +95,13 @@ return {
     },
     completion = {
       ghost_text = { enabled = false }
+    }
+  },
+  fuzzy = {
+    sorts = {
+      'exact',
+      'score',
+      'sort_text'
     }
   }
 }

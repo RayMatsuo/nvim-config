@@ -1,0 +1,5 @@
+-- vim.lsp.config('phpantom_lsp', {
+--   cmd = { "phpantom_lsp", "--tcp=0" },
+--   filetypes = { "php" },
+--   root_markers = { ".phpantom.toml", ".git", "composer.json" }
+-- })

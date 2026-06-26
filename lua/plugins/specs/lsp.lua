@@ -155,10 +155,7 @@ return {
     dependencies = {
       'saghen/blink.lib',
       'rafamadriz/friendly-snippets',
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim",
-'L3MON4D3/LuaSnip'
     },
     build = function ()
       require('blink.cmp').build():pwait()
@@ -178,5 +175,5 @@ return {
     lazy = true,
     -- make sure to set opts so that lazy.nvim calls blink.compat's setup
     opts = {}
-  },
+  }
 }

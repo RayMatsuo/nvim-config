@@ -1,7 +1,8 @@
 local servers = {
   "html",
   "cssls",
-  "phpantom_lsp",
+  -- "phpantom_lsp",
+  "intelephense",
   "tailwindcss",
   "jsonls",
   "ts_ls",
@@ -23,3 +24,4 @@ for _, lsp in ipairs(servers) do
   -- vim.lsp.config(lsp, {})
   vim.lsp.enable(lsp)
 end
+

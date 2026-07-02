@@ -1,6 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 local config = require("config.utils").load_config()
+local is_windows = vim.fn.has("win32") ~= 0
 
 -------------------------------------- globals -----------------------------------------
 g.transparency = config.ui.transparency
@@ -9,6 +10,8 @@ g.transparency = config.ui.transparency
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
+
+if is_windows then
 g.clipboard = {
   name = 'win32yank',
   copy = {
@@ -21,6 +24,7 @@ g.clipboard = {
   },
   cache_enabled = 0
 }
+end
 
 opt.clipboard = "unnamedplus"
 opt.cursorline = true
@@ -74,7 +78,6 @@ for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
 end
 
 -- add binaries installed by mason.nvim to path
-local is_windows = vim.fn.has("win32") ~= 0
 vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
 -------------------------------------- autocmds ------------------------------------------

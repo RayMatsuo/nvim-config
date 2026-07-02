@@ -99,6 +99,13 @@ vim.g["sandwich#recipes"] = vim.list_extend(vim.g["sandwich#recipes"], {
     buns = { "//#region", "//#endregion" },
     kind = { "add", "replate", "delete", "textobj" },
     input = { "r" },
-    filetype = { "javascript", "typescript", "typescriptreact" }
+    filetype = { "javascript", "typescript", "typescriptreact", "php" }
+  },
+
+  {
+    buns = { "-- #region", "-- #endregion" },
+    kind = { "add", "replate", "delete", "textobj" },
+    input = { "r" },
+    filetype = { "lua" }
   }
 })

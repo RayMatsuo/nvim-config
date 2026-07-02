@@ -43,28 +43,8 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ft = "markdown",
-    opts = {},
-    config = function ()
-      require("render-markdown").setup {
-        anti_conceal = {
-          enabled = true
-        },
-        bullet = {
-          left_pad = 2
-        },
-        checkbox = {
-          bullet = true
-        },
-        heading = {
-          width = 'block',
-          right_pad = 1,
-          min_width = 30
-        },
-        indent = {
-          enabled = true
-        },
-        latex = { enabled = false }
-      }
+    opts = function ()
+      require "plugins.configs.render_markdown"
     end
   },
   {
@@ -102,10 +82,17 @@ return {
           path = "C:/Users/matsu/docs/notes"
         }
       },
-      disable_frontmatter = true
-
-      -- see below for full list of options 👇
+      frontmatter = {
+        enabled = false,
+      },
+      legacy_commands = false,
+      statusline = {
+        enabled = false
+      },
+      footer = {
+        enabled = false
+      }
     },
-    enabled = false
+    enabled = true
   }
 }

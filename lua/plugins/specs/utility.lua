@@ -41,22 +41,6 @@ return {
     cmd = { "StartupTime" }
   },
   {
-    "kawre/leetcode.nvim",
-    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
-    dependencies = {
-      -- include a picker of your choice, see picker section for more details
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim"
-    },
-    opts = {
-      plugins = {
-        non_standalone = true
-      },
-      lang = "javascript"
-    },
-    cmd = { "Leet" }
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     event = "User FilePost",
     config = function ()

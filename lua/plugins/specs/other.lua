@@ -30,7 +30,7 @@ return {
     config = function ()
       require("practice").setup()
     end,
-    enabled = true,
+    enabled = false,
     opts = {}
   },
   {
@@ -39,5 +39,22 @@ return {
     config = function ()
       require("gotests").setup()
     end
-  }
+  },
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+    dependencies = {
+      -- include a picker of your choice, see picker section for more details
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    },
+    opts = {
+      plugins = {
+        non_standalone = true
+      },
+      lang = "javascript"
+    },
+    cmd = { "Leet" }
+  },
 }

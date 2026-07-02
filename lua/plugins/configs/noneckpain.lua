@@ -1,7 +1,8 @@
 require("no-neck-pain").setup {
   buffers = {
     right = {
-      enabled = false
+      enabled = true
     }
-  }
+  },
+    width = 120
 }

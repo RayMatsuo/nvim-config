@@ -8,7 +8,7 @@ return {
     ["<Up>"] = { "select_prev", "fallback" },
     ["<Down>"] = { "select_next", "fallback" },
     ["<CR>"] = { 'accept', 'snippet_forward', 'fallback' },
-    ["<C-Space>"] = { 'show'},
+    ["<C-c>"] = { 'hide' }
   },
 
   completion = {
@@ -74,6 +74,12 @@ return {
       'path',
       'snippets',
       'buffer'
+    },
+    per_filetype = {
+      markdown = {
+        "lsp",
+        inherit_defaults = true
+      }
     }
   },
   signature = {
@@ -95,7 +101,8 @@ return {
     },
     completion = {
       ghost_text = { enabled = false }
-    }
+    },
+
   },
   fuzzy = {
     sorts = {

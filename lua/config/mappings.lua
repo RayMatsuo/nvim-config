@@ -4,8 +4,6 @@ local wrap = false
 
 local cole = 2
 
-local data = vim.fn.stdpath("data")
-
 local M = {}
 
 M.general = {

@@ -14,5 +14,6 @@ return {
     undotree = { text = 'UndoTree' },
     ["no-neck-pain"] = { text = 'No neck pain' },
     Aerial = { text = 'Aerial' }
-  }
+  },
+  insert_at_end = true
 }

@@ -36,6 +36,8 @@ return {
         hl.LineNrBelow = { fg = "#82aaff" }
         hl.Comment = { fg = "#82aaff" }
         hl.DiagnosticUnnecessary = { fg = "#3e68d7" }
+        hl.BufferInactive = { fg = "#B3B3B3" }
+        hl.BufferCurrent = { fg = "#FFA626" }
       end
     }
   },

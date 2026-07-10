@@ -20,6 +20,9 @@ return {
   latex = { enabled = false },
 
   paragraph = {
-    indent = 2
+    indent = 0
+  },
+  code = {
+    conceal_delimiters = false
   }
 }

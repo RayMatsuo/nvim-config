@@ -44,13 +44,29 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ft = "markdown",
     opts = function ()
-      require "plugins.configs.render_markdown"
+      return require "plugins.configs.render_markdown"
     end
   },
   {
     "kkoomen/vim-doge",
-    cmd = { "DogeGenerate" }
+    cmd = { "DogeGenerate" },
+    lazy=false,
+    init=function()
+      require("config.utils").load_mappings "doge"
+    end,
+    enabled=false
   },
+  { 
+    "danymat/neogen", 
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*" 
+    lazy=false,
+    init=function()
+      vim.notify("AAA")
+      require("config.utils").load_mappings "neogen"
+    end
+},
   {
     "tadmccorkle/markdown.nvim",
     ft = "markdown", -- or 'event = "VeryLazy"'
@@ -94,5 +110,6 @@ return {
       }
     },
     enabled = true
-  }
+  },
+
 }

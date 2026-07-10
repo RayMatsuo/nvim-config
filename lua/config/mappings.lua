@@ -77,20 +77,6 @@ M.general = {
     ["<C-o>"] = { "a<CR><Esc>", "Insert return after cursor" },
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["<F4>"] = { "<cmd>e ~/docs/doc.md <CR>", "open todo" },
-    ["<Leader>d"] = {
-      function ()
-        local dir = vim.fn.expand "%"
-        if string.find(dir, "norg") then
-          local line = vim.fn.getline "."
-          if string.match(line, "(x)") then
-            vim.cmd "s/(\\zs.\\ze)/ /e"
-          elseif string.match(line, "( )") then
-            vim.cmd "s/(\\zs.\\ze)/x/e"
-          end
-        end
-        vim.cmd "noh"
-      end
-    },
     ["<Leader>nn"] = {
       function ()
         vim.cmd "NoNeckPain"
@@ -376,4 +362,18 @@ M.undotree = {
   }
 }
 
+
+M.doge = {
+  n = {
+    ["<Leader>g"] = { "<cmd>DogeGenerate<CR>" }
+  }
+}
+
+M.neogen = {
+  n = {
+    ["<Leader>d"] = { "<cmd>Neogen<CR>" },
+    ["<Leader>nt"] = { "<cmd>Neogen type<CR>" },
+    ["<Leader>nc"] = { "<cmd>Neogen class<CR>" },
+  }
+}
 return M

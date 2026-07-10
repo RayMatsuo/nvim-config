@@ -1,3 +1,6 @@
+local utils = require("yanky.utils")
+local mapping = require("yanky.telescope.mapping")
+
 require("yanky").setup({
   ring = {
     history_length = 100,
@@ -17,6 +20,24 @@ require("yanky").setup({
   },
   preserve_cursor_position = {
     enabled = true
+  },
+
+  picker = {
+    telescope = {
+      use_default_mappings = false,
+      mappings = {
+        default = mapping.put("p"),
+        i = {
+          ["<c-r>"] = mapping.set_register(utils.get_default_register())
+        },
+        n = {
+          p = mapping.put("p"),
+          P = mapping.put("P"),
+          d = mapping.delete(),
+          r = mapping.set_register(utils.get_default_register())
+        }
+      }
+    }
   }
 })
 

@@ -9,7 +9,7 @@ else
     [[	   
 	   set noshelltemp
 	   let &shell = 'pwsh'
-	   let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
+	   let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '
 	   let &shellcmdflag .= '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();'
 	   let &shellcmdflag .= '$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
 	   let &shellpipe  = '> %s 2>&1'

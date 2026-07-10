@@ -2,7 +2,7 @@ require("conform").setup({
   formatters_by_ft = {
     blade = { "blade-formatter" },
     LaTeX = { "latexindent" },
-    php = { "phpcbf" },
+    php = { "php_cs_fixer" },
     html = { "prettier" },
     javascript = { "prettier" },
     json = { "prettier" },

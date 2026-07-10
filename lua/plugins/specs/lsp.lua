@@ -156,6 +156,7 @@ return {
       'saghen/blink.lib',
       'rafamadriz/friendly-snippets',
       "onsails/lspkind.nvim",
+      "L3MON4D3/LuaSnip"
     },
     build = function ()
       require('blink.cmp').build():pwait()
@@ -165,6 +166,16 @@ return {
     ---@type blink.cmp.Config
     opts = function ()
       return require "plugins.configs.blink"
+    end
+  },
+  {
+
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      'rafamadriz/friendly-snippets'
+    },
+    init = function ()
+      require("luasnip.loaders.from_vscode").lazy_load()
     end
   },
   {

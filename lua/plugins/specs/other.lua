@@ -34,13 +34,6 @@ return {
     opts = {}
   },
   {
-    "yanskun/gotests.nvim",
-    ft = "go",
-    config = function ()
-      require("gotests").setup()
-    end
-  },
-  {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
     dependencies = {

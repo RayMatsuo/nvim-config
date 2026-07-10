@@ -38,9 +38,8 @@ return {
   },
   {
     "andymass/vim-matchup",
-    init = function ()
-      require "plugins.configs.matchup"
-    end
+    config =  true,
+    event = "BufEnter",
   },
   {
     'nvim-lualine/lualine.nvim',

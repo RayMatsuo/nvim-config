@@ -1,8 +1,19 @@
+local Isdir = require("lua.config.helper").Isdir
 require("workspaces").setup {
   cd_type = "tab",
   auto_open = true,
   hooks = {
     open = {
+
+      function ()
+        if Isdir("./.vim") then
+          local ws = require("workspaces")
+          local path = ws.path()
+          if path ~= nil then
+            require("luasnip.loaders.from_snipmate").lazy_load { paths = path .. "/.vim/snippets" }
+          end
+        end
+      end,
       function ()
         -- Harpoon directory change fix
         -- Source : https://github.com/ThePrimeagen/harpoon/issues/648

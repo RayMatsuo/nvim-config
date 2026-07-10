@@ -63,7 +63,6 @@ return {
     -- version = "*" 
     lazy=false,
     init=function()
-      vim.notify("AAA")
       require("config.utils").load_mappings "neogen"
     end
 },

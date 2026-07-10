@@ -1,0 +1,58 @@
+snippet bsearch
+  /**
+   * @param {Array} arr -
+   * @param {number} v -
+   */
+  function bsearch(arr, v) {
+    let l = 0;
+    let r = arr.length - 1;
+
+    while (l <= r) {
+      const m = Math.floor((l + r) / 2);
+      if (arr[m] == v) {
+        return m;
+      }
+      if (arr[m] > v) {
+        r = m - 1;
+      } else {
+        l = m + 1;
+      }
+    }
+    return r;
+  }
+
+
+snippet TrieClass
+  class Trie {
+    constructor() {
+      this.arr = { found: [] };
+    }
+    /**
+     * @param {string} v
+     */
+    insert(v) {
+      let pt = this.arr;
+      for (let i = 0; i < v.length; i++) {
+        const c = v[i];
+        if (pt[c] == undefined) {
+          pt[c] = { found: [] };
+        }
+        pt["found"].push(v);
+        pt = pt[c];
+      }
+    }
+
+    /**
+     * @param {string} v
+     */
+    search(v) {
+      let pt = this.arr;
+      for (let i = 0; i < v.length; i++) {
+        const c = v[i];
+        if (pt[c] == undefined) {
+          return false;
+        }
+      }
+      return pt["found"];
+    }
+  }

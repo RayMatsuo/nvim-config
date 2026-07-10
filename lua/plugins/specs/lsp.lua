@@ -176,7 +176,10 @@ return {
     },
     init = function ()
       require("luasnip.loaders.from_vscode").lazy_load()
-    end
+    end,
+    config = function (_,opts)
+      return require "plugins.configs.luasnip".luasnip(opts)
+    end,
   },
   {
     'saghen/blink.compat',

@@ -40,27 +40,24 @@ vim.api.nvim_create_user_command("Q", function ()
 end, {}
 )
 
-local petMessages = {
-  "eoooow mew mew",
-  "nya? mrrrrpppth",
-  "nyaaaaa *nuzzles against your fingers",
-}
-local scritchMessages = {
-  "mrrp... arp.. mppp...",
-  "mrrrrrp",
-  "purrrrrrr.....",
-}
+vim.api.nvim_create_user_command("NTR", function (opts)
+  if opts.bang then
+    vim.cmd "Neotest run file"
+  else
+    vim.cmd "Neotest run"
+  end
+end, { bang = true }
+)
+
+local petMessages = { "eoooow mew mew", "nya? mrrrrpppth", "nyaaaaa *nuzzles against your fingers" }
+local scritchMessages = { "mrrp... arp.. mppp...", "mrrrrrp", "purrrrrrr....." }
 
 local cuddleMessages = {
   "you feel your worries melt away", "the warmth of the cat embraces you back,keeping you safe from the cold",
   "the cat nuzzles its face against yours.", "the cat purrs against your chest",
   "you sink your fingers into the warm fluff", "you think you are going to have a peaceful rest tonight"
 }
-local observeMessaegs = {
-  "🐈 <- THE CAT OBSERVED",
-  "🐈 <- IT STANDIN",
-  " <- WHERE DID IT GO?",
-}
+local observeMessaegs = { "🐈 <- THE CAT OBSERVED", "🐈 <- IT STANDIN", " <- WHERE DID IT GO?" }
 vim.api.nvim_create_user_command("Pet", function ()
   vim.notify(petMessages[math.random(1, #petMessages)], nil, { render = "compact" })
 end, {}
@@ -105,4 +102,3 @@ vim.api.nvim_create_autocmd("FileType", {
     pcall(vim.treesitter.start)
   end
 })
-

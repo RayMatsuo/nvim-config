@@ -10,6 +10,7 @@ M.luasnip = function (opts)
   -- snipmate format
   require("luasnip.loaders.from_snipmate").load()
   require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.g.snipmate_snippets_path or "" }
+  require("luasnip.loaders.from_snipmate").lazy_load { paths = "./../../../snippets" }
 
   -- lua format
   require("luasnip.loaders.from_lua").load()

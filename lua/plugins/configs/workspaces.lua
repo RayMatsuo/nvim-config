@@ -1,4 +1,3 @@
-local Isdir = require("lua.config.helper").Isdir
 require("workspaces").setup {
   cd_type = "tab",
   auto_open = true,
@@ -6,7 +5,7 @@ require("workspaces").setup {
     open = {
 
       function ()
-        if Isdir("./.vim") then
+        if require("config.helper").Isdir("./.vim") then
           local ws = require("workspaces")
           local path = ws.path()
           if path ~= nil then

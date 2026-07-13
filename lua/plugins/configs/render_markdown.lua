@@ -6,7 +6,12 @@ return {
     left_pad = 2
   },
   checkbox = {
-    bullet = true
+    bullet = true,
+    custom = {
+      todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+      question = { raw = '[?]', rendered = ' ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+      alert = { raw = '[!]', rendered = '󰀦 ', highlight = 'RenderMarkdownError', scope_highlight = nil },
+    }
   },
   heading = {
     width = 'block',

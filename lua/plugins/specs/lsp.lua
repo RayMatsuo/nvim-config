@@ -166,20 +166,17 @@ return {
     ---@type blink.cmp.Config
     opts = function ()
       return require "plugins.configs.blink"
-    end
+    end,
+    commit = "cfe100c"
   },
   {
-
     "L3MON4D3/LuaSnip",
     dependencies = {
       'rafamadriz/friendly-snippets'
     },
-    init = function ()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
-    config = function (_,opts)
-      return require "plugins.configs.luasnip".luasnip(opts)
-    end,
+    config = function ()
+      require "plugins.configs.luasnip"
+    end
   },
   {
     'saghen/blink.compat',

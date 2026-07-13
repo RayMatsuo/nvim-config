@@ -6,7 +6,7 @@
   "alpha-nvim": { "branch": "main", "commit": "6c6a89d5b068b5251c8bdf0dd57bb921bcfeeb09" },
   "barbar.nvim": { "branch": "master", "commit": "337ecfadb8bf005050990bf2f624dc4fc828dabd" },
   "better-escape.nvim": { "branch": "master", "commit": "3f4bc0b326606264ff75967f59091b5ddada0554" },
-  "blink.cmp": { "branch": "main", "commit": "cfe100ccac24b0a622d7b9f04aa8c9f3e7624a16" },
+  "blink.cmp": { "branch": "main", "commit": "db8ea0b7c7ab8c8f8faa3912833c1671381e6304" },
   "blink.compat": { "branch": "main", "commit": "2ed6d9a28b07fa6f3bface818470605f8896408c" },
   "blink.lib": { "branch": "main", "commit": "5876dd95deeb70aadbe9f1c0b7117a135061cdac" },
   "colorscheme-persist.nvim": { "branch": "master", "commit": "0c421c42ebf78bde8265bddbfd5547f01ffb2751" },

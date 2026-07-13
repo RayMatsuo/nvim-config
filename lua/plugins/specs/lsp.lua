@@ -167,7 +167,6 @@ return {
     opts = function ()
       return require "plugins.configs.blink"
     end,
-    commit = "cfe100c"
   },
   {
     "L3MON4D3/LuaSnip",

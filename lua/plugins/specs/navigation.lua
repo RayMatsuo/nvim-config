@@ -66,7 +66,10 @@ return {
       require("config.utils").load_mappings "workspaces"
     end,
     -- lazy = false,
-    dependencies = { "nvim-tree/nvim-tree.lua", "ThePrimeagen/harpoon" },
+    dependencies = {
+      "nvim-tree/nvim-tree.lua",
+      -- "ThePrimeagen/harpoon",
+    },
     cmd = "Telescope workspaces"
   },
   {
@@ -97,6 +100,15 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function ()
       require "plugins.configs.harpoon"
-    end
+    end,
+    enabled = false
+  },
+  {
+    'zachyarbrough/anchor.nvim',
+    config = function ()
+      require "plugins.configs.anchor"
+    end,
+
+    event = { "BufReadPost", "BufNewFile" },
   }
 }

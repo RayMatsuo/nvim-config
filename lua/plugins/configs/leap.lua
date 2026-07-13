@@ -1,7 +1,8 @@
 local leap = require('leap')
 
 leap.setup({
-  ignore_case = true
+  ignore_case = true,
+  safe_labels = ''
 })
 
 vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')

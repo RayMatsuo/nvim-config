@@ -212,7 +212,10 @@ local config = {
         'triforce',
         level = {
           enabled = true,
-          bar = { length = 10 }
+          bar = { length = 10 },
+          show = {
+            xp = false
+          }
         }
       }
     },
@@ -359,7 +362,7 @@ ins_right {
   cond = function ()
     return vim.fn.reg_recording() ~= ''
   end,
-  icon="󰑋"
+  icon = "󰑋"
 }
 
 ins_right {

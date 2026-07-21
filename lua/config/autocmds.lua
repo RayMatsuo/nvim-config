@@ -1,29 +1,62 @@
 local isdir = require("config.helper").Isdir
-vim.api.nvim_create_user_command("Pope", function ()
+
+function getPreviewPath()
   local ws = require "workspaces"
-  local root = ws.path()
-
-  if root ~= nil then
-    local vimpath = root .. ".vim\\"
-    local filepath = vimpath .. ".preview"
-
-    -- generate .vim directory if it doesnt exist
-    if not isdir(vimpath) then
-      os.execute(string.format('mkdir "%s"', vimpath))
+  local wsName = ws.name()
+  if wsName ~= nil then
+    local previewPath = vim.fn.stdpath("data") .. "\\previews\\"
+    if not isdir(previewPath) then
+      os.execute(string.format('mkdir "%s"', previewPath))
     end
 
-    -- if .preview exists, open browser
-    local f = io.open(filepath, "r")
-    local inst = nil
-    if f ~= nil then
-      local contents = f.read(f, "a")
-      io.close(f)
-      os.execute(string.format('waterfox.exe -new-tab "%s"', contents))
-    else
-      -- if not then open .preview file to be edited
-      vim.cmd("e " .. filepath)
-    end
+    return previewPath .. wsName .. ".preview"
+  else
+    vim.notify("Not in workspace!")
+    return nil
   end
+end
+
+vim.api.nvim_create_user_command("PreviewOpen", function ()
+  local filepath = getPreviewPath()
+  if filepath == nil then
+    return
+  end
+  -- if .preview exists, open browser
+  local f = io.open(filepath, "r")
+
+  if f ~= nil then
+    local contents = f.read(f, "a")
+    io.close(f)
+    os.execute(string.format('waterfox.exe -new-tab "%s"', contents))
+  else
+    -- if not then open .preview file to be edited
+    vim.cmd("e " .. filepath)
+  end
+end, {}
+)
+
+vim.api.nvim_create_user_command("Pope", function ()
+  vim.cmd "PreviewOpen"
+end, {}
+)
+
+vim.api.nvim_create_user_command("PreviewEdit", function ()
+  local filepath = getPreviewPath()
+  if filepath == nil then
+    return
+  end
+  -- if .preview exists, open browser
+  local f = io.open(filepath, "r")
+
+  if f ~= nil then
+    -- if not then open .preview file to be edited
+    vim.cmd("e " .. filepath)
+  end
+end, {}
+)
+
+vim.api.nvim_create_user_command("Pedi", function ()
+  vim.cmd "PreviewEdit"
 end, {}
 )
 

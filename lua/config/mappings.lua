@@ -86,7 +86,15 @@ M.general = {
     ["<tab>"] = { "<Cmd>BufferNext<CR>" },
     ["<S-tab>"] = { "<Cmd>BufferPrevious<CR>" },
     ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>" },
-    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" }
+    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
+
+    ["<F8>"] = {
+      function ()
+        local ft = vim.bo.filetype
+        local config = vim.fn.stdpath("config")
+        vim.cmd("e " .. config .. "/snippets/" .. ft .. ".snippets")
+      end
+    }
   },
   t = {
     ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" }
@@ -362,7 +370,6 @@ M.undotree = {
   }
 }
 
-
 M.doge = {
   n = {
     ["<Leader>g"] = { "<cmd>DogeGenerate<CR>" }
@@ -373,7 +380,7 @@ M.neogen = {
   n = {
     ["<Leader>d"] = { "<cmd>Neogen<CR>" },
     ["<Leader>nt"] = { "<cmd>Neogen type<CR>" },
-    ["<Leader>nc"] = { "<cmd>Neogen class<CR>" },
+    ["<Leader>nc"] = { "<cmd>Neogen class<CR>" }
   }
 }
 return M

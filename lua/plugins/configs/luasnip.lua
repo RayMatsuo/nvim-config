@@ -1,11 +1,12 @@
 local ls = require("luasnip")
 ls.setup({})
 
+local config = vim.fn.stdpath("config")
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_snipmate").load()
 require("luasnip.loaders.from_lua").load()
-require("luasnip.loaders.from_snipmate").load { paths = "./snippets" }
-require("luasnip.loaders.from_lua").load({ paths = "./snippets" })
+require("luasnip.loaders.from_snipmate").lazy_load { paths = config .. "\\snippets" }
+require("luasnip.loaders.from_lua").lazy_load({ paths = config .. "\\snippets" })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function ()

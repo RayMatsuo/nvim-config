@@ -84,7 +84,7 @@ return {
     -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
     -- refer to `:h file-pattern` for more examples
       "BufReadPre C:/Users/matsu/docs/notes/*.md",
-      "BufNewFile C:/Users/matsu/docs/notes/*.md"
+      "BufNewFile C:/Users/matsu/docs/notes/*.md",
     },
     dependencies = {
       -- Required.
@@ -94,7 +94,7 @@ return {
       workspaces = {
         {
           name = "sanctuary",
-          path = "C:/Users/matsu/docs/notes"
+          path = "C:/Users/matsu/Documents/Obsidian/notes"
         }
       },
       frontmatter = {

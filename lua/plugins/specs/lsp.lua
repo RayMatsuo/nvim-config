@@ -156,7 +156,8 @@ return {
       'saghen/blink.lib',
       'rafamadriz/friendly-snippets',
       "onsails/lspkind.nvim",
-      "L3MON4D3/LuaSnip"
+      "L3MON4D3/LuaSnip",
+      "folke/lazydev.nvim"
     },
     build = function ()
       require('blink.cmp').build():pwait()
@@ -166,7 +167,7 @@ return {
     ---@type blink.cmp.Config
     opts = function ()
       return require "plugins.configs.blink"
-    end,
+    end
   },
   {
     "L3MON4D3/LuaSnip",
@@ -185,5 +186,12 @@ return {
     lazy = true,
     -- make sure to set opts so that lazy.nvim calls blink.compat's setup
     opts = {}
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = function ()
+     return require "plugins.configs.lazydev" 
+    end
   }
 }

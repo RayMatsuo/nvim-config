@@ -8,8 +8,9 @@ local servers = {
   "ts_ls",
   "laravel_ls",
   "stylelint_lsp",
-  "emmylua_ls",
+  -- "emmylua_ls",
   "gopls",
+  "lua_ls",
 }
 
 local dir = vim.fn.stdpath("config") .. "/lua/config/"

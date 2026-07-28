@@ -37,11 +37,11 @@ vim.api.nvim_create_autocmd("TabClosed", {
   end
 })
 
-function createTerm(id)
+local function createTerm(id)
   table.insert(AllTerms, id, { Vertical = nil, Horizontal = nil, Float = nil })
 end
 
-function getCurrentTerms()
+local function getCurrentTerms()
   local tabId = vim.api.nvim_get_current_tabpage()
   local term = AllTerms[tabId]
   if term ~= nil then

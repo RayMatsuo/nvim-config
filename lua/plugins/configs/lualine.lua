@@ -69,7 +69,7 @@ end
 -- Function to interpolate between two colors for a smooth transition
 local function interpolate_color(color1, color2, step)
   -- Blend two colors based on the given step factor (0.0 -> color1, 1.0 -> color2)
-  local blend = function (c1, c2, stp)
+  local blend = function(c1, c2, stp)
     return math.floor(c1 + (c2 - c1) * stp)
   end
   -- Extract the RGB values of both colors (in hex)
@@ -88,7 +88,7 @@ end
 -- Function to get a middle color by interpolating between mode color and its opposite
 local function get_middle_color(color_step)
   -- Set default value for color_step if not provided
-  color_step = color_step or 0.5 -- If color_step is nil, default to 0.5
+  color_step = color_step or 0.5            -- If color_step is nil, default to 0.5
 
   local color1 = get_mode_color()           -- Get the current mode color
   local color2 = get_opposite_color(color1) -- Get the opposite color
@@ -113,10 +113,10 @@ end
 -- Function to create a separator component based on side (left/right) and optional mode color
 local function create_separator(side, use_mode_color)
   return {
-    function ()
+    function()
       return side == 'left' and '' or '' -- Choose separator symbol based on side
     end,
-    color = function ()
+    color = function()
       -- Set color based on mode or opposite color
       local color = use_mode_color and get_mode_color() or get_opposite_color(get_mode_color())
       return { fg = color }
@@ -133,7 +133,7 @@ local function create_mode_based_component(content, icon, color_fg, color_bg)
   return {
     content,
     icon = icon,
-    color = function ()
+    color = function()
       local mode_color = get_mode_color()
       local opposite_color = get_opposite_color(mode_color)
       return { fg = color_fg or colors.FG, bg = color_bg or opposite_color, gui = 'bold' }
@@ -204,7 +204,7 @@ local config = {
     lualine_x = {
 
       {
-        function ()
+        function()
           return require("pomodoro").get_pomodoro_status("🍅❌", "🐹", "🍲")
         end
       },
@@ -216,6 +216,9 @@ local config = {
           show = {
             xp = false
           }
+        },
+        currency = {
+          enabled = false
         }
       }
     },
@@ -228,7 +231,7 @@ local config = {
     lualine_c = {
       {
         'location',
-        color = function ()
+        color = function()
           return { fg = colors.FG, gui = 'bold' }
         end
       }
@@ -236,7 +239,7 @@ local config = {
     lualine_x = {
       {
         'filename',
-        color = function ()
+        color = function()
           return { fg = colors.FG, gui = 'bold,italic' }
         end
       }
@@ -258,7 +261,7 @@ end
 -- LEFT
 ins_left {
   mode,
-  color = function ()
+  color = function()
     local mode_color = get_mode_color()
     return { fg = colors.BG, bg = mode_color, gui = 'bold' }
   end,
@@ -268,11 +271,11 @@ ins_left {
 ins_left(create_separator('left', true))
 
 ins_left {
-  function ()
+  function()
     return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
   end,
   icon = ' ',
-  color = function ()
+  color = function()
     local virtual_env = vim.env.VIRTUAL_ENV
     if virtual_env then
       return { fg = get_mode_color(), gui = 'bold,strikethrough' }
@@ -289,7 +292,7 @@ ins_left(create_mode_based_component('filename', nil, colors.BG))
 ins_left(create_separator('left'))
 
 ins_left({
-  function ()
+  function()
     local ws = require "workspaces"
     local name = ws.name()
     if name ~= nil then
@@ -297,24 +300,24 @@ ins_left({
     end
     return "-"
   end,
-  color = function ()
+  color = function()
     return { fg = get_middle_color(1) }
   end,
   icon = " "
 })
 
 ins_left {
-  function ()
+  function()
     return ''
   end,
-  color = function ()
+  color = function()
     return { fg = get_middle_color() }
   end,
   cond = hide_in_width
 }
 
 ins_left {
-  function ()
+  function()
     local git_status = vim.b.gitsigns_status_dict
     if git_status then
       return string.format('+%d ~%d -%d', git_status.added or 0, git_status.changed or 0, git_status.removed or 0)
@@ -351,7 +354,7 @@ ins_left {
 
 -- RIGHT
 ins_right {
-  function ()
+  function()
     local reg = vim.fn.reg_recording()
     return reg ~= '' and '[' .. reg .. ']' or ''
   end,
@@ -359,7 +362,7 @@ ins_right {
     fg = '#ff3344',
     gui = 'bold'
   },
-  cond = function ()
+  cond = function()
     return vim.fn.reg_recording() ~= ''
   end,
   icon = "󰑋"
@@ -373,7 +376,7 @@ ins_right {
   }
 }
 ins_right {
-  function ()
+  function()
     local msg = ''
     local buf_ft = vim.bo.filetype
     local clients = vim.lsp.get_clients()
@@ -404,10 +407,10 @@ ins_right {
 }
 
 ins_right {
-  function ()
+  function()
     return ''
   end,
-  color = function ()
+  color = function()
     return { fg = get_middle_color() }
   end,
   cond = hide_in_width
@@ -434,7 +437,7 @@ ins_right {
 		feature/add-ui						Fa›add-ui
 		main											main
 	]]
-  fmt = function (branch)
+  fmt = function(branch)
     if branch == '' or branch == nil then
       return 'No Repo'
     end
@@ -464,7 +467,7 @@ ins_right {
     end
 
     -- Capitalize the first segment and lowercase the rest (except the last one)
-    segments[1] = segments[1]:upper() -- First segment uppercase
+    segments[1] = segments[1]:upper()   -- First segment uppercase
     for i = 2, #segments - 1 do
       segments[i] = segments[i]:lower() -- Other segments lowercase
     end
@@ -480,7 +483,7 @@ ins_right {
 
     return truncated_branch
   end,
-  color = function ()
+  color = function()
     local mode_color = colors.MAGENTA
     return { fg = mode_color, gui = 'bold' }
   end

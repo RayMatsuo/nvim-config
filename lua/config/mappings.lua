@@ -16,6 +16,7 @@ M.general = {
     ["<C-a>"] = { "<Esc>", "Return to normal mode" }
   },
   n = {
+    ["q:"] = { "<Nop>", "Clear highlights" },
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },

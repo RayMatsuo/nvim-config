@@ -31,5 +31,6 @@ require("transparent").setup({ -- Optional, you don't have to run setup.
 })
 
 require('transparent').clear_prefix('nvimtree')
+require('transparent').clear_prefix('Notify')
 vim.cmd "TransparentEnable"
 -- vim.cmd "TransparentToggle"

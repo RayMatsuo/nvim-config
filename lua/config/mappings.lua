@@ -26,25 +26,26 @@ M.general = {
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
-    ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-    ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+    -- ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+    -- ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<leader>fm"] = {
-      function ()
+      function()
         require("conform").format()
       end,
       "LSP formatting"
     },
     ["<C-x>"] = { "<Cmd>BufferClose<CR>" },
+    ["<C-a><C-x>"] = { "<Cmd>BufferClose!<CR>" },
     ["<Leader>mo"] = { "<cmd>mod<Cr>" },
     ["<Leader>xx"] = {
-      function ()
+      function()
         require("trevj").format_at_cursor()
       end
     },
     ["<Leader>ft"] = { "<cmd>Easypick ft<Cr>" },
     ["<Leader>en"] = { "<cmd>Easypick enc<Cr>" },
     ["<Leader>co"] = {
-      function ()
+      function()
         if cole == 0 then
           cole = 2
         else
@@ -54,10 +55,8 @@ M.general = {
       end
     },
     ["<A-x>"] = { "<cmd>BufferCloseAllButCurrent<Cr>" },
-    ["<C-b>"] = { "<cmd>BufferNavigatorToggle<Cr>" },
-    ["<A-c>"] = { "<cmd>BufferNavigatorToggle<Cr>" },
     ["<Leader>w"] = {
-      function ()
+      function()
         if wrap == true then
           wrap = false
           vim.cmd "se nowrap"
@@ -79,7 +78,7 @@ M.general = {
     ["<C-t>"] = { "a<space><Esc>", "Insert space after cursor" },
     ["<F4>"] = { "<cmd>e ~/docs/doc.md <CR>", "open todo" },
     ["<Leader>nn"] = {
-      function ()
+      function()
         vim.cmd "NoNeckPain"
       end
     },
@@ -90,7 +89,7 @@ M.general = {
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
 
     ["<F8>"] = {
-      function ()
+      function()
         local ft = vim.bo.filetype
         local config = vim.fn.stdpath("config")
         vim.cmd("e " .. config .. "/snippets/" .. ft .. ".snippets")
@@ -127,7 +126,7 @@ M.comment = {
   -- toggle comment in both modes
   n = {
     ["<leader>/"] = {
-      function ()
+      function()
         require("Comment.api").toggle.linewise.current()
       end,
       "Toggle comment"
@@ -146,91 +145,91 @@ M.lspconfig = {
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
   n = {
     ["gD"] = {
-      function ()
+      function()
         vim.lsp.buf.declaration()
       end,
       "LSP declaration"
     },
     ["gd"] = {
-      function ()
+      function()
         vim.lsp.buf.definition()
       end,
       "LSP definition"
     },
     ["K"] = {
-      function ()
+      function()
         vim.lsp.buf.hover()
       end,
       "LSP hover"
     },
     ["gi"] = {
-      function ()
+      function()
         vim.lsp.buf.implementation()
       end,
       "LSP implementation"
     },
     ["<leader>ls"] = {
-      function ()
+      function()
         vim.lsp.buf.signature_help()
       end,
       "LSP signature help"
     },
     ["<leader>D"] = {
-      function ()
+      function()
         vim.lsp.buf.type_definition()
       end,
       "LSP definition type"
     },
     ["<leader>ca"] = {
-      function ()
+      function()
         vim.lsp.buf.code_action()
       end,
       "LSP code action"
     },
     ["gr"] = {
-      function ()
+      function()
         vim.lsp.buf.references()
       end,
       "LSP references"
     },
     ["<leader>lf"] = {
-      function ()
+      function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
       "Floating diagnostic"
     },
     ["[d"] = {
-      function ()
+      function()
         vim.diagnostic.goto_prev { float = { border = "rounded" } }
       end,
       "Goto prev"
     },
     ["]d"] = {
-      function ()
+      function()
         vim.diagnostic.goto_next { float = { border = "rounded" } }
       end,
       "Goto next"
     },
     ["<leader>q"] = {
-      function ()
+      function()
         vim.diagnostic.setloclist()
       end,
       "Diagnostic setloclist"
     },
     ["<leader>wa"] = {
-      function ()
+      function()
         vim.lsp.buf.add_workspace_folder()
       end,
       "Add workspace folder"
     },
     ["<leader>wr"] = {
-      function ()
+      function()
         vim.lsp.buf.remove_workspace_folder()
       end,
       "Remove workspace folder"
     },
     ["<leader>wl"] = {
-      function ()
+      function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
       "List workspace folders"
@@ -238,7 +237,7 @@ M.lspconfig = {
   },
   v = {
     ["<leader>ca"] = {
-      function ()
+      function()
         vim.lsp.buf.code_action()
       end,
       "LSP code action"
@@ -280,7 +279,7 @@ M.workspaces = {
   n = {
     ["<F2>"] = { "<cmd> Telescope workspaces <CR>", "Find workspaces" },
     ["<F5>"] = {
-      function ()
+      function()
         local workspaces = require "workspaces"
         local name = workspaces.name()
         if name ~= nil then
@@ -298,19 +297,19 @@ M.toggleterm = {
   t = {
     -- toggle in terminal mode
     ["<A-i>"] = {
-      function ()
+      function()
         GetFloatTerm():toggle()
       end,
       "Toggle floating term"
     },
     ["<A-h>"] = {
-      function ()
+      function()
         GetHorizontalTerm():toggle()
       end,
       "Toggle horizontal term"
     },
     ["<A-v>"] = {
-      function ()
+      function()
         GetVerticalTerm():toggle(vim.o.columns * 0.3)
       end,
       "Toggle vertical term"
@@ -319,7 +318,7 @@ M.toggleterm = {
   n = {
     -- toggle in normal mode
     ["<A-i>"] = {
-      function ()
+      function()
         local term = GetFloatTerm()
         if term ~= nil then
           term:toggle()
@@ -328,7 +327,7 @@ M.toggleterm = {
       "Toggle floating term"
     },
     ["<A-h>"] = {
-      function ()
+      function()
         local term = GetHorizontalTerm()
         if term ~= nil then
           term:toggle()
@@ -337,7 +336,7 @@ M.toggleterm = {
       "Toggle horizontal term"
     },
     ["<A-v>"] = {
-      function ()
+      function()
         local term = GetVerticalTerm()
         if term ~= nil then
           term:toggle(vim.o.columns * 0.3)
@@ -347,7 +346,7 @@ M.toggleterm = {
     },
     -- new
     ["<leader>h"] = {
-      function ()
+      function()
         local term = GetHorizontalTerm()
 
         if term ~= nil then

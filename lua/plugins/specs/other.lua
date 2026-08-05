@@ -46,7 +46,6 @@ return {
       plugins = {
         non_standalone = true
       },
-      lang = "javascript"
     },
     cmd = { "Leet" }
   },

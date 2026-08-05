@@ -10,14 +10,14 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-    opts = function ()
+    opts = function()
       return require "plugins.configs.mason"
     end,
-    config = function (_, opts)
+    config = function(_, opts)
       -- dofile(vim.g.base46_cache .. "mason")
       require("mason").setup(opts)
 
-      vim.api.nvim_create_user_command("MasonInstallAll", function ()
+      vim.api.nvim_create_user_command("MasonInstallAll", function()
         if opts.ensure_installed and #opts.ensure_installed > 0 then
           vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
         end
@@ -37,7 +37,7 @@ return {
         "L3MON4D3/LuaSnip",
         dependencies = "rafamadriz/friendly-snippets",
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-        config = function (_, opts)
+        config = function(_, opts)
           require("plugins.configs.luasnip").luasnip(opts)
         end
       },
@@ -48,7 +48,7 @@ return {
           fast_wrap = {},
           disable_filetype = { "TelescopePrompt", "vim" }
         },
-        config = function (_, opts)
+        config = function(_, opts)
           require("nvim-autopairs").setup(opts)
 
           -- setup cmp for autopairs
@@ -67,20 +67,20 @@ return {
         "hrsh7th/cmp-nvim-lsp-signature-help"
       }
     },
-    opts = function ()
+    opts = function()
       return require "plugins.configs.cmp"
     end,
-    config = function (_, opts)
+    config = function(_, opts)
       require("cmp").setup(opts)
     end,
-    init = function ()
+    init = function()
     end,
     enabled = false
   },
   {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
-    init = function ()
+    init = function()
       require("plugins.configs.lspconfig").defaults()
       require("config.utils").load_mappings "lspconfig"
       require "config.lsp"
@@ -136,13 +136,13 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
     },
-    config = function ()
+    config = function()
       require "plugins.configs.aerial"
     end
   },
   {
     'stevearc/conform.nvim',
-    config = function ()
+    config = function()
       require "plugins.configs.conform"
     end
   },
@@ -157,15 +157,15 @@ return {
       'rafamadriz/friendly-snippets',
       "onsails/lspkind.nvim",
       "L3MON4D3/LuaSnip",
-      "folke/lazydev.nvim"
+      -- "folke/lazydev.nvim"
     },
-    build = function ()
+    build = function()
       require('blink.cmp').build():pwait()
     end,
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
-    opts = function ()
+    opts = function()
       return require "plugins.configs.blink"
     end
   },
@@ -174,7 +174,7 @@ return {
     dependencies = {
       'rafamadriz/friendly-snippets'
     },
-    config = function ()
+    config = function()
       require "plugins.configs.luasnip"
     end
   },
@@ -190,8 +190,9 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
-    opts = function ()
-     return require "plugins.configs.lazydev" 
-    end
+    opts = function()
+      return require "plugins.configs.lazydev"
+    end,
+    enabled = false
   }
 }

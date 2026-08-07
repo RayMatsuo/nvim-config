@@ -7,7 +7,7 @@ return {
         config = function()
             require "plugins.configs.triforce"
         end,
-        enabled=false
+        enabled = false
     },
     {
         "quentingruber/pomodoro.nvim",
@@ -23,17 +23,6 @@ return {
             display_ui_on_break = true -- Disable it if you only want to see the lualine
         },
         enabled = false
-    },
-    {
-        "practice",
-        dir = "D:/Active projects/nvim-plugin/practice",
-        lazy = false,
-        cmd = { "Prac" },
-        config = function()
-            require("practice").setup()
-        end,
-        enabled = false,
-        opts = {}
     },
     {
         "kawre/leetcode.nvim",

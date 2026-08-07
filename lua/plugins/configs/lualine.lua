@@ -208,19 +208,19 @@ local config = {
           return require("pomodoro").get_pomodoro_status("🍅❌", "🐹", "🍲")
         end
       },
-      {
-        'triforce',
-        level = {
-          enabled = true,
-          bar = { length = 10 },
-          show = {
-            xp = false
-          }
-        },
-        currency = {
-          enabled = false
-        }
-      }
+      -- {
+      --   'triforce',
+      --   level = {
+      --     enabled = true,
+      --     bar = { length = 10 },
+      --     show = {
+      --       xp = false
+      --     }
+      --   },
+      --   currency = {
+      --     enabled = false
+      --   }
+      -- }
     },
     lualine_y = {},
     lualine_z = {}

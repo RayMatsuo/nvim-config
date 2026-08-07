@@ -203,11 +203,11 @@ local config = {
     lualine_c = {},
     lualine_x = {
 
-      {
-        function()
-          return require("pomodoro").get_pomodoro_status("🍅❌", "🐹", "🍲")
-        end
-      },
+      -- {
+      --   function()
+      --     return require("pomodoro").get_pomodoro_status("🍅❌", "🐹", "🍲")
+      --   end
+      -- },
       -- {
       --   'triforce',
       --   level = {

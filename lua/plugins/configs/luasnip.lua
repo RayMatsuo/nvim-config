@@ -8,6 +8,9 @@ require("luasnip.loaders.from_lua").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load { paths = config .. "\\snippets" }
 require("luasnip.loaders.from_lua").lazy_load({ paths = config .. "\\snippets" })
 
+ls.filetype_extend("blade", {"php","html"})
+ls.filetype_extend("typescriptreact", {"typescript"})
+
 vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function ()
     if require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]

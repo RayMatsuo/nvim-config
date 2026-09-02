@@ -6,7 +6,7 @@ else
   -- vim.cmd 'set shellquote="'
   -- vim.cmd "set shellxquote="
   vim.cmd(
-    [[	   
+    [[
 	   set noshelltemp
 	   let &shell = 'pwsh'
 	   let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '

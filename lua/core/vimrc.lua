@@ -9,5 +9,6 @@ vim.cmd "set title"
 vim.cmd "filetype plugin on"
 vim.cmd "se cole=2"
 vim.cmd "se linebreak"
+vim.cmd "setlocal spell spelllang=en_us"
 
 return M

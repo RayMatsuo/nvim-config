@@ -57,4 +57,15 @@ function M.ls(path, fn)
     end
   end
 end
+-- source : https://stackoverflow.com/questions/33510736/check-if-array-contains-specific-value
+function M.Array_contains (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
 return M

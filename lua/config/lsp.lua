@@ -14,6 +14,7 @@ local servers = {
     -- "typos_lsp",
     -- "cspell_ls",
     "codebook",
+    "golangci_lint_ls"
 }
 
 local dir = vim.fn.stdpath("config") .. "/lua/config/"

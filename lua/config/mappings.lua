@@ -94,7 +94,9 @@ M.general = {
         local config = vim.fn.stdpath("config")
         vim.cmd("e " .. config .. "/snippets/" .. ft .. ".snippets")
       end
-    }
+    },
+
+    ["zg"] = { "<Cmd>AddWord<Cr>" },
   },
   t = {
     ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" }

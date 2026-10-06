@@ -83,7 +83,8 @@ return {
     event = "User FilePost",
     config = function ()
       require("colorizer").setup()
-    end
+    end,
+    enabled=false
   },
   {
     "nvim-tree/nvim-web-devicons",

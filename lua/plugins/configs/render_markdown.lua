@@ -1,6 +1,14 @@
 return {
     anti_conceal = {
-        enabled = true
+        enabled = true,
+        disabled_modes = { "n" },
+
+        ignore = {
+            code_background = true,
+            indent = true,
+            bullet = true,
+               dash=true
+        },
     },
     bullet = {
         left_pad = 2
@@ -16,7 +24,8 @@ return {
     heading = {
         width = 'block',
         right_pad = 1,
-        min_width = 30
+        min_width = 30,
+        render_modes = { "n" }
     },
     indent = {
         enabled = true,

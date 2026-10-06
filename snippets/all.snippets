@@ -1,7 +1,19 @@
-snippet region 
+snippet region
   //#region ${1}
 
-  //#endregion ${1}
+  //#endregion END${1}
 
 snippet endregion
   //#endregion
+
+snippet date_now
+    ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}
+
+snippet time_now
+    ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}
+
+snippet datetime_now
+    ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}
+
+snippet random_int
+    ${RANDOM}

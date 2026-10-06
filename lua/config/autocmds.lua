@@ -1,8 +1,7 @@
 local isdir = require("config.helper").Isdir
 local helper = require("config.helper")
 
-function addWord()
-    local wordUnderCursor = vim.fn.expand("<cword>")
+function addWord(wordUnderCursor)
     local toml = require("config.toml")
     local configPath = vim.fn.stdpath("config")
     local filePath = configPath .. "/codebook.toml"
@@ -26,6 +25,7 @@ function addWord()
     end
 
     vim.notify(wordUnderCursor .. " was added to the dictionary!")
+    vim.cmd("lsp restart codebook")
 end
 
 function getPreviewPath()
@@ -135,11 +135,17 @@ vim.api.nvim_create_user_command("Observe", function()
     vim.notify(observeMessaegs[math.random(1, #observeMessaegs)], nil, { render = "compact" })
 end, {}
 )
-vim.api.nvim_create_user_command("AddWord", function()
-    addWord()
+
+vim.api.nvim_create_user_command("AddWordUnderCursor", function()
+    addWord(vim.fn.expand("<cword>"))
 end, {}
 )
 
+vim.api.nvim_create_user_command("AddWord", function(opts)
+    -- Remove quotation marks from the argument
+    addWord(string.sub(opts.args, 2, #opts.args - 1))
+end, {}
+)
 vim.api.nvim_create_user_command("MemInspect", function()
     local nsn = vim.api.nvim_get_namespaces()
 
@@ -165,5 +171,11 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
     callback = function()
         pcall(vim.treesitter.start)
+    end
+})
+vim.api.nvim_create_autocmd('ColorScheme', {
+    group = vim.api.nvim_create_augroup('LeapBackdrop', {}),
+    callback = function()
+        require('leap.user').set_backdrop_highlight('Comment')
     end
 })

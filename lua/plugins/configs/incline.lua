@@ -25,7 +25,7 @@ require("incline").setup {
             { "",          icon,       " ",           guifg = helpers.contrast_color(iconBg), guibg = iconBg },
             { rightCircle, guibg = bg, guifg = iconBg },
             " ",
-            { filename, guifg = helpers.contrast_color(bg) },
+            { filename,    guifg = helpers.contrast_color(bg) },
             modified and { " *", guifg = fg, gui = "bold" } or "",
             " ",
             guibg = bg,

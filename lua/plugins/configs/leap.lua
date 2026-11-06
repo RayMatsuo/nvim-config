@@ -5,9 +5,6 @@ leap.setup({
     safe_labels = ''
 })
 
-vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
-vim.keymap.set('n', 'S', '<Plug>(leap-backward)')
-
 do
     -- Return an argument table for `leap()`, tailored for f/t-motions.
     local function as_ft(key_specific_args)

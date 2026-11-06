@@ -193,7 +193,7 @@ return {
         opts = function()
             return require "plugins.configs.lazydev"
         end,
-        enabled = false
+        enabled = true
     },
     {
         "mfussenegger/nvim-lint",
@@ -201,7 +201,7 @@ return {
             require "plugins.configs.lint"
         end,
         event = { "BufReadPre", "BufNewFile" },
-        enabled=false
+        enabled = false
     },
     {
         "dense-analysis/ale",

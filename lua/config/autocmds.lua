@@ -1,7 +1,7 @@
 local isdir = require("config.helper").Isdir
 local helper = require("config.helper")
 
-function addWord(wordUnderCursor)
+local function addWord(wordUnderCursor)
     local toml = require("config.toml")
     local configPath = vim.fn.stdpath("config")
     local filePath = configPath .. "/codebook.toml"
@@ -28,7 +28,7 @@ function addWord(wordUnderCursor)
     vim.cmd("lsp restart codebook")
 end
 
-function getPreviewPath()
+local function getPreviewPath()
     local ws = require "workspaces"
     local wsName = ws.name()
     if wsName ~= nil then
@@ -179,3 +179,23 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         require('leap.user').set_backdrop_highlight('Comment')
     end
 })
+
+vim.api.nvim_create_autocmd('RecordingEnter', {
+    callback = function()
+        helper.SetCursorBG(require("config.config").ui.cursor.cursor_recording_bg)
+    end
+})
+
+vim.api.nvim_create_autocmd('RecordingLeave', {
+    callback = function()
+        helper.ResetCursorBG()
+    end
+})
+
+
+-- Alt command for Color picker
+vim.api.nvim_create_user_command('ColorPicker', function()
+    vim.notify("Correct command is CccPick!")
+    vim.cmd("CccPick")
+end, {}
+)

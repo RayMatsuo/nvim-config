@@ -1,20 +1,16 @@
 local servers = {
-    "html",
-    "cssls",
-    -- "phpantom_lsp",
-    "intelephense",
-    "tailwindcss",
-    "jsonls",
-    "ts_ls",
-    "laravel_ls",
-    "stylelint_lsp",
-    -- "emmylua_ls",
-    "gopls",
-    "lua_ls",
-    -- "typos_lsp",
-    -- "cspell_ls",
     "codebook",
-    "golangci_lint_ls"
+    "cssls",
+    "golangci_lint_ls",
+    "gopls",
+    "html",
+    "jsonls",
+    "laravel_ls",
+    "lua_ls",
+    "phpantom_lsp",
+    "stylelint_lsp",
+    "tailwindcss",
+    "ts_ls",
 }
 
 local dir = vim.fn.stdpath("config") .. "/lua/config/"

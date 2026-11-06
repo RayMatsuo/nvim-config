@@ -1,4 +1,3 @@
--- lua, default settings
 require("better_escape").setup {
   timeout = vim.o.timeoutlen,
   default_mappings = false,

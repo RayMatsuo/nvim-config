@@ -1,5 +1,3 @@
-
-        -- local config = vim.fn.stdpath("config")
 return
 {
   library = {

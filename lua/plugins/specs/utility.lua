@@ -24,7 +24,7 @@ return {
     end
   },
   {
-    "mrjones2014/smart-splits.nvim",
+    "smart-splits-nvim/smart-splits.nvim",
     lazy = false,
     config = function ()
       require "plugins.configs.splits"

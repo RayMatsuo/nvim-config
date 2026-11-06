@@ -41,24 +41,18 @@ local alpha_c = function()
     local alpha = require "alpha"
     local dashboard = require "alpha.themes.dashboard"
 
-    math.randomseed(os.clock(), os.clock() / (os.clock() / 2))
+    math.randomseed(os.clock())
 
     -- Load map templates
     require "plugins.configs.flags"
     -- Randomization table
     local flag_list = { TRANS, TRANS_SHORT, TRANSBIAN, TRANSBIAN_DIAGONAL, TRANSBIAN_DIAGONAL_SHORT, TRANSBIAN_SHORT }
-    -- local pixel_list = { ".", "■", "●", "─", "█" }
-    -- local pixel_list = { ".", "■", "●", "─", "█" }
     local pixel_list = { "■", "●", "█" }
 
     -- Random picking
     local color_map = flag_list[math.random(1, #flag_list)]
     local pixel = pixel_list[math.random(1, #pixel_list)]
 
-    -- Set flag/pattern
-    -- local color_map = transbian_short
-    -- local pixel = "─"
-    -- local pixel="█"
 
     local colors = {
         ["A"] = { fg = "#5BCEFA" },
@@ -79,7 +73,6 @@ local alpha_c = function()
         for i = 1, #line do
             if line:sub(i, i) ~= " " then
                 header_line = header_line .. pixel
-                -- header_line = header_line .. "█"
             else
                 header_line = header_line .. " "
             end

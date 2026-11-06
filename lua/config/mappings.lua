@@ -97,6 +97,8 @@ M.general = {
         },
 
         ["zg"] = { "<Cmd>AddWordUnderCursor<Cr>", },
+        ["<S-left>"] = { "<cmd>15winc ><CR>", "Resize split" },
+        ["<S-right>"] = { "<cmd>15winc <<CR>", "Resize split" },
     },
     t = {
         ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" }
@@ -383,6 +385,36 @@ M.neogen = {
         ["<Leader>d"] = { "<cmd>Neogen<CR>" },
         ["<Leader>nt"] = { "<cmd>Neogen type<CR>" },
         ["<Leader>nc"] = { "<cmd>Neogen class<CR>" }
+    }
+}
+
+M.anchor = {
+    n = {
+        ["<Leader>a"] = {
+            function()
+                require('anchor').add()
+            end,
+            'Add a directory to the anchor list'
+        },
+        ["<C-e>"] = {
+            function()
+                require('anchor').toggle_list()
+            end,
+            "Open anchor list in a floating buffer"
+        }
+    }
+}
+
+M.leap = {
+    n = {
+        ["s"] = { '<Plug>(leap)' },
+        ["S"] = { '<Plug>(leap-backward)' },
+    },
+    x = {
+        ["s"] = { '<Plug>(leap)' }
+    },
+    o = {
+        ["s"] = { '<Plug>(leap)' }
     }
 }
 return M

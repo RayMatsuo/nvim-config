@@ -66,8 +66,5 @@ M.defaults = function ()
     }
   }
 
-  -- vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
-  -- vim.lsp.config("emmylua_ls", { settings = lua_lsp_settings })
-  -- vim.lsp.enable "emmylua_ls"
 end
 return M

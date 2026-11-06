@@ -1,7 +1,12 @@
 snippet template
+    includes:
+        - vendor/larastan/larastan/extension.neon
+        - vendor/nesbot/carbon/extension.neon
     parameters:
         level: 6
         paths:
             - lib
         scanFiles:
         scanDirectories:
+        ignoreErrors:
+            - '#^Call to an undefined static method .*?$#'

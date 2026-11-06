@@ -1,23 +1,3 @@
-local function anchor()
-  return require('anchor')
-end
-
-vim.keymap.set('n', '<leader>a', function ()
-  anchor().add()
-end, { desc = 'Add a directory to the anchor list' }
-)
--- vim.keymap.set('n', '<leader>ad', function() anchor().delete() end, { desc = 'Delete a directory from the anchor list' })
-vim.keymap.set('n', '<C-e>', function ()
-  anchor().toggle_list()
-end, { desc = 'Open anchor list in a floating buffer' }
-)
--- vim.keymap.set('n', '<leader>a0', function() anchor().return_to_cwd() end, { desc = 'Return back to cwd' })
---
--- vim.keymap.set('n', '<leader>a1', function() anchor().open(1) end, { desc = 'Open fuzzy finder for anchor 1' })
--- ...
--- vim.keymap.set('n', '<leader>a5', function() anchor().open(5) end, { desc = 'Open fuzzy finder for anchor 5' })
---
---
 require('anchor').setup({
   -- UI options for anchor list buffer
   winopts = {

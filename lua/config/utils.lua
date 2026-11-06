@@ -2,7 +2,7 @@ local M = {}
 local merge_tb = vim.tbl_deep_extend
 
 M.load_config = function ()
-  local config = require "config.default_config"
+  local config = require "config.config"
   local vimrc_path = vim.api.nvim_get_runtime_file("lua/core/vimrc.lua", false)[1]
 
   if vimrc_path then
